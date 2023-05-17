@@ -6,7 +6,7 @@ package modelo;
 
 /**
  *
- * @author Usuario
+ * @author Usuaris
  */
 public class Cliente {
     int ID_cliente;
