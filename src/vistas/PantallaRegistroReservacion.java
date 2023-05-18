@@ -26,163 +26,108 @@ public class PantallaRegistroReservacion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel1 = new java.awt.Panel();
-        panel2 = new java.awt.Panel();
+        panel4 = new java.awt.Panel();
+        panel5 = new java.awt.Panel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        panel1 = new java.awt.Panel();
         jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField7 = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        panel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        panel5.setBackground(new java.awt.Color(0, 94, 144));
+        panel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("        Pagina Reservaciones");
+        panel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
+
+        panel4.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 90));
+
+        panel1.setBackground(new java.awt.Color(162, 179, 216));
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        panel2.setBackground(new java.awt.Color(102, 0, 102));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel3.setText(" Cant Personas");
+        panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 160, -1));
+        panel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 220, 50));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Hotel Nuevo Milenio ");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel4.setText("Nombre del Cliente");
+        panel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
+        panel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, 220, 50));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nuevo Milenio Juigalpa ");
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel5.setText("Precio");
+        panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 90, -1));
+        panel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 220, 50));
 
-        javax.swing.GroupLayout panel2Layout = new javax.swing.GroupLayout(panel2);
-        panel2.setLayout(panel2Layout);
-        panel2Layout.setHorizontalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel2Layout.createSequentialGroup()
-                .addGroup(panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel2Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel1))
-                    .addGroup(panel2Layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jLabel2)))
-                .addContainerGap(509, Short.MAX_VALUE))
-        );
-        panel2Layout.setVerticalGroup(
-            panel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-
-        panel1.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, -1));
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI Black", 1, 24)); // NOI18N
-        jLabel4.setText("Pagina de Reservaciones");
-        panel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 370, -1, -1));
-
-        jTextField1.setBackground(new java.awt.Color(102, 0, 102));
-        jTextField1.setText("jTextField1");
-        panel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 830, 260, 50));
-
-        jTextField2.setBackground(new java.awt.Color(102, 0, 102));
-        jTextField2.setText("jTextField1");
-        panel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 580, 240, 50));
-
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 0));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(782, 590, 20, -1));
-
-        jTextField3.setBackground(new java.awt.Color(102, 0, 102));
-        jTextField3.setText("jTextField1");
-        panel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 580, 250, 50));
-
-        jTextField4.setBackground(new java.awt.Color(102, 0, 102));
-        jTextField4.setText("jTextField1");
-        panel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 700, 240, 50));
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel6.setText(" Cant Habitaciones");
+        panel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 160, -1));
 
         jComboBox2.setBackground(new java.awt.Color(255, 255, 51));
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 850, 20, -1));
+        panel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
+        panel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 220, 50));
 
-        jTextField5.setBackground(new java.awt.Color(102, 0, 102));
-        jTextField5.setText("jTextField1");
-        panel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 840, 240, 50));
-
-        jTextField6.setBackground(new java.awt.Color(102, 0, 102));
-        jTextField6.setText("jTextField1");
-        panel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 970, 240, 50));
-
-        jTextField7.setBackground(new java.awt.Color(102, 0, 102));
-        jTextField7.setText("jTextField1");
-        panel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 700, 250, 50));
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel5.setText("Disponibilidad Habitacion");
-        panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 550, -1, -1));
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel6.setText("Nombre Cliente");
-        panel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, -1, -1));
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel7.setText("Entrada");
-        panel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 660, -1, -1));
+        panel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 90, -1));
+        panel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 220, 50));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Cant Habitaciones");
-        panel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 800, -1, -1));
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel8.setText("Disponibilidad Habitacion ");
+        panel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 220, -1));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Cant Personas");
-        panel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 930, -1, -1));
+        jComboBox1.setBackground(new java.awt.Color(255, 255, 51));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        panel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 90, 70, -1));
+        panel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 220, 50));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Precio");
-        panel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 800, -1, -1));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel9.setText("Salida");
+        panel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 90, -1));
+        panel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 220, 50));
 
-        jLabel11.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel11.setText("Salidad");
-        panel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 660, -1, -1));
-
-        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setBackground(new java.awt.Color(153, 153, 153));
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Ingresar");
-        panel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 1040, 120, 40));
+        jButton1.setText("Registrar ");
+        panel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, -1, -1));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistaimagen/WhatsApp Image 2023-05-15 at 5.01.44 PM.jpeg"))); // NOI18N
-        panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 870, 1040));
+        panel4.add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 820, 470));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistaimagen/WhatsApp Image 2023-05-15 at 5.01.44 PM.jpeg"))); // NOI18N
+        panel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 90, 1140, 870));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1077, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -228,8 +173,6 @@ public class PantallaRegistroReservacion extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -246,6 +189,7 @@ public class PantallaRegistroReservacion extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private java.awt.Panel panel1;
-    private java.awt.Panel panel2;
+    private java.awt.Panel panel4;
+    private java.awt.Panel panel5;
     // End of variables declaration//GEN-END:variables
 }
