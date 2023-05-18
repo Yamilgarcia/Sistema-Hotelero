@@ -4,6 +4,11 @@
  */
 package vista_menu;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 /**
  *
  * @author Usuario
@@ -14,12 +19,67 @@ public class Menu extends javax.swing.JFrame {
      * Creates new form Menu
      */
     public Menu() {
+        
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+
+        
+
+        // Crear los JLabel para la fecha y la hora
+        jLabel3 = new JLabel();
+        jLabel1 = new JLabel();
+
+        // Añadir los JLabel al JFrame
+        
+
+        // Actualizar la fecha y la hora en los JLabel
+        updateDateTime();
+
+        // Crear un hilo que actualiza la fecha y la hora cada segundo
+        Thread updateThread = new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(1000);
+                    updateDateTime();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        // Iniciar el hilo de actualización
+        updateThread.start();
+
+        // Ajustar el tamaño del JFrame automáticamente
+        pack();
+
+        // Mostrar el JFrame
+        setVisible(true);
+
         initComponents();
         
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\hotel (1).png" );
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabelFondo43, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\FondoHotel.jpg" );
         
     }
+    
+    private void updateDateTime() {
+        // Obtener la fecha y la hora actual
+        Date now = new Date();
+
+        // Crear el formato para la fecha y la hora
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+
+        // Formatear la fecha y la hora actual
+        String formattedDate = dateFormat.format(now);
+        String formattedTime = timeFormat.format(now);
+
+        // Actualizar los JLabel con la fecha y la hora formateadas
+        jLabel3.setText("Fecha: " + formattedDate);
+        jLabel1.setText("Hora: " + formattedTime);
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -33,6 +93,8 @@ public class Menu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelNombregrandeHotel = new javax.swing.JLabel();
         jLabelNombregrandeHotel1 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButtonIngreso = new javax.swing.JButton();
@@ -58,27 +120,43 @@ public class Menu extends javax.swing.JFrame {
         jLabelNombregrandeHotel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNombregrandeHotel1.setText("Nuevo Milenio-Juigalpa");
 
+        jLabel1.setFont(new java.awt.Font("Roboto", 3, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+
+        jLabel3.setFont(new java.awt.Font("Roboto", 3, 24)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelNombregrandeHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addComponent(jLabelNombregrandeHotel1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(1257, Short.MAX_VALUE))
+                        .addComponent(jLabelNombregrandeHotel1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabelNombregrandeHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 857, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(183, 183, 183))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabelNombregrandeHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelNombregrandeHotel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabelNombregrandeHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabelNombregrandeHotel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -215,6 +293,9 @@ public class Menu extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+        Menu frame = new Menu();
+        
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -252,7 +333,9 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonIngreso;
     private javax.swing.JButton jButtonRegistroCliente;
     private javax.swing.JButton jButtonRegistroReservacion;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelFondo43;
     private javax.swing.JLabel jLabelNombregrandeHotel;
     private javax.swing.JLabel jLabelNombregrandeHotel1;
