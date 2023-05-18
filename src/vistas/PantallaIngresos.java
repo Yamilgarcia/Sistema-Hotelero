@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vistas;
-
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import java.awt.Image;
 /**
  *
  * @author Usuario
@@ -15,6 +17,10 @@ public class PantallaIngresos extends javax.swing.JFrame {
      */
     public PantallaIngresos() {
         initComponents();
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelfondoingreso, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\ingresos.png" );
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelfondoingreso1, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\ingresos (1).png" );
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1fondo, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\FondoHotel.jpg" );
+        
     }
 
     /**
@@ -26,18 +32,91 @@ public class PantallaIngresos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel2 = new javax.swing.JPanel();
+        jLabelDia = new javax.swing.JLabel();
+        jComboBoxDia = new javax.swing.JComboBox<>();
+        jComboBoxMes = new javax.swing.JComboBox<>();
+        jLabelMes = new javax.swing.JLabel();
+        jComboBoxAño = new javax.swing.JComboBox<>();
+        jLabelAño = new javax.swing.JLabel();
+        jTextFieldDia = new javax.swing.JTextField();
+        jTextFieldMes = new javax.swing.JTextField();
+        jTextFieldAño = new javax.swing.JTextField();
+        jLabel1fondo = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabelNombregrandeHotel = new javax.swing.JLabel();
+        jLabelfondoingreso1 = new javax.swing.JLabel();
+        jLabelfondoingreso = new javax.swing.JLabel();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setIconImages(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel2.setBackground(new java.awt.Color(162, 179, 216));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelDia.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelDia.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelDia.setText("Dia");
+        jPanel2.add(jLabelDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(85, 45, 99, -1));
+
+        jComboBoxDia.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        jComboBoxDia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10/04/2023", " " }));
+        jComboBoxDia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jComboBoxDia.setPreferredSize(new java.awt.Dimension(111, 25));
+        jPanel2.add(jComboBoxDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 81, 200, 50));
+
+        jComboBoxMes.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        jComboBoxMes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", " " }));
+        jComboBoxMes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jComboBoxMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 205, 200, 50));
+
+        jLabelMes.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelMes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelMes.setText("Mes");
+        jPanel2.add(jLabelMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 169, 99, -1));
+
+        jComboBoxAño.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        jComboBoxAño.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2020", "2021", "2022", "2023", " " }));
+        jComboBoxAño.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jComboBoxAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 346, 200, 50));
+
+        jLabelAño.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelAño.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelAño.setText("Año");
+        jPanel2.add(jLabelAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 309, 99, -1));
+
+        jTextFieldDia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldDia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jTextFieldDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 81, 200, 50));
+
+        jTextFieldMes.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldMes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jTextFieldMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 205, 200, 50));
+
+        jTextFieldAño.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldAño.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jTextFieldAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 345, 200, 50));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 570, 460));
+
+        jLabel1fondo.setText("jLabel1");
+        jLabel1fondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel1fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 1644, 820));
+
+        jPanel1.setBackground(new java.awt.Color(0, 94, 144));
+        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelNombregrandeHotel.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabelNombregrandeHotel.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelNombregrandeHotel.setText("Ingresos");
+        jPanel1.add(jLabelNombregrandeHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, 200, 60));
+        jPanel1.add(jLabelfondoingreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 240, 130));
+        jPanel1.add(jLabelfondoingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(1340, 10, 200, 110));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1765, 130));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -46,6 +125,9 @@ public class PantallaIngresos extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+        
+                
+                
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -79,5 +161,20 @@ public class PantallaIngresos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBoxAño;
+    private javax.swing.JComboBox<String> jComboBoxDia;
+    private javax.swing.JComboBox<String> jComboBoxMes;
+    private javax.swing.JLabel jLabel1fondo;
+    private javax.swing.JLabel jLabelAño;
+    private javax.swing.JLabel jLabelDia;
+    private javax.swing.JLabel jLabelMes;
+    private javax.swing.JLabel jLabelNombregrandeHotel;
+    private javax.swing.JLabel jLabelfondoingreso;
+    private javax.swing.JLabel jLabelfondoingreso1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextFieldAño;
+    private javax.swing.JTextField jTextFieldDia;
+    private javax.swing.JTextField jTextFieldMes;
     // End of variables declaration//GEN-END:variables
 }
