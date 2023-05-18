@@ -61,11 +61,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         panel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 130, 950, 230));
-
-        jButton1.setBackground(new java.awt.Color(153, 153, 153));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton1.setText("Buscar");
-        panel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, 110, -1));
+        panel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, -1, -1));
 
         panel1.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 1000, 430));
 
