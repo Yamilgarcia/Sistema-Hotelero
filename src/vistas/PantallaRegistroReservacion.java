@@ -15,6 +15,9 @@ public class PantallaRegistroReservacion extends javax.swing.JFrame {
      */
     public PantallaRegistroReservacion() {
         initComponents();
+        jTextFieldPrecio.setEnabled(false);
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\FondoHotel.jpg");
+        
     }
 
     /**
@@ -29,24 +32,32 @@ public class PantallaRegistroReservacion extends javax.swing.JFrame {
         panel4 = new java.awt.Panel();
         panel5 = new java.awt.Panel();
         jLabel1 = new javax.swing.JLabel();
-        panel1 = new java.awt.Panel();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField4 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jButtonRegistrarClient = new javax.swing.JButton();
+        jTextFieldNombre1 = new javax.swing.JTextField();
+        jTextFieldNombre2 = new javax.swing.JTextField();
+        jLabelSegundoNombre = new javax.swing.JLabel();
+        jTextFieldApellido1 = new javax.swing.JTextField();
+        jLabelPrimerApellido = new javax.swing.JLabel();
+        jTextFieldApellido2 = new javax.swing.JTextField();
+        jLabelSegundoApellido = new javax.swing.JLabel();
+        jTextFieldCedula = new javax.swing.JTextField();
+        jLabelPrimerApellido1 = new javax.swing.JLabel();
+        jTextFieldProcedencia = new javax.swing.JTextField();
+        jLabelPrimerApellido2 = new javax.swing.JLabel();
+        jLabelNumHabitac = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
-        jTextField6 = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jTextField7 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jTextFieldCantPersona = new javax.swing.JTextField();
+        jLabelPrimerApellido3 = new javax.swing.JLabel();
+        jLabelPrimerApellido4 = new javax.swing.JLabel();
+        jTextFieldPrecio = new javax.swing.JTextField();
+        jTextFieldFechSalid = new javax.swing.JTextField();
+        jLabelPrimerApellido5 = new javax.swing.JLabel();
+        jLabelPrimerApellido6 = new javax.swing.JLabel();
+        jTextFieldFechEntrada = new javax.swing.JTextField();
+        jTextFieldIDCliente = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,82 +67,229 @@ public class PantallaRegistroReservacion extends javax.swing.JFrame {
         panel5.setBackground(new java.awt.Color(0, 94, 144));
         panel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("        Pagina Reservaciones");
-        panel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 30, -1, -1));
+        jLabel1.setText("Pagina Reservaciones");
+        panel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 30, 450, -1));
 
-        panel4.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1080, 90));
+        panel4.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 120));
 
-        panel1.setBackground(new java.awt.Color(162, 179, 216));
-        panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.setBackground(new java.awt.Color(162, 179, 216));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText(" Cant Personas");
-        panel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 160, -1));
-        panel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 380, 220, 50));
+        jLabel10.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabel10.setText("Nombre del Cliente");
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("Nombre del Cliente");
-        panel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, -1, -1));
-        panel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 270, 220, 50));
+        jButtonRegistrarClient.setBackground(new java.awt.Color(179, 140, 98));
+        jButtonRegistrarClient.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
+        jButtonRegistrarClient.setText("Registrar");
+        jButtonRegistrarClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegistrarClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarClientActionPerformed(evt);
+            }
+        });
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("Precio");
-        panel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 240, 90, -1));
-        panel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 220, 50));
+        jTextFieldNombre1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldNombre1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel6.setText(" Cant Habitaciones");
-        panel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 160, -1));
+        jTextFieldNombre2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldNombre2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jComboBox2.setBackground(new java.awt.Color(255, 255, 51));
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panel1.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 290, -1, -1));
-        panel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 270, 220, 50));
+        jLabelSegundoNombre.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelSegundoNombre.setText("Segundo Nombre");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel7.setText("Entrada");
-        panel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 90, -1));
-        panel1.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, 220, 50));
+        jTextFieldApellido1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldApellido1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel8.setText("Disponibilidad Habitacion ");
-        panel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 40, 220, -1));
+        jLabelPrimerApellido.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelPrimerApellido.setText("Primer Apellido");
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 51));
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        panel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 90, 70, -1));
-        panel1.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 70, 220, 50));
+        jTextFieldApellido2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldApellido2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel9.setText("Salida");
-        panel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 90, -1));
-        panel1.add(jTextField7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 170, 220, 50));
+        jLabelSegundoApellido.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelSegundoApellido.setText("Segundo Apellido");
 
-        jButton1.setBackground(new java.awt.Color(153, 153, 153));
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 1, 14)); // NOI18N
-        jButton1.setText("Registrar ");
-        panel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, -1, -1));
+        jTextFieldCedula.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldCedula.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        panel4.add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 820, 470));
+        jLabelPrimerApellido1.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelPrimerApellido1.setText("Cedula Cliente ");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistaimagen/WhatsApp Image 2023-05-15 at 5.01.44 PM.jpeg"))); // NOI18N
-        panel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-60, 90, 1140, 870));
+        jTextFieldProcedencia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldProcedencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabelPrimerApellido2.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelPrimerApellido2.setText("Procedencia");
+
+        jLabelNumHabitac.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelNumHabitac.setText("Numero de Habitacion");
+
+        jComboBox1.setFont(new java.awt.Font("Roboto", 2, 14)); // NOI18N
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Habitacion 1", "Habitacion 2", "Habitacion 3", "Habitacion 4" }));
+        jComboBox1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jTextFieldCantPersona.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldCantPersona.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabelPrimerApellido3.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelPrimerApellido3.setText("Cant Personas");
+
+        jLabelPrimerApellido4.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelPrimerApellido4.setText("Precio");
+
+        jTextFieldPrecio.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldPrecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jTextFieldFechSalid.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldFechSalid.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabelPrimerApellido5.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelPrimerApellido5.setText("Fecha de salida");
+
+        jLabelPrimerApellido6.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelPrimerApellido6.setText("Fecha de entrada");
+
+        jTextFieldFechEntrada.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldFechEntrada.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jTextFieldIDCliente.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldIDCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel11.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabel11.setText("ID_Cliente");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelNumHabitac)
+                    .addComponent(jTextFieldNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPrimerApellido)
+                    .addComponent(jTextFieldApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPrimerApellido1)
+                    .addComponent(jTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                            .addComponent(jLabelPrimerApellido4)
+                            .addGap(73, 73, 73))
+                        .addComponent(jButtonRegistrarClient, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabelPrimerApellido5)
+                    .addComponent(jTextFieldFechSalid, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPrimerApellido6)
+                    .addComponent(jTextFieldFechEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel11))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelSegundoNombre)
+                    .addComponent(jTextFieldNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelSegundoApellido)
+                    .addComponent(jTextFieldApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPrimerApellido2)
+                    .addComponent(jTextFieldProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPrimerApellido3)
+                    .addComponent(jTextFieldCantPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(66, 66, 66))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelPrimerApellido2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelSegundoNombre)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel10)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldNombre1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(50, 50, 50)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelPrimerApellido)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldApellido1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelSegundoApellido)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelPrimerApellido6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldFechEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(43, 43, 43)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelPrimerApellido1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelPrimerApellido5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldFechSalid, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelNumHabitac)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelPrimerApellido3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldCantPersona, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelPrimerApellido4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(jButtonRegistrarClient, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
+        );
+
+        panel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 890, 580));
+
+        jLabel2.setText("jLabel10");
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 1600, 900));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, 1077, Short.MAX_VALUE)
+            .addComponent(panel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(panel4, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonRegistrarClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarClientActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRegistrarClientActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,26 +327,34 @@ public class PantallaRegistroReservacion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButtonRegistrarClient;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private java.awt.Panel panel1;
+    private javax.swing.JLabel jLabelNumHabitac;
+    private javax.swing.JLabel jLabelPrimerApellido;
+    private javax.swing.JLabel jLabelPrimerApellido1;
+    private javax.swing.JLabel jLabelPrimerApellido2;
+    private javax.swing.JLabel jLabelPrimerApellido3;
+    private javax.swing.JLabel jLabelPrimerApellido4;
+    private javax.swing.JLabel jLabelPrimerApellido5;
+    private javax.swing.JLabel jLabelPrimerApellido6;
+    private javax.swing.JLabel jLabelSegundoApellido;
+    private javax.swing.JLabel jLabelSegundoNombre;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextFieldApellido1;
+    private javax.swing.JTextField jTextFieldApellido2;
+    private javax.swing.JTextField jTextFieldCantPersona;
+    private javax.swing.JTextField jTextFieldCedula;
+    private javax.swing.JTextField jTextFieldFechEntrada;
+    private javax.swing.JTextField jTextFieldFechSalid;
+    private javax.swing.JTextField jTextFieldIDCliente;
+    private javax.swing.JTextField jTextFieldNombre1;
+    private javax.swing.JTextField jTextFieldNombre2;
+    private javax.swing.JTextField jTextFieldPrecio;
+    private javax.swing.JTextField jTextFieldProcedencia;
     private java.awt.Panel panel4;
     private java.awt.Panel panel5;
     // End of variables declaration//GEN-END:variables

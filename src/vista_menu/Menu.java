@@ -29,7 +29,7 @@ public class Menu extends javax.swing.JFrame {
         jLabel3 = new JLabel();
         jLabel1 = new JLabel();
 
-        // Añadir los JLabel al JFrame
+        
         
 
         // Actualizar la fecha y la hora en los JLabel
@@ -58,8 +58,8 @@ public class Menu extends javax.swing.JFrame {
 
         initComponents();
         
-        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\hotel (1).png" );
-        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelFondo43, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\FondoHotel.jpg" );
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\hotel (1).png" );
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelFondo43, "src\\vistaimagen\\FondoHotel.jpg" );
         
     }
     

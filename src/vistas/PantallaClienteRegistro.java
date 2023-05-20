@@ -92,6 +92,11 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
 
         jTextFieldNombre1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldNombre1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldNombre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNombre1ActionPerformed(evt);
+            }
+        });
 
         jTextFieldNombre2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldNombre2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -246,6 +251,10 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
     private void jButtonRegistrarClientActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarClientActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonRegistrarClientActionPerformed
+
+    private void jTextFieldNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombre1ActionPerformed
 
     /**
      * @param args the command line arguments
