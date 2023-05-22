@@ -12,24 +12,28 @@ import java.util.*;
  * @author Usuario
  */
 public class Conexion {
+    
+    
 
-    String conexionUrl = "jdb:sqlserver://localhost:51745;"
+    private final String 
+            conexionUrl = "jdbc:sqlserver://localhost:51745;"
             + "database=DB_HotelMilenio;"
             + "integratedSecurity = true;" + " encrypt= true;trustServerCertificate= true;";
 
-    public Connection conexion;//para la conexion con la BD
+    Connection cn;
 
-    public Conexion() { //constructor de la clase
+    public Connection conectar() { //constructor de la clase
         try {
             //usando Driver Conector y cadena de conexion para conectar BD
-            conexion = DriverManager.getConnection(conexionUrl);
+            cn = DriverManager.getConnection(conexionUrl);
             System.out.println("Conexión Establecida");
+            return cn;
 
         } catch (SQLException e) {
-            System.out.println("Error de la conexión");
-            e.printStackTrace();
+            System.out.println("Error de la conexión: " + e);
 
         }
+        return null;
     }
 
 }

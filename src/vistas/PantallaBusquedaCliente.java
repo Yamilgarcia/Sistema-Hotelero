@@ -4,17 +4,43 @@
  */
 package vistas;
 
+import Conexion.CRUDCliente;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Usuario
  */
 public class PantallaBusquedaCliente extends javax.swing.JFrame {
 
+    int datoSeleccionado = -1;
+    
+    CRUDCliente Actu = new CRUDCliente();
+
     /**
      * Creates new form PantallaBusquedaCliente
      */
     public PantallaBusquedaCliente() {
         initComponents();
+
+        mostrar();
+        
+
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src\\vistaimagen\\FondoHotel.jpg");
+
+    }
+
+    public void mostrar() {
+        try {
+            DefaultTableModel modelo;
+            CRUDCliente cli = new CRUDCliente();
+            modelo = cli.mostrarDatos();
+            jTableCliente.setModel(modelo);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
     }
 
     /**
@@ -28,68 +54,173 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
 
         panel1 = new java.awt.Panel();
         panel2 = new java.awt.Panel();
-        jTextField1 = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        jTextFieldBuscar = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableCliente = new javax.swing.JTable();
+        jbuttonBuscar = new javax.swing.JButton();
+        jbuttonActualiz = new javax.swing.JButton();
+        jbuttonEliminar = new javax.swing.JButton();
         panel5 = new java.awt.Panel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         panel2.setBackground(new java.awt.Color(98, 137, 179));
         panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        panel2.add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 660, 50));
 
-        jTextField1.setBackground(new java.awt.Color(179, 140, 98));
-        panel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 660, 50));
-
-        jTable1.setBackground(new java.awt.Color(179, 140, 98));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Nombre", "Segundo Nombre", "Apellidos", "Segundo Apellido", "Precio habitacion ", "Cedula", "Procedencia ", "Cant Habit", "Num Habit"
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jTableCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableClienteMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jTableCliente);
 
-        panel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 130, 950, 230));
-        panel2.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, -1, -1));
+        panel2.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, 820, 260));
 
-        panel1.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 170, 1000, 430));
+        jbuttonBuscar.setBackground(new java.awt.Color(216, 199, 162));
+        jbuttonBuscar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jbuttonBuscar.setText("Buscar");
+        jbuttonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbuttonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbuttonBuscarMouseClicked(evt);
+            }
+        });
+        jbuttonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbuttonBuscarActionPerformed(evt);
+            }
+        });
+        panel2.add(jbuttonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 60, 80, 50));
+
+        jbuttonActualiz.setBackground(new java.awt.Color(216, 199, 162));
+        jbuttonActualiz.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jbuttonActualiz.setText("Actualizar");
+        jbuttonActualiz.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbuttonActualiz.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbuttonActualizMouseClicked(evt);
+            }
+        });
+        jbuttonActualiz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbuttonActualizActionPerformed(evt);
+            }
+        });
+        panel2.add(jbuttonActualiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 120, 50));
+
+        jbuttonEliminar.setBackground(new java.awt.Color(216, 199, 162));
+        jbuttonEliminar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jbuttonEliminar.setText("Eliminar");
+        jbuttonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbuttonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbuttonEliminarMouseClicked(evt);
+            }
+        });
+        jbuttonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbuttonEliminarActionPerformed(evt);
+            }
+        });
+        panel2.add(jbuttonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 120, 50));
+
+        panel1.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 1000, 510));
 
         panel5.setBackground(new java.awt.Color(0, 94, 144));
         panel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 36)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Busqueda de Cliente");
-        panel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 340, -1));
+        panel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 450, -1));
 
-        panel1.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1130, 80));
+        panel1.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 120));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistaimagen/WhatsApp Image 2023-05-15 at 5.01.44 PM.jpeg"))); // NOI18N
-        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 1130, 670));
+        jLabel1.setText("jLabel1");
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        panel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1600, 900));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        getContentPane().add(panel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 900));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbuttonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuttonBuscarMouseClicked
+
+    }//GEN-LAST:event_jbuttonBuscarMouseClicked
+
+    private void jbuttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonBuscarActionPerformed
+        try {
+            DefaultTableModel modelo;
+            CRUDCliente cli = new CRUDCliente();
+            modelo = cli.buscarDatos(jTextFieldBuscar.getText());
+            if (jTextFieldBuscar.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
+                mostrar();
+            } else {
+                jTableCliente.setModel(modelo);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jbuttonBuscarActionPerformed
+
+    private void jbuttonActualizMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuttonActualizMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbuttonActualizMouseClicked
+
+    private void jbuttonActualizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonActualizActionPerformed
+
+        
+
+    }//GEN-LAST:event_jbuttonActualizActionPerformed
+
+    private void jTableClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClienteMouseClicked
+        datoSeleccionado = jTableCliente.rowAtPoint(evt.getPoint());
+    }//GEN-LAST:event_jTableClienteMouseClicked
+
+    private void jbuttonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuttonEliminarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbuttonEliminarMouseClicked
+
+    private void jbuttonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonEliminarActionPerformed
+        if (datoSeleccionado >= 0) {
+            int dato = Integer.valueOf(jTableCliente.getValueAt(datoSeleccionado, 0).toString());
+            CRUDCliente cli = new CRUDCliente();
+            if (JOptionPane.showConfirmDialog(rootPane,
+                    "Se eliminará el registro, ¿desea continuar?",
+                    "Eliminar Registro",
+                    JOptionPane.WARNING_MESSAGE,
+                    JOptionPane.YES_NO_OPTION)
+                    == JOptionPane.YES_OPTION) {
+
+                cli.Eliminar(dato);
+                mostrar();
+                JOptionPane.showMessageDialog(null,
+                        "Dato eliminado correctamente");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null,
+                    "Debe seleccionar un registro de la tabla");
+        }
+    }//GEN-LAST:event_jbuttonEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,12 +258,14 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTableCliente;
+    private javax.swing.JTextField jTextFieldBuscar;
+    private javax.swing.JButton jbuttonActualiz;
+    private javax.swing.JButton jbuttonBuscar;
+    private javax.swing.JButton jbuttonEliminar;
     private java.awt.Panel panel1;
     private java.awt.Panel panel2;
     private java.awt.Panel panel5;

@@ -4,10 +4,132 @@
  */
 package Conexion;
 
+import Conexion_bd.Conexion;
+import java.awt.PageAttributes;
+import java.sql.*;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.Cliente;
+
 /**
  *
  * @author Usuario
  */
 public class CRUDCliente {
+
+    private final Conexion con = new Conexion();
+    private final Connection cn = (Connection) con.conectar();
+
+    public DefaultTableModel mostrarDatos() {
+        ResultSet rs;
+        DefaultTableModel modelo;
+        String[] titulos = {"ID_Cliente", "Cedula_cliente", "Nombre", "Segundo Nombre", "Apellido", "Segundo Apellido", "Procedencia", "Telefono"};
+        String[] registro = new String[8];
+        modelo = new DefaultTableModel(null, titulos);
+
+        try {
+            CallableStatement cbstc = cn.prepareCall("{call MostrarClientes}");
+            rs = cbstc.executeQuery();
+
+            while (rs.next()) {
+                registro[0] = rs.getString("ID_Cliente");
+                registro[1] = rs.getString("Cedula_cliente");
+                registro[2] = rs.getString("Nombre1");
+                registro[3] = rs.getString("Nombre2");
+                registro[4] = rs.getString("Apellido1");
+                registro[5] = rs.getString("Apellido2");
+                registro[6] = rs.getString("Procedencia");
+                registro[7] = rs.getString("Telefono");
+
+                modelo.addRow(registro);
+            }
+            return modelo;
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
+        }
+
+    }
+
+    public DefaultTableModel buscarDatos(String Dato) {
+        ResultSet rs;
+        DefaultTableModel modelo;
+        String[] titulos = {"ID_Cliente", "Cedula_cliente", "Nombre", "Segundo Nombre", "Apellido", "Segundo Apellido", "Procedencia", "Telefono"};
+        String[] registro = new String[8];
+        modelo = new DefaultTableModel(null, titulos);
+        try {
+            CallableStatement call = cn.prepareCall("{call ConsultarClientes(?)}");
+            call.setString(1, Dato);
+            rs = call.executeQuery();
+
+            while (rs.next()) {
+                registro[0] = rs.getString("ID_Cliente");
+                registro[1] = rs.getString("Cedula_cliente");
+                registro[2] = rs.getString("Nombre1");
+                registro[3] = rs.getString("Nombre2");
+                registro[4] = rs.getString("Apellido1");
+                registro[5] = rs.getString("Apellido2");
+                registro[6] = rs.getString("Procedencia");
+                registro[7] = rs.getString("Telefono");
+
+                modelo.addRow(registro);
+            }
+            return modelo;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
+        }
+    }
+//Preguntar como se hace esto xd
+    public void ActualizarDatos(Cliente C1) {
+        try {
+            CallableStatement cbst = cn.prepareCall("call [ModificarCliente](?,?,?,?,?,?,?,?)}");
+            cbst.setInt(1, C1.getID_cliente());
+            cbst.setString(2, C1.getCedula_cliente());
+            cbst.setString(3, C1.getNombre1());
+            cbst.setString(4, C1.getNombre2());
+            cbst.setString(5, C1.getApellido1());
+            cbst.setString(6, C1.getApellido2());
+            cbst.setString(7, C1.getProcedencia());
+            cbst.setInt(8, C1.getTelefono());
+            cbst.executeUpdate();
+            mostrarDatos();
+            
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    
+    public void Eliminar(int ID_cliente){
+        try{
+            CallableStatement cbst = cn.prepareCall("{call EliminarCliente(?)}");
+            cbst.setInt(1, ID_cliente);
+            cbst.executeUpdate();
+        }catch (SQLException e){
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    
+//    public void Guardar(Cliente C1){
+//        try {
+//            CallableStatement cbst = cn.prepareCall("{call InsertarCliente(?,?,?,?,?,?,?,?)}");
+//            cbst.setInt(1, C1.getID_cliente());
+//            cbst.setString(2, C1.getCedula_cliente());
+//            cbst.setString(3, C1.getNombre1());
+//            cbst.setString(4, C1.getNombre2());
+//            cbst.setString(5, C1.getApellido1());
+//            cbst.setString(6, C1.getApellido2());
+//            cbst.setString(7, C1.getProcedencia());
+//            cbst.setInt(8, C1.getTelefono());
+//            
+//            //Me quede aqui xd, pagina 8 de la guia, continuar con el cbst.excuteUpdate
+//        }
+//    }
+//    
+
+    
+
     
 }
