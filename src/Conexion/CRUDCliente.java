@@ -81,6 +81,7 @@ public class CRUDCliente {
         }
     }
 //Preguntar como se hace esto xd
+
     public void ActualizarDatos(Cliente C1) {
         try {
             CallableStatement cbst = cn.prepareCall("call [ModificarCliente](?,?,?,?,?,?,?,?)}");
@@ -91,45 +92,53 @@ public class CRUDCliente {
             cbst.setString(5, C1.getApellido1());
             cbst.setString(6, C1.getApellido2());
             cbst.setString(7, C1.getProcedencia());
-            cbst.setInt(8, C1.getTelefono());
+            cbst.setString(8, C1.getTelefono());
             cbst.executeUpdate();
             mostrarDatos();
-            
-        }catch (SQLException e){
+
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
 
-    
-    public void Eliminar(int ID_cliente){
-        try{
+    public void Eliminar(int ID_cliente) {
+        try {
             CallableStatement cbst = cn.prepareCall("{call EliminarCliente(?)}");
             cbst.setInt(1, ID_cliente);
             cbst.executeUpdate();
-        }catch (SQLException e){
+        } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
-    
-//    public void Guardar(Cliente C1){
-//        try {
-//            CallableStatement cbst = cn.prepareCall("{call InsertarCliente(?,?,?,?,?,?,?,?)}");
-//            cbst.setInt(1, C1.getID_cliente());
-//            cbst.setString(2, C1.getCedula_cliente());
-//            cbst.setString(3, C1.getNombre1());
-//            cbst.setString(4, C1.getNombre2());
-//            cbst.setString(5, C1.getApellido1());
-//            cbst.setString(6, C1.getApellido2());
-//            cbst.setString(7, C1.getProcedencia());
-//            cbst.setInt(8, C1.getTelefono());
-//            
-//            //Me quede aqui xd, pagina 8 de la guia, continuar con el cbst.excuteUpdate
-//        }
-//    }
-//    
 
-    
+    public void Guardar(Cliente Cl) {
+        try {
+            CallableStatement cbst = cn.prepareCall("{call CrearCliente(?,?,?,?,?,?,?)}");
+            cbst.setString(1, Cl.getCedula_cliente());
+            cbst.setString(2, Cl.getNombre1());
+            cbst.setString(3, Cl.getNombre2());
+            cbst.setString(4, Cl.getApellido1());
+            cbst.setString(5, Cl.getApellido2());
+            cbst.setString(6, Cl.getProcedencia());
+            cbst.setString(7, Cl.getTelefono());
+            cbst.executeUpdate();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
 
-    
+    }
+
+    public boolean VerificarDatos(String Dato) {
+        ResultSet rs;
+        try {
+            CallableStatement call = cn.prepareCall("{call ConsultarClientes(?)}");
+            call.setString(1, Dato);
+            rs = call.executeQuery();
+            return rs.next();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+            return false;
+        }
+    }
+
 }

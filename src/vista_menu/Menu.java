@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import vistas.PantallaBusquedaCliente;
+import vistas.PantallaClienteRegistro;
 
 /**
  *
@@ -203,6 +205,11 @@ public class Menu extends javax.swing.JFrame {
         jButtonBusquedaDeCliente.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
         jButtonBusquedaDeCliente.setText("Busqueda Cliente");
         jButtonBusquedaDeCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonBusquedaDeCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonBusquedaDeClienteMouseClicked(evt);
+            }
+        });
         jButtonBusquedaDeCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBusquedaDeClienteActionPerformed(evt);
@@ -257,10 +264,10 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(jButtonIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
         );
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 142, 210, 900));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 132, 210, 910));
 
         jLabelFondo43.setText("jLabel1");
         jLabelFondo43.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -286,15 +293,29 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBusquedaDeClienteActionPerformed
 
     private void jButtonRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroClienteActionPerformed
-        // TODO add your handling code here:
+        
+        PantallaClienteRegistro ventanaNueva = new PantallaClienteRegistro();
+        ventanaNueva.setVisible(true);
     }//GEN-LAST:event_jButtonRegistroClienteActionPerformed
+
+    private void jButtonBusquedaDeClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBusquedaDeClienteMouseClicked
+        PantallaBusquedaCliente ventanaBusquedaCliente = new PantallaBusquedaCliente();
+        ventanaBusquedaCliente.setVisible(true);
+    }//GEN-LAST:event_jButtonBusquedaDeClienteMouseClicked
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
+        // Crear instancia de la pantalla principal
         Menu frame = new Menu();
+        
+        // Establecer el comportamiento de cierre para la pantalla principal
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        // Establecer la visibilidad de la pantalla principal
+        frame.setVisible(true);
+        
         
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -322,7 +343,7 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Menu().setVisible(true);
+                
             }
         });
     }
