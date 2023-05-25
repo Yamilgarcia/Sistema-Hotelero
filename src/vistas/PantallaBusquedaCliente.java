@@ -5,11 +5,14 @@
 package vistas;
 
 import Conexion.CRUDCliente;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import vista_menu.Menu;
 
 /**
  *
@@ -18,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
 public class PantallaBusquedaCliente extends javax.swing.JFrame {
 
     int datoSeleccionado = -1;
-    
+
     CRUDCliente Actu = new CRUDCliente();
 
     /**
@@ -27,8 +30,14 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
     public PantallaBusquedaCliente() {
         initComponents();
 
+        jtextButtonRefresh.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                refreshTablaCliente();
+            }
+        });
+
         mostrar();
-        
 
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src\\vistaimagen\\FondoHotel.jpg");
 
@@ -44,6 +53,19 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+    
+    private void refreshTablaCliente() {
+    
+    // se llama a un método de consulta a la base de datos
+    
+    // obtenemos los nuevos datos en un objeto DefaultTableModel llamado "modelo"
+    CRUDCliente cl2 = new CRUDCliente();
+    DefaultTableModel modelo = cl2.mostrarDatos();
+
+    // Actualizar el modelo de la tabla jTableCliente con los nuevos datos
+    jTableCliente.setModel(modelo);
+}
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -60,8 +82,10 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableCliente = new javax.swing.JTable();
         jbuttonBuscar = new javax.swing.JButton();
-        jbuttonActualiz = new javax.swing.JButton();
+        jbuttonEditar = new javax.swing.JButton();
         jbuttonEliminar = new javax.swing.JButton();
+        botonmostrar = new javax.swing.JButton();
+        jtextButtonRefresh = new javax.swing.JButton();
         panel5 = new java.awt.Panel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -111,21 +135,21 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         });
         panel2.add(jbuttonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 60, 80, 50));
 
-        jbuttonActualiz.setBackground(new java.awt.Color(216, 199, 162));
-        jbuttonActualiz.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jbuttonActualiz.setText("Actualizar");
-        jbuttonActualiz.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbuttonActualiz.addMouseListener(new java.awt.event.MouseAdapter() {
+        jbuttonEditar.setBackground(new java.awt.Color(216, 199, 162));
+        jbuttonEditar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jbuttonEditar.setText("Editar");
+        jbuttonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbuttonEditar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jbuttonActualizMouseClicked(evt);
+                jbuttonEditarMouseClicked(evt);
             }
         });
-        jbuttonActualiz.addActionListener(new java.awt.event.ActionListener() {
+        jbuttonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbuttonActualizActionPerformed(evt);
+                jbuttonEditarActionPerformed(evt);
             }
         });
-        panel2.add(jbuttonActualiz, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 120, 50));
+        panel2.add(jbuttonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 430, 120, 50));
 
         jbuttonEliminar.setBackground(new java.awt.Color(216, 199, 162));
         jbuttonEliminar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -142,6 +166,29 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
             }
         });
         panel2.add(jbuttonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 120, 50));
+
+        botonmostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonmostrarActionPerformed(evt);
+            }
+        });
+        panel2.add(botonmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 20, 0, 30));
+
+        jtextButtonRefresh.setBackground(new java.awt.Color(216, 199, 162));
+        jtextButtonRefresh.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jtextButtonRefresh.setText("Refrescar");
+        jtextButtonRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jtextButtonRefresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtextButtonRefreshMouseClicked(evt);
+            }
+        });
+        jtextButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextButtonRefreshActionPerformed(evt);
+            }
+        });
+        panel2.add(jtextButtonRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 100, 50));
 
         panel1.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 1000, 510));
 
@@ -184,15 +231,35 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbuttonBuscarActionPerformed
 
-    private void jbuttonActualizMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuttonActualizMouseClicked
+    private void jbuttonEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuttonEditarMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jbuttonActualizMouseClicked
+    }//GEN-LAST:event_jbuttonEditarMouseClicked
 
-    private void jbuttonActualizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonActualizActionPerformed
+    private void jbuttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonEditarActionPerformed
 
-        
+        PantallaClienteRegistro cliente = new PantallaClienteRegistro();
+        cliente.setLocationRelativeTo(null); // Opcional: Centrar la ventana en la pantalla
+        cliente.setVisible(true);
 
-    }//GEN-LAST:event_jbuttonActualizActionPerformed
+        if (datoSeleccionado
+                >= 0) {
+            PantallaClienteRegistro.jTextFieldIDCliente.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 0)));
+            PantallaClienteRegistro.jFormattedTextFieldCedula.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 1)));
+            PantallaClienteRegistro.jTextFieldNombre1.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 2)));
+            PantallaClienteRegistro.jTextFieldNombre2.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 3)));
+            PantallaClienteRegistro.jTextFieldApellido1.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 4)));
+            PantallaClienteRegistro.jTextFieldApellido2.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 5)));
+            PantallaClienteRegistro.jTextFieldProcedencia.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 6)));
+            PantallaClienteRegistro.jFormattedTextFieldTelefono.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 7)));
+
+            PantallaClienteRegistro.jButtonRegistrarClient.setVisible(false);
+            cliente.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un registro a actualizar");
+        }
+
+
+    }//GEN-LAST:event_jbuttonEditarActionPerformed
 
     private void jTableClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableClienteMouseClicked
         datoSeleccionado = jTableCliente.rowAtPoint(evt.getPoint());
@@ -224,6 +291,18 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbuttonEliminarActionPerformed
 
+    private void botonmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmostrarActionPerformed
+        mostrar();
+    }//GEN-LAST:event_botonmostrarActionPerformed
+
+    private void jtextButtonRefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtextButtonRefreshMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextButtonRefreshMouseClicked
+
+    private void jtextButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextButtonRefreshActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextButtonRefreshActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -238,16 +317,24 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PantallaBusquedaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaBusquedaCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PantallaBusquedaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaBusquedaCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PantallaBusquedaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaBusquedaCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PantallaBusquedaCliente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PantallaBusquedaCliente.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -260,14 +347,16 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton botonmostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableCliente;
     private javax.swing.JTextField jTextFieldBuscar;
-    private javax.swing.JButton jbuttonActualiz;
     private javax.swing.JButton jbuttonBuscar;
+    private javax.swing.JButton jbuttonEditar;
     private javax.swing.JButton jbuttonEliminar;
+    private javax.swing.JButton jtextButtonRefresh;
     private java.awt.Panel panel1;
     private java.awt.Panel panel2;
     private java.awt.Panel panel5;

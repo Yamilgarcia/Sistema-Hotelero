@@ -84,7 +84,10 @@ public class CRUDCliente {
 
     public void ActualizarDatos(Cliente C1) {
         try {
-            CallableStatement cbst = cn.prepareCall("call [ModificarCliente](?,?,?,?,?,?,?,?)}");
+            CallableStatement cbst = cn.prepareCall("{call ModificarCliente(?,?,?,?,?,?,?,?)}");
+
+            
+
             cbst.setInt(1, C1.getID_cliente());
             cbst.setString(2, C1.getCedula_cliente());
             cbst.setString(3, C1.getNombre1());
@@ -94,7 +97,6 @@ public class CRUDCliente {
             cbst.setString(7, C1.getProcedencia());
             cbst.setString(8, C1.getTelefono());
             cbst.executeUpdate();
-            mostrarDatos();
 
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);

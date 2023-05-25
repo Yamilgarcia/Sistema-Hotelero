@@ -22,6 +22,8 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
      */
     public PantallaClienteRegistro() {
         initComponents();
+        jTextFieldIDCliente.setEnabled(false);
+        jTextFieldIDCliente.setVisible(false);
 
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabelFondo, "src\\vistaimagen\\FondoHotel.jpg");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\hotel.png");
@@ -38,6 +40,23 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                 jTextFieldProcedencia.getText(),
                 jFormattedTextFieldTelefono.getText());
         cc.Guardar(cl);
+
+    }
+
+    public void editarCliente() {
+
+        CRUDCliente cc = new CRUDCliente();
+
+        Cliente cl = new Cliente(Integer.parseInt(jTextFieldIDCliente.getText()),
+                jFormattedTextFieldCedula.getText(),
+                jTextFieldNombre1.getText(),
+                jTextFieldNombre2.getText(),
+                jTextFieldApellido1.getText(),
+                jTextFieldApellido2.getText(),
+                jTextFieldProcedencia.getText(),
+                jFormattedTextFieldTelefono.getText());
+
+        cc.ActualizarDatos(cl);
 
     }
 
@@ -81,9 +100,11 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jLabelPrimerApellido3 = new javax.swing.JLabel();
         jFormattedTextFieldCedula = new javax.swing.JFormattedTextField();
         jFormattedTextFieldTelefono = new javax.swing.JFormattedTextField();
+        jButtonActualizar = new javax.swing.JButton();
+        jTextFieldIDCliente = new javax.swing.JTextField();
         jLabelFondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 94, 144));
@@ -157,6 +178,16 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jLabelPrimerApellido3.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelPrimerApellido3.setText("Telefono");
 
+        jButtonActualizar.setBackground(new java.awt.Color(179, 140, 98));
+        jButtonActualizar.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
+        jButtonActualizar.setText("Actualizar");
+        jButtonActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -170,19 +201,12 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                     .addComponent(jLabelCedula)
                     .addComponent(jLabel1)
                     .addComponent(jFormattedTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 72, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonRegistrarClient, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelPrimerApellido2))
-                        .addGap(77, 77, 77)))
+                    .addComponent(jTextFieldProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelPrimerApellido2)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelSegundoNombre)
                     .addComponent(jTextFieldNombre2, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -191,12 +215,24 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                     .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabelPrimerApellido3, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(74, 74, 74))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(149, 149, 149)
+                .addComponent(jButtonRegistrarClient, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(152, 152, 152))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(380, 380, 380)
+                .addComponent(jTextFieldIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap()
+                .addComponent(jTextFieldIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -217,27 +253,27 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                                 .addComponent(jLabelSegundoApellido)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jTextFieldApellido2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabelCedula)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jFormattedTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabelCedula)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jFormattedTextFieldCedula, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabelPrimerApellido2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jTextFieldProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                        .addComponent(jLabelPrimerApellido3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 137, Short.MAX_VALUE)
-                .addComponent(jButtonRegistrarClient, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                                .addComponent(jLabelPrimerApellido2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextFieldProcedencia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelPrimerApellido3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonRegistrarClient, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(22, 22, 22))
         );
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 890, 580));
@@ -277,6 +313,27 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
     private void jTextFieldNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombre1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldNombre1ActionPerformed
+
+    private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
+        try {
+            if (jTextFieldIDCliente.getText().isEmpty()
+                    || jFormattedTextFieldCedula.getText().isEmpty()
+                    || jTextFieldNombre1.getText().isEmpty()
+                    || jTextFieldNombre2.getText().isEmpty()
+                    || jTextFieldApellido1.getText().isEmpty()
+                    || jTextFieldApellido2.getText().isEmpty()
+                    || jTextFieldProcedencia.getText().isEmpty()
+                    || jFormattedTextFieldTelefono.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Existen campos vacíos");
+            } else {
+                editarCliente();
+                JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
+                dispose();
+            }
+        } catch (HeadlessException e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e);
+        }
+    }//GEN-LAST:event_jButtonActualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,9 +379,10 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonRegistrarClient;
-    private javax.swing.JFormattedTextField jFormattedTextFieldCedula;
-    private javax.swing.JFormattedTextField jFormattedTextFieldTelefono;
+    public static javax.swing.JButton jButtonActualizar;
+    public static javax.swing.JButton jButtonRegistrarClient;
+    public static javax.swing.JFormattedTextField jFormattedTextFieldCedula;
+    public static javax.swing.JFormattedTextField jFormattedTextFieldTelefono;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -338,10 +396,11 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSegundoNombre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JTextField jTextFieldApellido1;
-    private javax.swing.JTextField jTextFieldApellido2;
-    private javax.swing.JTextField jTextFieldNombre1;
-    private javax.swing.JTextField jTextFieldNombre2;
-    private javax.swing.JTextField jTextFieldProcedencia;
+    public static javax.swing.JTextField jTextFieldApellido1;
+    public static javax.swing.JTextField jTextFieldApellido2;
+    public static javax.swing.JTextField jTextFieldIDCliente;
+    public static javax.swing.JTextField jTextFieldNombre1;
+    public static javax.swing.JTextField jTextFieldNombre2;
+    public static javax.swing.JTextField jTextFieldProcedencia;
     // End of variables declaration//GEN-END:variables
 }

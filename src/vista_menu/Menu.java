@@ -22,8 +22,8 @@ public class Menu extends javax.swing.JFrame {
      */
     public Menu() {
         
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        this.setExtendedState(Menu.MAXIMIZED_BOTH);
 
         
 
@@ -71,11 +71,11 @@ public class Menu extends javax.swing.JFrame {
 
         // Crear el formato para la fecha y la hora
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
+        SimpleDateFormat formato12Horas = new SimpleDateFormat("hh:mm a");
 
         // Formatear la fecha y la hora actual
         String formattedDate = dateFormat.format(now);
-        String formattedTime = timeFormat.format(now);
+        String formattedTime = formato12Horas.format(now);
 
         // Actualizar los JLabel con la fecha y la hora formateadas
         jLabel3.setText("Fecha: " + formattedDate);
@@ -97,7 +97,7 @@ public class Menu extends javax.swing.JFrame {
         jLabelNombregrandeHotel1 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanelxd = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jButtonIngreso = new javax.swing.JButton();
         jButtonBusquedaReserva = new javax.swing.JButton();
@@ -164,9 +164,20 @@ public class Menu extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1765, -1));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1595, 1052, 170, 2));
+        jPanelxd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        javax.swing.GroupLayout jPanelxdLayout = new javax.swing.GroupLayout(jPanelxd);
+        jPanelxd.setLayout(jPanelxdLayout);
+        jPanelxdLayout.setHorizontalGroup(
+            jPanelxdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 168, Short.MAX_VALUE)
+        );
+        jPanelxdLayout.setVerticalGroup(
+            jPanelxdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanelxd, new org.netbeans.lib.awtextra.AbsoluteConstraints(1595, 1052, 170, 2));
 
         jPanel3.setBackground(new java.awt.Color(98, 137, 179));
         jPanel3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
@@ -357,11 +368,11 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabelFondo43;
+    public static javax.swing.JLabel jLabelFondo43;
     private javax.swing.JLabel jLabelNombregrandeHotel;
     private javax.swing.JLabel jLabelNombregrandeHotel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    public static javax.swing.JPanel jPanelxd;
     // End of variables declaration//GEN-END:variables
 }
