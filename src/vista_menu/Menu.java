@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import vistas.PantallaBusquedaCliente;
 import vistas.PantallaClienteRegistro;
+import vistas.RegistrarEmpleado;
 
 /**
  *
@@ -101,10 +102,11 @@ public class Menu extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jButtonIngreso = new javax.swing.JButton();
         jButtonBusquedaReserva = new javax.swing.JButton();
-        jButtonRegistroReservacion = new javax.swing.JButton();
+        jButtonRegistroReservacionEstancia = new javax.swing.JButton();
         jButtonBusquedaDeCliente = new javax.swing.JButton();
         jButtonRegistroCliente = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButtonEmpleado = new javax.swing.JButton();
         jLabelFondo43 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -202,13 +204,13 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
-        jButtonRegistroReservacion.setBackground(new java.awt.Color(179, 140, 98));
-        jButtonRegistroReservacion.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
-        jButtonRegistroReservacion.setText("Registro Reservacion");
-        jButtonRegistroReservacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonRegistroReservacion.addActionListener(new java.awt.event.ActionListener() {
+        jButtonRegistroReservacionEstancia.setBackground(new java.awt.Color(179, 140, 98));
+        jButtonRegistroReservacionEstancia.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
+        jButtonRegistroReservacionEstancia.setText("Registro Estancia/Reserv");
+        jButtonRegistroReservacionEstancia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegistroReservacionEstancia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegistroReservacionActionPerformed(evt);
+                jButtonRegistroReservacionEstanciaActionPerformed(evt);
             }
         });
 
@@ -239,6 +241,16 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistaimagen/hotel (1).png"))); // NOI18N
 
+        jButtonEmpleado.setBackground(new java.awt.Color(179, 140, 98));
+        jButtonEmpleado.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
+        jButtonEmpleado.setText("Empleado");
+        jButtonEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEmpleadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -249,7 +261,7 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButtonBusquedaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonRegistroReservacion, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonRegistroReservacionEstancia, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonBusquedaDeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButtonRegistroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(9, Short.MAX_VALUE))
@@ -257,7 +269,9 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(21, 21, 21))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButtonIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButtonIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButtonEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel3Layout.setVerticalGroup(
@@ -268,14 +282,16 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(52, 52, 52)
                 .addComponent(jButtonBusquedaDeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46)
-                .addComponent(jButtonRegistroReservacion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButtonRegistroReservacionEstancia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38)
                 .addComponent(jButtonBusquedaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
+                .addComponent(jButtonEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 132, 210, 910));
@@ -295,9 +311,9 @@ public class Menu extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonBusquedaReservaActionPerformed
 
-    private void jButtonRegistroReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroReservacionActionPerformed
+    private void jButtonRegistroReservacionEstanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroReservacionEstanciaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonRegistroReservacionActionPerformed
+    }//GEN-LAST:event_jButtonRegistroReservacionEstanciaActionPerformed
 
     private void jButtonBusquedaDeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaDeClienteActionPerformed
         // TODO add your handling code here:
@@ -313,6 +329,11 @@ public class Menu extends javax.swing.JFrame {
         PantallaBusquedaCliente ventanaBusquedaCliente = new PantallaBusquedaCliente();
         ventanaBusquedaCliente.setVisible(true);
     }//GEN-LAST:event_jButtonBusquedaDeClienteMouseClicked
+
+    private void jButtonEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEmpleadoActionPerformed
+        RegistrarEmpleado VentanaRegistroEmpleado = new RegistrarEmpleado();
+        VentanaRegistroEmpleado.setVisible(true);
+    }//GEN-LAST:event_jButtonEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -362,9 +383,10 @@ public class Menu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonBusquedaDeCliente;
     private javax.swing.JButton jButtonBusquedaReserva;
+    private javax.swing.JButton jButtonEmpleado;
     private javax.swing.JButton jButtonIngreso;
     private javax.swing.JButton jButtonRegistroCliente;
-    private javax.swing.JButton jButtonRegistroReservacion;
+    private javax.swing.JButton jButtonRegistroReservacionEstancia;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

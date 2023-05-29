@@ -24,7 +24,7 @@ public class CRUDCliente {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"ID_Persona","ID_Cliente", "Cedula_cliente", "Nombre", "Segundo Nombre", "Apellido", "Segundo Apellido", "Procedencia", "Telefono"};
+        String[] titulos = {"ID_General","ID_Cliente", "Cedula_cliente", "Nombre", "Segundo Nombre", "Apellido", "Segundo Apellido", "Procedencia", "Telefono"};
         String[] registro = new String[9];
         modelo = new DefaultTableModel(null, titulos);
 

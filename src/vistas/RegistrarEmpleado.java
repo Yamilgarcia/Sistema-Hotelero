@@ -141,6 +141,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         jTextFieldIDEmpleado = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jbuttonEditar = new javax.swing.JButton();
+        jbuttonEliminarEmpleado = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableEmpleado = new javax.swing.JTable();
         jTextFieldBuscar = new javax.swing.JTextField();
@@ -149,7 +150,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         jtextButtonRefresh2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(0, 94, 144));
@@ -290,7 +291,23 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
                 jbuttonEditarActionPerformed(evt);
             }
         });
-        jPanel2.add(jbuttonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 510, 120, 50));
+        jPanel2.add(jbuttonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, 120, 50));
+
+        jbuttonEliminarEmpleado.setBackground(new java.awt.Color(216, 199, 162));
+        jbuttonEliminarEmpleado.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jbuttonEliminarEmpleado.setText("Eliminar");
+        jbuttonEliminarEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbuttonEliminarEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbuttonEliminarEmpleadoMouseClicked(evt);
+            }
+        });
+        jbuttonEliminarEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbuttonEliminarEmpleadoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jbuttonEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, 120, 50));
 
         jTableEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -346,7 +363,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
                 jtextButtonRefresh2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jtextButtonRefresh2, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 510, 100, 50));
+        jPanel2.add(jtextButtonRefresh2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 510, 100, 50));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 920, 580));
 
@@ -468,6 +485,32 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonActualizarActionPerformed
 
+    private void jbuttonEliminarEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuttonEliminarEmpleadoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbuttonEliminarEmpleadoMouseClicked
+
+    private void jbuttonEliminarEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonEliminarEmpleadoActionPerformed
+        if (datoSeleccionado >= 0) {
+            int dato = Integer.valueOf(jTableEmpleado.getValueAt(datoSeleccionado, 0).toString());
+            CRUDEmpleado cli = new CRUDEmpleado();
+            if (JOptionPane.showConfirmDialog(rootPane,
+                "Se eliminará el registro, ¿desea continuar?",
+                "Eliminar Registro",
+                JOptionPane.WARNING_MESSAGE,
+                JOptionPane.YES_NO_OPTION)
+            == JOptionPane.YES_OPTION) {
+
+            cli.EliminarEmpleado(dato);
+            mostrar();
+            JOptionPane.showMessageDialog(null,
+                "Dato eliminado correctamente");
+        }
+        } else {
+            JOptionPane.showMessageDialog(null,
+                "Debe seleccionar un registro de la tabla");
+        }
+    }//GEN-LAST:event_jbuttonEliminarEmpleadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -532,6 +575,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
     public static javax.swing.JTextField jTextFieldusuarioSesion;
     private javax.swing.JButton jbuttonBuscar;
     private javax.swing.JButton jbuttonEditar;
+    private javax.swing.JButton jbuttonEliminarEmpleado;
     private javax.swing.JLabel jlabelcontra;
     private javax.swing.JButton jtextButtonRefresh2;
     // End of variables declaration//GEN-END:variables

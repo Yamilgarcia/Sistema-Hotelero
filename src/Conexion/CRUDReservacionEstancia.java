@@ -8,6 +8,6 @@ package Conexion;
  *
  * @author Usuario
  */
-public class CRUDReservacion {
+public class CRUDReservacionEstancia {
     
 }

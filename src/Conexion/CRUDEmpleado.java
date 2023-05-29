@@ -25,7 +25,7 @@ public class CRUDEmpleado {
     public DefaultTableModel mostrarDatosEmpleado() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"ID_Persona","ID_Empleado", "Nombre", "Segundo Nombre", "Apellido", "Segundo Apellido", "Telefono", "Usuario", "Contraseña"};
+        String[] titulos = {"ID_General","ID_Empleado", "Nombre", "Segundo Nombre", "Apellido", "Segundo Apellido", "Telefono", "Usuario", "Contraseña"};
         String[] registro = new String[9];
         modelo = new DefaultTableModel(null, titulos);
 
@@ -122,4 +122,15 @@ public class CRUDEmpleado {
         }
     }
 
+    
+    public void EliminarEmpleado(int ID_Persona) {
+        try {
+            CallableStatement cbst = cn.prepareCall("{call EliminarEmpleado(?)}");
+            cbst.setInt(1, ID_Persona);
+            cbst.executeUpdate();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
 }
