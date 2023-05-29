@@ -8,18 +8,36 @@ package modelo;
  *
  * @author Usuario
  */
-public class Empleado {
-    int ID_Empleado;
-    String Nombre;
-    String Apellido;
-    int Telefono;
+public class Empleado extends Persona {
 
-    public Empleado(int ID_Empleado, String Nombre, String Apellido, int Telefono) {
+    int ID_Empleado;
+    int ID_Persona;
+    String Usuario;
+    String Contraseña;
+
+    public Empleado(int ID_Empleado, String Usuario, String Contraseña, int ID_Persona, String Cedula, String Nombre1, String Nombre2, String Apellido1, String Apellido2, String Telefono) {
+        super(ID_Persona, Cedula, Nombre1, Nombre2, Apellido1, Apellido2, Telefono);
         this.ID_Empleado = ID_Empleado;
-        this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.Telefono = Telefono;
+        this.Usuario = Usuario;
+        this.Contraseña = Contraseña;
     }
+
+    public Empleado(String Usuario, String Contraseña, int ID_Persona, String Nombre1, String Nombre2, String Apellido1, String Apellido2, String Telefono) {
+        super(ID_Persona, Nombre1, Nombre2, Apellido1, Apellido2, Telefono);
+        this.Usuario = Usuario;
+        this.Contraseña = Contraseña;
+    }
+    
+    public Empleado(String Usuario, String Contraseña, String Nombre1, String Nombre2, String Apellido1, String Apellido2, String Telefono) {
+        super(Nombre1, Nombre2, Apellido1, Apellido2, Telefono);
+        this.Usuario = Usuario;
+        this.Contraseña = Contraseña;
+    }
+    
+    
+    
+    
+    
 
     public int getID_Empleado() {
         return ID_Empleado;
@@ -29,29 +47,20 @@ public class Empleado {
         this.ID_Empleado = ID_Empleado;
     }
 
-    public String getNombre() {
-        return Nombre;
+    public String getUsuario() {
+        return Usuario;
     }
 
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
+    public void setUsuario(String Usuario) {
+        this.Usuario = Usuario;
     }
 
-    public String getApellido() {
-        return Apellido;
+    public String getContraseña() {
+        return Contraseña;
     }
 
-    public void setApellido(String Apellido) {
-        this.Apellido = Apellido;
+    public void setContraseña(String Contraseña) {
+        this.Contraseña = Contraseña;
     }
 
-    public int getTelefono() {
-        return Telefono;
-    }
-
-    public void setTelefono(int Telefono) {
-        this.Telefono = Telefono;
-    }
-    
-    
 }

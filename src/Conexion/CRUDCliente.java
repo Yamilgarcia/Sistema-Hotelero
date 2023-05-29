@@ -10,6 +10,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
+import modelo.Persona;
 
 /**
  *
@@ -23,8 +24,8 @@ public class CRUDCliente {
     public DefaultTableModel mostrarDatos() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"ID_Cliente", "Cedula_cliente", "Nombre", "Segundo Nombre", "Apellido", "Segundo Apellido", "Procedencia", "Telefono"};
-        String[] registro = new String[8];
+        String[] titulos = {"ID_Persona","ID_Cliente", "Cedula_cliente", "Nombre", "Segundo Nombre", "Apellido", "Segundo Apellido", "Procedencia", "Telefono"};
+        String[] registro = new String[9];
         modelo = new DefaultTableModel(null, titulos);
 
         try {
@@ -32,14 +33,15 @@ public class CRUDCliente {
             rs = cbstc.executeQuery();
 
             while (rs.next()) {
-                registro[0] = rs.getString("ID_Cliente");
-                registro[1] = rs.getString("Cedula_cliente");
-                registro[2] = rs.getString("Nombre1");
-                registro[3] = rs.getString("Nombre2");
-                registro[4] = rs.getString("Apellido1");
-                registro[5] = rs.getString("Apellido2");
-                registro[6] = rs.getString("Procedencia");
-                registro[7] = rs.getString("Telefono");
+                registro[0] = rs.getString("ID_Persona");
+                registro[1] = rs.getString("ID_Cliente");
+                registro[2] = rs.getString("Cedula");
+                registro[3] = rs.getString("Nombre1");
+                registro[4] = rs.getString("Nombre2");
+                registro[5] = rs.getString("Apellido1");
+                registro[6] = rs.getString("Apellido2");
+                registro[7] = rs.getString("Procedencia");
+                registro[8] = rs.getString("Telefono");
 
                 modelo.addRow(registro);
             }
@@ -63,8 +65,8 @@ public class CRUDCliente {
             rs = call.executeQuery();
 
             while (rs.next()) {
-                registro[0] = rs.getString("ID_Cliente");
-                registro[1] = rs.getString("Cedula_cliente");
+                registro[0] = rs.getString("ID_cliente");
+                registro[1] = rs.getString("Cedula");
                 registro[2] = rs.getString("Nombre1");
                 registro[3] = rs.getString("Nombre2");
                 registro[4] = rs.getString("Apellido1");
@@ -86,10 +88,8 @@ public class CRUDCliente {
         try {
             CallableStatement cbst = cn.prepareCall("{call ModificarCliente(?,?,?,?,?,?,?,?)}");
 
-            
-
-            cbst.setInt(1, C1.getID_cliente());
-            cbst.setString(2, C1.getCedula_cliente());
+            cbst.setInt(1, C1.getID_Persona());
+            cbst.setString(2, C1.getCedula());
             cbst.setString(3, C1.getNombre1());
             cbst.setString(4, C1.getNombre2());
             cbst.setString(5, C1.getApellido1());
@@ -103,10 +103,10 @@ public class CRUDCliente {
         }
     }
 
-    public void Eliminar(int ID_cliente) {
+    public void Eliminar(int ID_Persona) {
         try {
             CallableStatement cbst = cn.prepareCall("{call EliminarCliente(?)}");
-            cbst.setInt(1, ID_cliente);
+            cbst.setInt(1, ID_Persona);
             cbst.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
@@ -116,13 +116,14 @@ public class CRUDCliente {
     public void Guardar(Cliente Cl) {
         try {
             CallableStatement cbst = cn.prepareCall("{call CrearCliente(?,?,?,?,?,?,?)}");
-            cbst.setString(1, Cl.getCedula_cliente());
-            cbst.setString(2, Cl.getNombre1());
-            cbst.setString(3, Cl.getNombre2());
-            cbst.setString(4, Cl.getApellido1());
-            cbst.setString(5, Cl.getApellido2());
-            cbst.setString(6, Cl.getProcedencia());
+            cbst.setString(1, Cl.getProcedencia());
+            cbst.setString(2, Cl.getCedula());
+            cbst.setString(3, Cl.getNombre1());
+            cbst.setString(4, Cl.getNombre2());
+            cbst.setString(5, Cl.getApellido1());
+            cbst.setString(6, Cl.getApellido2());
             cbst.setString(7, Cl.getTelefono());
+
             cbst.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);

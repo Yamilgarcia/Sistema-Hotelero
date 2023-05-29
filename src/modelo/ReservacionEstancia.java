@@ -8,14 +8,14 @@ import java.sql.Date;
  *
  * @author Usuario
  */
-public class Reservacion {
+public class ReservacionEstancia {
     int ID_Reservaciones;
     int ID_cliente;
     Date F_entreda;
     Date F_salida;
     int ID_Empleado;
 
-    public Reservacion(int ID_Reservaciones, int ID_cliente, Date F_entreda, Date F_salida, int ID_Empleado) {
+    public ReservacionEstancia(int ID_Reservaciones, int ID_cliente, Date F_entreda, Date F_salida, int ID_Empleado) {
         this.ID_Reservaciones = ID_Reservaciones;
         this.ID_cliente = ID_cliente;
         this.F_entreda = F_entreda;

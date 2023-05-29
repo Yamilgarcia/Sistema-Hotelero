@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import modelo.Cliente;
+import modelo.Persona;
 
 /**
  *
@@ -22,6 +23,8 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
      */
     public PantallaClienteRegistro() {
         initComponents();
+        jTextFieldIDPersona.setEnabled(false);
+        jTextFieldIDPersona.setVisible(false);
         jTextFieldIDCliente.setEnabled(false);
         jTextFieldIDCliente.setVisible(false);
 
@@ -47,13 +50,13 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
 
         CRUDCliente cc = new CRUDCliente();
 
-        Cliente cl = new Cliente(Integer.parseInt(jTextFieldIDCliente.getText()),
+        Cliente cl = new Cliente((jTextFieldProcedencia.getText()),
+                Integer.parseInt(jTextFieldIDPersona.getText()),
                 jFormattedTextFieldCedula.getText(),
                 jTextFieldNombre1.getText(),
                 jTextFieldNombre2.getText(),
                 jTextFieldApellido1.getText(),
                 jTextFieldApellido2.getText(),
-                jTextFieldProcedencia.getText(),
                 jFormattedTextFieldTelefono.getText());
 
         cc.ActualizarDatos(cl);
@@ -101,6 +104,7 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jFormattedTextFieldCedula = new javax.swing.JFormattedTextField();
         jFormattedTextFieldTelefono = new javax.swing.JFormattedTextField();
         jButtonActualizar = new javax.swing.JButton();
+        jTextFieldIDPersona = new javax.swing.JTextField();
         jTextFieldIDCliente = new javax.swing.JTextField();
         jLabelFondo = new javax.swing.JLabel();
 
@@ -188,6 +192,18 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
             }
         });
 
+        jTextFieldIDPersona.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIDPersonaActionPerformed(evt);
+            }
+        });
+
+        jTextFieldIDCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIDClienteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -222,16 +238,20 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                 .addComponent(jButtonRegistrarClient, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(152, 152, 152))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(380, 380, 380)
+                .addGap(247, 247, 247)
                 .addComponent(jTextFieldIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addComponent(jTextFieldIDPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextFieldIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextFieldIDPersona, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextFieldIDCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -269,7 +289,7 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                                 .addComponent(jLabelPrimerApellido3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jFormattedTextFieldTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonRegistrarClient, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -316,7 +336,7 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
 
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
         try {
-            if (jTextFieldIDCliente.getText().isEmpty()
+            if (jTextFieldIDPersona.getText().isEmpty()
                     || jFormattedTextFieldCedula.getText().isEmpty()
                     || jTextFieldNombre1.getText().isEmpty()
                     || jTextFieldNombre2.getText().isEmpty()
@@ -332,8 +352,17 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
             }
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
+
         }
     }//GEN-LAST:event_jButtonActualizarActionPerformed
+
+    private void jTextFieldIDPersonaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIDPersonaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIDPersonaActionPerformed
+
+    private void jTextFieldIDClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIDClienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIDClienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,6 +428,7 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
     public static javax.swing.JTextField jTextFieldApellido1;
     public static javax.swing.JTextField jTextFieldApellido2;
     public static javax.swing.JTextField jTextFieldIDCliente;
+    public static javax.swing.JTextField jTextFieldIDPersona;
     public static javax.swing.JTextField jTextFieldNombre1;
     public static javax.swing.JTextField jTextFieldNombre2;
     public static javax.swing.JTextField jTextFieldProcedencia;

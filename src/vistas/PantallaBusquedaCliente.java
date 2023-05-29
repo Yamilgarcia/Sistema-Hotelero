@@ -53,19 +53,17 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
+
     private void refreshTablaCliente() {
-    
-    // se llama a un método de consulta a la base de datos
-    
-    // obtenemos los nuevos datos en un objeto DefaultTableModel llamado "modelo"
-    CRUDCliente cl2 = new CRUDCliente();
-    DefaultTableModel modelo = cl2.mostrarDatos();
 
-    // Actualizar el modelo de la tabla jTableCliente con los nuevos datos
-    jTableCliente.setModel(modelo);
-}
+        // se llama a un método de consulta a la base de datos
+        // obtenemos los nuevos datos en un objeto DefaultTableModel llamado "modelo"
+        CRUDCliente cl2 = new CRUDCliente();
+        DefaultTableModel modelo = cl2.mostrarDatos();
 
+        // Actualizar el modelo de la tabla jTableCliente con los nuevos datos
+        jTableCliente.setModel(modelo);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -84,7 +82,6 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         jbuttonBuscar = new javax.swing.JButton();
         jbuttonEditar = new javax.swing.JButton();
         jbuttonEliminar = new javax.swing.JButton();
-        botonmostrar = new javax.swing.JButton();
         jtextButtonRefresh = new javax.swing.JButton();
         panel5 = new java.awt.Panel();
         jLabel4 = new javax.swing.JLabel();
@@ -167,13 +164,6 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         });
         panel2.add(jbuttonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 120, 50));
 
-        botonmostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonmostrarActionPerformed(evt);
-            }
-        });
-        panel2.add(botonmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(652, 20, 0, 30));
-
         jtextButtonRefresh.setBackground(new java.awt.Color(216, 199, 162));
         jtextButtonRefresh.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jtextButtonRefresh.setText("Refrescar");
@@ -241,16 +231,16 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         cliente.setLocationRelativeTo(null); // Opcional: Centrar la ventana en la pantalla
         cliente.setVisible(true);
 
-        if (datoSeleccionado
-                >= 0) {
-            PantallaClienteRegistro.jTextFieldIDCliente.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 0)));
-            PantallaClienteRegistro.jFormattedTextFieldCedula.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 1)));
-            PantallaClienteRegistro.jTextFieldNombre1.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 2)));
-            PantallaClienteRegistro.jTextFieldNombre2.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 3)));
-            PantallaClienteRegistro.jTextFieldApellido1.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 4)));
-            PantallaClienteRegistro.jTextFieldApellido2.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 5)));
-            PantallaClienteRegistro.jTextFieldProcedencia.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 6)));
-            PantallaClienteRegistro.jFormattedTextFieldTelefono.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 7)));
+        if (datoSeleccionado>= 0) {
+            PantallaClienteRegistro.jTextFieldIDPersona.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 0)));
+            PantallaClienteRegistro.jTextFieldIDCliente.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 1)));
+            PantallaClienteRegistro.jFormattedTextFieldCedula.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 2)));
+            PantallaClienteRegistro.jTextFieldNombre1.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 3)));
+            PantallaClienteRegistro.jTextFieldNombre2.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 4)));
+            PantallaClienteRegistro.jTextFieldApellido1.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 5)));
+            PantallaClienteRegistro.jTextFieldApellido2.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 6)));
+            PantallaClienteRegistro.jTextFieldProcedencia.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 7)));
+            PantallaClienteRegistro.jFormattedTextFieldTelefono.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 8)));
 
             PantallaClienteRegistro.jButtonRegistrarClient.setVisible(false);
             cliente.setVisible(true);
@@ -290,10 +280,6 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
                     "Debe seleccionar un registro de la tabla");
         }
     }//GEN-LAST:event_jbuttonEliminarActionPerformed
-
-    private void botonmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmostrarActionPerformed
-        mostrar();
-    }//GEN-LAST:event_botonmostrarActionPerformed
 
     private void jtextButtonRefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtextButtonRefreshMouseClicked
         // TODO add your handling code here:
@@ -347,7 +333,6 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public static javax.swing.JButton botonmostrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
