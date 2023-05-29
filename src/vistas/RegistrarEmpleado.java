@@ -164,21 +164,17 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1598, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(578, Short.MAX_VALUE)
-                    .addComponent(jLabelRegistrarEmpleado)
-                    .addContainerGap(566, Short.MAX_VALUE)))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(478, 478, 478)
+                .addComponent(jLabelRegistrarEmpleado)
+                .addContainerGap(666, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 118, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                    .addContainerGap(29, Short.MAX_VALUE)
-                    .addComponent(jLabelRegistrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(29, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(45, Short.MAX_VALUE)
+                .addComponent(jLabelRegistrarEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
@@ -271,7 +267,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         jPanel3.add(jButtonActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 195, 50));
         jPanel3.add(jTextFieldIDEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, -1, -1));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 190, 540, 580));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 140, 520, 530));
 
         jPanel2.setBackground(new java.awt.Color(162, 179, 216));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -291,7 +287,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
                 jbuttonEditarActionPerformed(evt);
             }
         });
-        jPanel2.add(jbuttonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, 120, 50));
+        jPanel2.add(jbuttonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, 120, 50));
 
         jbuttonEliminarEmpleado.setBackground(new java.awt.Color(216, 199, 162));
         jbuttonEliminarEmpleado.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -307,7 +303,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
                 jbuttonEliminarEmpleadoActionPerformed(evt);
             }
         });
-        jPanel2.add(jbuttonEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 510, 120, 50));
+        jPanel2.add(jbuttonEliminarEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 460, 120, 50));
 
         jTableEmpleado.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -327,8 +323,8 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTableEmpleado);
 
-        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 660, 250));
-        jPanel2.add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 150, 660, 50));
+        jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 660, 250));
+        jPanel2.add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 660, 50));
 
         jbuttonBuscar.setBackground(new java.awt.Color(216, 199, 162));
         jbuttonBuscar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -344,10 +340,10 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
                 jbuttonBuscarActionPerformed(evt);
             }
         });
-        jPanel2.add(jbuttonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 150, 80, 50));
+        jPanel2.add(jbuttonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 110, 80, 50));
 
         jLabel3.setText("jLabel3");
-        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 10, 150, 130));
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 150, 130));
 
         jtextButtonRefresh2.setBackground(new java.awt.Color(216, 199, 162));
         jtextButtonRefresh2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -363,9 +359,9 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
                 jtextButtonRefresh2ActionPerformed(evt);
             }
         });
-        jPanel2.add(jtextButtonRefresh2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 510, 100, 50));
+        jPanel2.add(jtextButtonRefresh2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 100, 50));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 920, 580));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 800, 530));
 
         jLabel2.setText("jLabel2");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
