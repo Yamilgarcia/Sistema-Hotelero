@@ -27,18 +27,37 @@ public class Empleado extends Persona {
         this.Usuario = Usuario;
         this.Contraseña = Contraseña;
     }
-    
+
     public Empleado(String Usuario, String Contraseña, String Nombre1, String Nombre2, String Apellido1, String Apellido2, String Telefono) {
         super(Nombre1, Nombre2, Apellido1, Apellido2, Telefono);
         this.Usuario = Usuario;
         this.Contraseña = Contraseña;
     }
-    
-    
-    
-    
+
+    public Empleado() {
+        super(); // Llama al constructor vacío de la clase padre (Persona)
+        // Resto de la lógica específica del constructor de Empleado
+    }
+
+    public Empleado(int ID_Empleado, String Nombre1) {
+        super(Nombre1);
+        this.ID_Empleado = ID_Empleado;
+    }
+
     
 
+   
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public int getID_Empleado() {
         return ID_Empleado;
     }
@@ -61,6 +80,11 @@ public class Empleado extends Persona {
 
     public void setContraseña(String Contraseña) {
         this.Contraseña = Contraseña;
+    }
+
+     @Override
+    public String toString() {
+        return ID_Empleado + " - " + Nombre1;
     }
 
 }

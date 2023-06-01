@@ -5,8 +5,17 @@
 package vistas;
 
 import Conexion.CRUDCliente;
+import Conexion.CRUDEmpleado;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ButtonGroup;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import modelo.Empleado;
+import modelo.Persona;
+import static vistas.RegistrarEmpleado.jTextFieldIDEmpleado;
 
 /**
  *
@@ -14,29 +23,30 @@ import javax.swing.table.DefaultTableModel;
  */
 public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PantallaRegistroReservacion
-     */
     public PantallaRegistroReservacionEstancia() {
         initComponents();
+        ButtonGroup grupoRadios = new ButtonGroup();
+        grupoRadios.add(jRadioButtonReservacion);
+        grupoRadios.add(jRadioButtonEstadia);
+
         jTextFieldPrecio.setEnabled(false);
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\FondoHotel.jpg");
-        mostrar();
+
+        llenarGarantias();
     }
 
-    
-    public void mostrar() {
-        try {
-            DefaultTableModel modelo;
-            CRUDCliente cli = new CRUDCliente();
-            modelo = cli.mostrarDatos();
-            jTableClienteMuestra.setModel(modelo);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+    public void llenarGarantias() {
+        CRUDEmpleado gr = new CRUDEmpleado();
+        ArrayList<Empleado> listaEmpleados = gr.mostrarDatosCombo();
+        jComboBoxEmpleado.removeAllItems();
+        for (int i = 0; i < listaEmpleados.size(); i++) {
+            jComboBoxEmpleado.addItem(new Empleado(
+                    listaEmpleados.get(i).getID_Empleado(),
+                    listaEmpleados.get(i).getNombre1()));
         }
+
     }
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -50,18 +60,19 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         panel5 = new java.awt.Panel();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButtonRegistrarClient = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jPanel3 = new javax.swing.JPanel();
+        jLabelPrecio2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jbuttonBuscarHabitacion = new javax.swing.JButton();
+        jbuttonRegistrahabitacionNow = new javax.swing.JButton();
         labelHabitacion = new javax.swing.JLabel();
-        jTextFieldFechEntrada = new javax.swing.JTextField();
-        jTextFieldFechEntrada2 = new javax.swing.JTextField();
+        jTextFieldClienteReser = new javax.swing.JTextField();
         labelcliente = new javax.swing.JLabel();
         jbuttonBuscarCliente = new javax.swing.JButton();
         labelcliente1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        jComboBoxEmpleado = new javax.swing.JComboBox<>();
+        jRadioButtonReservacion = new javax.swing.JRadioButton();
         jRadioButtonEstadia = new javax.swing.JRadioButton();
         jTextFieldFechEntrada1 = new javax.swing.JTextField();
         jLabelFechaEntrada1 = new javax.swing.JLabel();
@@ -71,9 +82,12 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jLabelPrecio = new javax.swing.JLabel();
         jLabelPrecio1 = new javax.swing.JLabel();
         jTextFieldPrecio1 = new javax.swing.JTextField();
+        jComboBoxHabitacion = new javax.swing.JComboBox<>();
+        jbuttonIrRegistroCliente = new javax.swing.JButton();
+        jButtonRegistrarClient = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -91,54 +105,64 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jButtonRegistrarClient.setBackground(new java.awt.Color(216, 199, 162));
-        jButtonRegistrarClient.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
-        jButtonRegistrarClient.setText("Registrar");
-        jButtonRegistrarClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonRegistrarClient.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegistrarClientActionPerformed(evt);
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        });
-        jPanel1.add(jButtonRegistrarClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 415, 195, 50));
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jButton1.setText("+");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton1.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, -1, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 430, 200));
 
-        panel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 140, 450, 470));
+        jPanel3.setBackground(new java.awt.Color(162, 179, 216));
+        jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelPrecio2.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelPrecio2.setText("Habitaciones");
+        jPanel3.add(jLabelPrecio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 0, -1, -1));
+
+        jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 30));
+
+        panel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 140, 450, 520));
 
         jPanel2.setBackground(new java.awt.Color(162, 179, 216));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jbuttonBuscarHabitacion.setBackground(new java.awt.Color(216, 199, 162));
-        jbuttonBuscarHabitacion.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        jbuttonBuscarHabitacion.setText("...");
-        jbuttonBuscarHabitacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbuttonBuscarHabitacion.addMouseListener(new java.awt.event.MouseAdapter() {
+        jbuttonRegistrahabitacionNow.setBackground(new java.awt.Color(216, 199, 162));
+        jbuttonRegistrahabitacionNow.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jbuttonRegistrahabitacionNow.setText("+");
+        jbuttonRegistrahabitacionNow.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbuttonRegistrahabitacionNow.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jbuttonBuscarHabitacionMouseClicked(evt);
+                jbuttonRegistrahabitacionNowMouseClicked(evt);
             }
         });
-        jbuttonBuscarHabitacion.addActionListener(new java.awt.event.ActionListener() {
+        jbuttonRegistrahabitacionNow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbuttonBuscarHabitacionActionPerformed(evt);
+                jbuttonRegistrahabitacionNowActionPerformed(evt);
             }
         });
+        jPanel2.add(jbuttonRegistrahabitacionNow, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 38, -1, -1));
 
         labelHabitacion.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         labelHabitacion.setText("Habitacion");
+        jPanel2.add(labelHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 39, -1, -1));
 
-        jTextFieldFechEntrada.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextFieldFechEntrada.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        jTextFieldFechEntrada2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextFieldFechEntrada2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldClienteReser.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldClienteReser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jTextFieldClienteReser, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 87, 200, 32));
 
         labelcliente.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         labelcliente.setText("Cliente");
+        jPanel2.add(labelcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 90, -1, -1));
 
         jbuttonBuscarCliente.setBackground(new java.awt.Color(216, 199, 162));
         jbuttonBuscarCliente.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -154,20 +178,34 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
                 jbuttonBuscarClienteActionPerformed(evt);
             }
         });
+        jPanel2.add(jbuttonBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 89, -1, -1));
 
         labelcliente1.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         labelcliente1.setText("Empleado");
+        jPanel2.add(labelcliente1, new org.netbeans.lib.awtextra.AbsoluteConstraints(54, 133, -1, -1));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jRadioButton1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jRadioButton1.setText("Reservacion");
-        jRadioButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+        jComboBoxEmpleado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jComboBoxEmpleado.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxEmpleadoItemStateChanged(evt);
             }
         });
+        jComboBoxEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxEmpleadoActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBoxEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 131, 200, 32));
+
+        jRadioButtonReservacion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jRadioButtonReservacion.setText("Reservacion");
+        jRadioButtonReservacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jRadioButtonReservacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonReservacionActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jRadioButtonReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(112, 194, -1, -1));
 
         jRadioButtonEstadia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jRadioButtonEstadia.setText("Estadia");
@@ -177,15 +215,19 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
                 jRadioButtonEstadiaActionPerformed(evt);
             }
         });
+        jPanel2.add(jRadioButtonEstadia, new org.netbeans.lib.awtextra.AbsoluteConstraints(298, 194, -1, -1));
 
         jTextFieldFechEntrada1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldFechEntrada1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jTextFieldFechEntrada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 254, 200, 32));
 
         jLabelFechaEntrada1.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelFechaEntrada1.setText("Fecha Entrada");
+        jPanel2.add(jLabelFechaEntrada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 257, -1, -1));
 
         jLabelFechaSalida.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelFechaSalida.setText("Fecha Salida");
+        jPanel2.add(jLabelFechaSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 295, -1, -1));
 
         jTextFieldFechSalida.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldFechSalida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -194,6 +236,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
                 jTextFieldFechSalidaActionPerformed(evt);
             }
         });
+        jPanel2.add(jTextFieldFechSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 292, 200, 32));
 
         jTextFieldPrecio.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldPrecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -202,12 +245,15 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
                 jTextFieldPrecioActionPerformed(evt);
             }
         });
+        jPanel2.add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 352, 200, 32));
 
         jLabelPrecio.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelPrecio.setText("Precio");
+        jPanel2.add(jLabelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 355, -1, -1));
 
         jLabelPrecio1.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelPrecio1.setText("Estado Reserva");
+        jPanel2.add(jLabelPrecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(27, 411, -1, -1));
 
         jTextFieldPrecio1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldPrecio1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -216,105 +262,44 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
                 jTextFieldPrecio1ActionPerformed(evt);
             }
         });
+        jPanel2.add(jTextFieldPrecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 402, 200, 32));
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelcliente1)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(45, 45, 45)
-                                    .addComponent(labelHabitacion))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(labelcliente))))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jTextFieldFechEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbuttonBuscarHabitacion))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldFechEntrada2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbuttonBuscarCliente))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jRadioButton1)
-                        .addGap(65, 65, 65)
-                        .addComponent(jRadioButtonEstadia))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabelFechaSalida)
-                                        .addComponent(jLabelPrecio))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextFieldFechSalida, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabelFechaEntrada1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jTextFieldFechEntrada1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabelPrecio1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextFieldPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(350, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(45, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbuttonBuscarHabitacion)
-                    .addComponent(labelHabitacion)
-                    .addComponent(jTextFieldFechEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelcliente)
-                    .addComponent(jTextFieldFechEntrada2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbuttonBuscarCliente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelcliente1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButtonEstadia))
-                .addGap(33, 33, 33)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldFechEntrada1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelFechaEntrada1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelFechaSalida)
-                    .addComponent(jTextFieldFechSalida, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPrecio))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPrecio1))
-                .addGap(20, 20, 20))
-        );
+        jComboBoxHabitacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jComboBoxHabitacion.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxHabitacionItemStateChanged(evt);
+            }
+        });
+        jPanel2.add(jComboBoxHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 37, 200, 32));
 
-        panel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 770, 470));
+        jbuttonIrRegistroCliente.setBackground(new java.awt.Color(216, 199, 162));
+        jbuttonIrRegistroCliente.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jbuttonIrRegistroCliente.setText("+");
+        jbuttonIrRegistroCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbuttonIrRegistroCliente.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbuttonIrRegistroClienteMouseClicked(evt);
+            }
+        });
+        jbuttonIrRegistroCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbuttonIrRegistroClienteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jbuttonIrRegistroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 89, -1, -1));
+
+        jButtonRegistrarClient.setBackground(new java.awt.Color(216, 199, 162));
+        jButtonRegistrarClient.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
+        jButtonRegistrarClient.setText("Registrar");
+        jButtonRegistrarClient.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRegistrarClient.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRegistrarClientActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonRegistrarClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 100, 30));
+
+        panel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 560, 520));
 
         jLabel2.setText("jLabel10");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -338,32 +323,22 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonRegistrarClientActionPerformed
 
-    private void jbuttonBuscarHabitacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuttonBuscarHabitacionMouseClicked
+    private void jbuttonRegistrahabitacionNowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuttonRegistrahabitacionNowMouseClicked
 
-    }//GEN-LAST:event_jbuttonBuscarHabitacionMouseClicked
+    }//GEN-LAST:event_jbuttonRegistrahabitacionNowMouseClicked
 
-    private void jbuttonBuscarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonBuscarHabitacionActionPerformed
-        try {
-            DefaultTableModel modelo;
-            CRUDCliente cli = new CRUDCliente();
-            modelo = cli.buscarDatos(jTextFieldBuscar.getText());
-            if (jTextFieldBuscar.getText().equals("")) {
-                JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
-                mostrar();
-            } else {
-                jTableClienteMuestra.setModel(modelo);
-            }
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
-    }//GEN-LAST:event_jbuttonBuscarHabitacionActionPerformed
+    private void jbuttonRegistrahabitacionNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonRegistrahabitacionNowActionPerformed
+//        
+    }//GEN-LAST:event_jbuttonRegistrahabitacionNowActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButtonReservacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonReservacionActionPerformed
+
+
+    }//GEN-LAST:event_jRadioButtonReservacionActionPerformed
 
     private void jRadioButtonEstadiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonEstadiaActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jRadioButtonEstadiaActionPerformed
 
     private void jbuttonBuscarClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuttonBuscarClienteMouseClicked
@@ -371,7 +346,13 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_jbuttonBuscarClienteMouseClicked
 
     private void jbuttonBuscarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonBuscarClienteActionPerformed
-        // TODO add your handling code here:
+        PantallaBusquedaCliente BusCl = new PantallaBusquedaCliente();
+        BusCl.setVisible(true);
+        PantallaBusquedaCliente.jtextButtonAggCliReser.setVisible(true);
+        PantallaBusquedaCliente.jtextButtonAggCliReser.setEnabled(true);
+        PantallaBusquedaCliente.jbuttonEditar.setVisible(false);
+        PantallaBusquedaCliente.jbuttonEliminar.setVisible(false);
+        PantallaBusquedaCliente.jtextButtonRefresh.setVisible(false);
     }//GEN-LAST:event_jbuttonBuscarClienteActionPerformed
 
     private void jTextFieldFechSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechSalidaActionPerformed
@@ -385,6 +366,28 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     private void jTextFieldPrecio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPrecio1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPrecio1ActionPerformed
+
+    private void jComboBoxEmpleadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxEmpleadoItemStateChanged
+
+    }//GEN-LAST:event_jComboBoxEmpleadoItemStateChanged
+
+    private void jComboBoxHabitacionItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxHabitacionItemStateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxHabitacionItemStateChanged
+
+    private void jbuttonIrRegistroClienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuttonIrRegistroClienteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jbuttonIrRegistroClienteMouseClicked
+
+    private void jbuttonIrRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonIrRegistroClienteActionPerformed
+        PantallaClienteRegistro Cli = new PantallaClienteRegistro();
+        Cli.setVisible(true);
+        PantallaClienteRegistro.jButtonActualizar.setVisible(false);
+    }//GEN-LAST:event_jbuttonIrRegistroClienteActionPerformed
+
+    private void jComboBoxEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEmpleadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxEmpleadoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -423,27 +426,31 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonRegistrarClient;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<Empleado> jComboBoxEmpleado;
+    private javax.swing.JComboBox<String> jComboBoxHabitacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelFechaEntrada1;
     private javax.swing.JLabel jLabelFechaSalida;
     private javax.swing.JLabel jLabelPrecio;
     private javax.swing.JLabel jLabelPrecio1;
+    private javax.swing.JLabel jLabelPrecio2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton jRadioButtonEstadia;
-    private javax.swing.JTextField jTextFieldFechEntrada;
+    private javax.swing.JRadioButton jRadioButtonReservacion;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    public static javax.swing.JTextField jTextFieldClienteReser;
     private javax.swing.JTextField jTextFieldFechEntrada1;
-    private javax.swing.JTextField jTextFieldFechEntrada2;
     private javax.swing.JTextField jTextFieldFechSalida;
     private javax.swing.JTextField jTextFieldPrecio;
     private javax.swing.JTextField jTextFieldPrecio1;
     private javax.swing.JButton jbuttonBuscarCliente;
-    private javax.swing.JButton jbuttonBuscarHabitacion;
+    private javax.swing.JButton jbuttonIrRegistroCliente;
+    private javax.swing.JButton jbuttonRegistrahabitacionNow;
     private javax.swing.JLabel labelHabitacion;
     private javax.swing.JLabel labelcliente;
     private javax.swing.JLabel labelcliente1;

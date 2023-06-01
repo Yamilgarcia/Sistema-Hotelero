@@ -7,6 +7,8 @@ package Conexion;
 import Conexion_bd.Conexion;
 import java.awt.PageAttributes;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.concurrent.Callable;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
@@ -25,7 +27,7 @@ public class CRUDEmpleado {
     public DefaultTableModel mostrarDatosEmpleado() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"ID_General","ID_Empleado", "Nombre", "Segundo Nombre", "Apellido", "Segundo Apellido", "Telefono", "Usuario", "Contraseña"};
+        String[] titulos = {"ID_General", "ID_Empleado", "Nombre", "Segundo Nombre", "Apellido", "Segundo Apellido", "Telefono", "Usuario", "Contraseña"};
         String[] registro = new String[9];
         modelo = new DefaultTableModel(null, titulos);
 
@@ -122,7 +124,6 @@ public class CRUDEmpleado {
         }
     }
 
-    
     public void EliminarEmpleado(int ID_Persona) {
         try {
             CallableStatement cbst = cn.prepareCall("{call EliminarEmpleado(?)}");
@@ -132,5 +133,27 @@ public class CRUDEmpleado {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
+
+    public ArrayList mostrarDatosCombo() {
+        
+        
+        ArrayList<Empleado> empleados = new ArrayList<>();
+
+        try {
+            CallableStatement cbstc = cn.prepareCall("{call RellenarEmpleado}");
+            ResultSet rs = cbstc.executeQuery();
+
+            while (rs.next()) {
+                Empleado em= new Empleado();
+                em.setID_Empleado(Integer.parseInt(rs.getString("ID_Empleado")));
+                em.setNombre1(rs.getString("Nombre1"));
+                empleados.add(em);
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+        return empleados;
+    }
+
 }

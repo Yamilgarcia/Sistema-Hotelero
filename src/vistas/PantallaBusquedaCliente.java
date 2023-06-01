@@ -29,6 +29,9 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
      */
     public PantallaBusquedaCliente() {
         initComponents();
+        
+        jtextButtonAggCliReser.setEnabled(false);
+        jtextButtonAggCliReser.setVisible(false);
 
         jtextButtonRefresh.addActionListener(new ActionListener() {
             @Override
@@ -82,6 +85,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         jbuttonBuscar = new javax.swing.JButton();
         jbuttonEditar = new javax.swing.JButton();
         jbuttonEliminar = new javax.swing.JButton();
+        jtextButtonAggCliReser = new javax.swing.JButton();
         jtextButtonRefresh = new javax.swing.JButton();
         panel5 = new java.awt.Panel();
         jLabel4 = new javax.swing.JLabel();
@@ -164,6 +168,22 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         });
         panel2.add(jbuttonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 430, 120, 50));
 
+        jtextButtonAggCliReser.setBackground(new java.awt.Color(216, 199, 162));
+        jtextButtonAggCliReser.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jtextButtonAggCliReser.setText("Incorporar Cliente");
+        jtextButtonAggCliReser.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jtextButtonAggCliReser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtextButtonAggCliReserMouseClicked(evt);
+            }
+        });
+        jtextButtonAggCliReser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextButtonAggCliReserActionPerformed(evt);
+            }
+        });
+        panel2.add(jtextButtonAggCliReser, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 430, 200, 50));
+
         jtextButtonRefresh.setBackground(new java.awt.Color(216, 199, 162));
         jtextButtonRefresh.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jtextButtonRefresh.setText("Refrescar");
@@ -178,7 +198,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
                 jtextButtonRefreshActionPerformed(evt);
             }
         });
-        panel2.add(jtextButtonRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 100, 50));
+        panel2.add(jtextButtonRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 100, 50));
 
         panel1.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 1000, 510));
 
@@ -289,6 +309,15 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextButtonRefreshActionPerformed
 
+    private void jtextButtonAggCliReserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtextButtonAggCliReserMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextButtonAggCliReserMouseClicked
+
+    private void jtextButtonAggCliReserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextButtonAggCliReserActionPerformed
+        PantallaRegistroReservacionEstancia.jTextFieldClienteReser.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 3)));
+        dispose();
+    }//GEN-LAST:event_jtextButtonAggCliReserActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -339,9 +368,10 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
     private javax.swing.JTable jTableCliente;
     private javax.swing.JTextField jTextFieldBuscar;
     private javax.swing.JButton jbuttonBuscar;
-    private javax.swing.JButton jbuttonEditar;
-    private javax.swing.JButton jbuttonEliminar;
-    private javax.swing.JButton jtextButtonRefresh;
+    public static javax.swing.JButton jbuttonEditar;
+    public static javax.swing.JButton jbuttonEliminar;
+    public static javax.swing.JButton jtextButtonAggCliReser;
+    public static javax.swing.JButton jtextButtonRefresh;
     private java.awt.Panel panel1;
     private java.awt.Panel panel2;
     private java.awt.Panel panel5;

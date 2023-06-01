@@ -53,7 +53,22 @@ public class Persona {
         this.Apellido2 = Apellido2;
         this.Telefono = Telefono;
     }
+
+    public Persona() {
+    }
+
+    public Persona(String Nombre1) {
+        this.Nombre1 = Nombre1;
+    }
+
     
+
+    
+
+    
+
+    
+     
     
     
     
