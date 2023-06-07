@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Usuario/Documents/Sistema-Hotelero/src/vistas/PantallaRegistroReservacionEstancia.java</file>
-            <file>file:/C:/Users/Usuario/Documents/Sistema-Hotelero/src/vistas/RegistrarEmpleado.java</file>
-            <file>file:/C:/Users/Usuario/Documents/Sistema-Hotelero/src/vista_menu/Menu.java</file>
-            <file>file:/C:/Users/Usuario/Documents/Sistema-Hotelero/src/vistas/PantallaBusquedaCliente.java</file>
-            <file>file:/C:/Users/Usuario/Documents/Sistema-Hotelero/src/vistas/PantallaClienteRegistro.java</file>
+            <file>file:/C:/Users/danie/OneDrive/Escritorio/Sistema-Hotelero/src/Conexion/CRUDHabitacion.java</file>
+            <file>file:/C:/Users/danie/OneDrive/Escritorio/Sistema-Hotelero/src/vistas/PantallaRegistroReservacionEstancia.java</file>
+            <file>file:/C:/Users/danie/OneDrive/Escritorio/Sistema-Hotelero/src/modelo/Tipo_de_habitacion.java</file>
+            <file>file:/C:/Users/danie/OneDrive/Escritorio/Sistema-Hotelero/src/Conexion/CRUDEmpleado.java</file>
+            <file>file:/C:/Users/danie/OneDrive/Escritorio/Sistema-Hotelero/src/modelo/Habitacion.java</file>
+            <file>file:/C:/Users/danie/OneDrive/Escritorio/Sistema-Hotelero/src/modelo/Empleado.java</file>
+            <file>file:/C:/Users/danie/OneDrive/Escritorio/Sistema-Hotelero/src/vistas/PantallaBusquedaCliente.java</file>
         </group>
     </open-files>
 </project-private>

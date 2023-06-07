@@ -200,7 +200,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         });
         panel2.add(jtextButtonRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 100, 50));
 
-        panel1.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 260, 1000, 510));
+        panel1.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 1000, 510));
 
         panel5.setBackground(new java.awt.Color(0, 94, 144));
         panel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -315,6 +315,8 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
 
     private void jtextButtonAggCliReserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextButtonAggCliReserActionPerformed
         PantallaRegistroReservacionEstancia.jTextFieldClienteReser.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 3)));
+        PantallaRegistroReservacionEstancia.jTextFieldClienteApellido.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 5)));
+       
         dispose();
     }//GEN-LAST:event_jtextButtonAggCliReserActionPerformed
 

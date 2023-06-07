@@ -106,8 +106,8 @@ public class Menu extends javax.swing.JFrame {
         jButtonRegistroReservacionEstancia = new javax.swing.JButton();
         jButtonBusquedaDeCliente = new javax.swing.JButton();
         jButtonRegistroCliente = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jButtonEmpleado = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabelFondo43 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -130,11 +130,11 @@ public class Menu extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Roboto", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1364, 38, 217, 51));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 30, 217, 51));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 3, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1364, 95, 217, 36));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 90, 217, 36));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1765, -1));
 
@@ -166,7 +166,7 @@ public class Menu extends javax.swing.JFrame {
                 jButtonIngresoActionPerformed(evt);
             }
         });
-        jPanel3.add(jButtonIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 408, 195, 50));
+        jPanel3.add(jButtonIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 195, 50));
 
         jButtonBusquedaReserva.setBackground(new java.awt.Color(179, 140, 98));
         jButtonBusquedaReserva.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
@@ -177,7 +177,7 @@ public class Menu extends javax.swing.JFrame {
                 jButtonBusquedaReservaActionPerformed(evt);
             }
         });
-        jPanel3.add(jButtonBusquedaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 340, 195, 50));
+        jPanel3.add(jButtonBusquedaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 195, 50));
 
         jButtonRegistroReservacionEstancia.setBackground(new java.awt.Color(179, 140, 98));
         jButtonRegistroReservacionEstancia.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
@@ -188,7 +188,7 @@ public class Menu extends javax.swing.JFrame {
                 jButtonRegistroReservacionEstanciaActionPerformed(evt);
             }
         });
-        jPanel3.add(jButtonRegistroReservacionEstancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 252, 195, 50));
+        jPanel3.add(jButtonRegistroReservacionEstancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 195, 50));
 
         jButtonBusquedaDeCliente.setBackground(new java.awt.Color(179, 140, 98));
         jButtonBusquedaDeCliente.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
@@ -204,7 +204,7 @@ public class Menu extends javax.swing.JFrame {
                 jButtonBusquedaDeClienteActionPerformed(evt);
             }
         });
-        jPanel3.add(jButtonBusquedaDeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 156, 195, 50));
+        jPanel3.add(jButtonBusquedaDeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 195, 50));
 
         jButtonRegistroCliente.setBackground(new java.awt.Color(179, 140, 98));
         jButtonRegistroCliente.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
@@ -215,10 +215,7 @@ public class Menu extends javax.swing.JFrame {
                 jButtonRegistroClienteActionPerformed(evt);
             }
         });
-        jPanel3.add(jButtonRegistroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 54, 195, 50));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistaimagen/hotel (1).png"))); // NOI18N
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 542, 183, 165));
+        jPanel3.add(jButtonRegistroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 195, 50));
 
         jButtonEmpleado.setBackground(new java.awt.Color(179, 140, 98));
         jButtonEmpleado.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
@@ -229,7 +226,10 @@ public class Menu extends javax.swing.JFrame {
                 jButtonEmpleadoActionPerformed(evt);
             }
         });
-        jPanel3.add(jButtonEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 476, 195, 50));
+        jPanel3.add(jButtonEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 195, 50));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistaimagen/hotel (1).png"))); // NOI18N
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 150, 110));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 132, 210, 910));
 

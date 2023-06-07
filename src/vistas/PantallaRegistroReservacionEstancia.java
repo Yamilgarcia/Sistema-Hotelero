@@ -6,6 +6,7 @@ package vistas;
 
 import Conexion.CRUDCliente;
 import Conexion.CRUDEmpleado;
+import Conexion.CRUDHabitacion;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +15,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Empleado;
+import modelo.Habitacion;
 import modelo.Persona;
 import static vistas.RegistrarEmpleado.jTextFieldIDEmpleado;
 
@@ -32,10 +34,10 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jTextFieldPrecio.setEnabled(false);
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\FondoHotel.jpg");
 
-        llenarGarantias();
+        llenarCombo1();
     }
 
-    public void llenarGarantias() {
+    public void llenarCombo1() {
         CRUDEmpleado gr = new CRUDEmpleado();
         ArrayList<Empleado> listaEmpleados = gr.mostrarDatosCombo();
         jComboBoxEmpleado.removeAllItems();
@@ -46,6 +48,21 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         }
 
     }
+    
+    public void llenarCombo2() {
+        CRUDHabitacion EMP = new CRUDHabitacion();
+        ArrayList<Habitacion> listaHabitacion = EMP.mostrarDatosCombo2();
+        jComboBoxHabitacion.removeAllItems();
+        for (int i = 0; i < listaHabitacion.size(); i++) {
+            jComboBoxHabitacion.addItem(new Habitacion(
+                    listaHabitacion.get(i).getN_de_habitacion(),
+                    listaHabitacion.get(i).getNombre()));
+        }
+
+    }
+    
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -85,6 +102,8 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jComboBoxHabitacion = new javax.swing.JComboBox<>();
         jbuttonIrRegistroCliente = new javax.swing.JButton();
         jButtonRegistrarClient = new javax.swing.JButton();
+        jTextFieldClienteApellido = new javax.swing.JTextField();
+        labelcliente2 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -97,7 +116,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Pagina Estancia/Reservaciones");
-        panel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 30, 630, -1));
+        panel5.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 30, 630, -1));
 
         panel4.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 120));
 
@@ -150,19 +169,19 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
                 jbuttonRegistrahabitacionNowActionPerformed(evt);
             }
         });
-        jPanel2.add(jbuttonRegistrahabitacionNow, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 38, -1, -1));
+        jPanel2.add(jbuttonRegistrahabitacionNow, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 80, -1, -1));
 
         labelHabitacion.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         labelHabitacion.setText("Habitacion");
-        jPanel2.add(labelHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(46, 39, -1, -1));
+        jPanel2.add(labelHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
         jTextFieldClienteReser.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldClienteReser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextFieldClienteReser, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 87, 200, 32));
+        jPanel2.add(jTextFieldClienteReser, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 130, 32));
 
         labelcliente.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
-        labelcliente.setText("Cliente");
-        jPanel2.add(labelcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(81, 90, -1, -1));
+        labelcliente.setText("Apellido");
+        jPanel2.add(labelcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, -1, -1));
 
         jbuttonBuscarCliente.setBackground(new java.awt.Color(216, 199, 162));
         jbuttonBuscarCliente.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -178,7 +197,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
                 jbuttonBuscarClienteActionPerformed(evt);
             }
         });
-        jPanel2.add(jbuttonBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(371, 89, -1, -1));
+        jPanel2.add(jbuttonBuscarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 50, -1));
 
         labelcliente1.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         labelcliente1.setText("Empleado");
@@ -270,7 +289,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
                 jComboBoxHabitacionItemStateChanged(evt);
             }
         });
-        jPanel2.add(jComboBoxHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 37, 200, 32));
+        jPanel2.add(jComboBoxHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 200, 32));
 
         jbuttonIrRegistroCliente.setBackground(new java.awt.Color(216, 199, 162));
         jbuttonIrRegistroCliente.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -286,7 +305,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
                 jbuttonIrRegistroClienteActionPerformed(evt);
             }
         });
-        jPanel2.add(jbuttonIrRegistroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(418, 89, -1, -1));
+        jPanel2.add(jbuttonIrRegistroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 20, -1, -1));
 
         jButtonRegistrarClient.setBackground(new java.awt.Color(216, 199, 162));
         jButtonRegistrarClient.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
@@ -298,6 +317,14 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jButtonRegistrarClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 470, 100, 30));
+
+        jTextFieldClienteApellido.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldClienteApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jTextFieldClienteApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 130, 32));
+
+        labelcliente2.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        labelcliente2.setText("Cliente");
+        jPanel2.add(labelcliente2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         panel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 560, 520));
 
@@ -428,7 +455,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonRegistrarClient;
     private javax.swing.JComboBox<Empleado> jComboBoxEmpleado;
-    private javax.swing.JComboBox<String> jComboBoxHabitacion;
+    private javax.swing.JComboBox<Habitacion> jComboBoxHabitacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelFechaEntrada1;
@@ -443,6 +470,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     private javax.swing.JRadioButton jRadioButtonReservacion;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    public static javax.swing.JTextField jTextFieldClienteApellido;
     public static javax.swing.JTextField jTextFieldClienteReser;
     private javax.swing.JTextField jTextFieldFechEntrada1;
     private javax.swing.JTextField jTextFieldFechSalida;
@@ -454,6 +482,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     private javax.swing.JLabel labelHabitacion;
     private javax.swing.JLabel labelcliente;
     private javax.swing.JLabel labelcliente1;
+    private javax.swing.JLabel labelcliente2;
     private java.awt.Panel panel4;
     private java.awt.Panel panel5;
     // End of variables declaration//GEN-END:variables
