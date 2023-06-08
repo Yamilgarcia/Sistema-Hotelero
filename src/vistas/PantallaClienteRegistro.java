@@ -50,6 +50,10 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
 
     }
 
+    
+   
+    
+    
     public void editarCliente() {
 
         CRUDCliente cc = new CRUDCliente();
@@ -257,6 +261,7 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                 guardarCliente();
                 limpiar();
                 JOptionPane.showMessageDialog(null, "Datos guardados");
+                
             }
 
         } catch (HeadlessException e) {
