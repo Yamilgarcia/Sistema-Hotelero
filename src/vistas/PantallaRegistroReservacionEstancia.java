@@ -5,9 +5,6 @@
 package vistas;
 
 import Conexion.CRUDCliente;
-<<<<<<< HEAD
-import java.awt.event.KeyEvent;
-=======
 import Conexion.CRUDEmpleado;
 import Conexion.CRUDHabitacion;
 import java.awt.HeadlessException;
@@ -16,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Empleado;
@@ -37,15 +33,11 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
     public PantallaRegistroReservacionEstancia() {
         initComponents();
-<<<<<<< HEAD
-       jTextFieldPrecio.setEnabled(false);
-=======
         ButtonGroup grupoRadios = new ButtonGroup();
         grupoRadios.add(jRadioButtonReservacion);
         grupoRadios.add(jRadioButtonEstadia);
 
         jTextFieldPrecio.setEnabled(false);
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\FondoHotel.jpg");
 
         llenarCombo1();
@@ -53,59 +45,12 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         modelo = new DefaultTableModel(null, titulos);
     }
 
-<<<<<<< HEAD
-    //Metodo para tipar solo letras.
-    private void KeyTipedTXT(java.awt.event.KeyEvent evt) {
-        char car = evt.getKeyChar();
-        if ((car < 'a' || car > 'z') && (car < 'A' || car > 'Z')
-                && car != 'á'
-                && car != 'é'
-                && car != 'í'
-                && car != 'ó'
-                && car != 'ú'
-                && car != 'Á'
-                && car != 'É'
-                && car != 'Í'
-                && car != 'Ó'
-                && car != 'Ú'
-                && car != 'Ü'
-                && car != 'ü'
-                && car != 'Ñ'
-                && car != 'ñ'
-                && (car != (char) KeyEvent.VK_SPACE)) {
-            evt.consume();
-        }
-    }
-    
-    //Metodo para tipar solo numeros.
-    private void KeyTipedNUM(java.awt.event.KeyEvent evt) {
-        char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') && (car < '0' || car > '9')) {
-            evt.consume();
-        }
-    }
-    
-    //Metodo para tipar solo numeros.
-    private void KeyTipedNUMPUN(java.awt.event.KeyEvent evt) {
-        char car = evt.getKeyChar();
-        if ((car < '0' || car > '9') && (car < '0' || car > '9')&& car != '.' && car != ',') {
-            evt.consume();
-        }
-    }
-    public void mostrar() {
-        try {
-            DefaultTableModel modelo;
-            CRUDCliente cli = new CRUDCliente();
-            modelo = cli.mostrarDatos();
-//            jTableClienteMuestra.setModel(modelo);
-=======
     public void mostrar() {
         try {
             DefaultTableModel modelo;
             CRUDHabitacion cli = new CRUDHabitacion();
             modelo = cli.mostrarDatosHabitacion();
             jTablehabitaciones.setModel(modelo);
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -153,35 +98,27 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jbuttonRegistrahabitacionNow = new javax.swing.JButton();
         labelHabitacion = new javax.swing.JLabel();
-<<<<<<< HEAD
-        jTextFieldHabitacion = new javax.swing.JTextField();
-        jTextFieldCliente = new javax.swing.JTextField();
-=======
         jTextFieldClienteReser = new javax.swing.JTextField();
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
         labelcliente = new javax.swing.JLabel();
         jbuttonBuscarCliente = new javax.swing.JButton();
         labelcliente1 = new javax.swing.JLabel();
         jComboBoxEmpleado = new javax.swing.JComboBox<>();
         jRadioButtonReservacion = new javax.swing.JRadioButton();
         jRadioButtonEstadia = new javax.swing.JRadioButton();
+        jTextFieldFechEntrada1 = new javax.swing.JTextField();
         jLabelFechaEntrada1 = new javax.swing.JLabel();
         jLabelFechaSalida = new javax.swing.JLabel();
+        jTextFieldFechSalida = new javax.swing.JTextField();
         jTextFieldPrecio = new javax.swing.JTextField();
         jLabelPrecio = new javax.swing.JLabel();
         jLabelPrecio1 = new javax.swing.JLabel();
         jTextFieldPrecio1 = new javax.swing.JTextField();
-<<<<<<< HEAD
-        jTextFieldFechEntrada1 = new javax.swing.JFormattedTextField();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
-=======
         jComboBoxHabitacion = new javax.swing.JComboBox<>();
         jbuttonIrRegistroCliente = new javax.swing.JButton();
         jButtonRegistrarClient = new javax.swing.JButton();
         jTextFieldClienteApellido = new javax.swing.JTextField();
         labelcliente2 = new javax.swing.JLabel();
         jbuttonRestarhabitacionNow1 = new javax.swing.JButton();
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -258,27 +195,9 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         labelHabitacion.setText("Habitacion");
         jPanel2.add(labelHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
-<<<<<<< HEAD
-        jTextFieldHabitacion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextFieldHabitacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextFieldHabitacion.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldHabitacionKeyTyped(evt);
-            }
-        });
-
-        jTextFieldCliente.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextFieldCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextFieldCliente.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldClienteKeyTyped(evt);
-            }
-        });
-=======
         jTextFieldClienteReser.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldClienteReser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(jTextFieldClienteReser, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 130, 32));
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
 
         labelcliente.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         labelcliente.setText("Apellido");
@@ -337,13 +256,10 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         });
         jPanel2.add(jRadioButtonEstadia, new org.netbeans.lib.awtextra.AbsoluteConstraints(298, 194, -1, -1));
 
-<<<<<<< HEAD
-=======
         jTextFieldFechEntrada1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldFechEntrada1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(jTextFieldFechEntrada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 254, 200, 32));
 
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
         jLabelFechaEntrada1.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelFechaEntrada1.setText("Fecha Entrada");
         jPanel2.add(jLabelFechaEntrada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(36, 257, -1, -1));
@@ -352,8 +268,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jLabelFechaSalida.setText("Fecha Salida");
         jPanel2.add(jLabelFechaSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 295, -1, -1));
 
-<<<<<<< HEAD
-=======
         jTextFieldFechSalida.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldFechSalida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextFieldFechSalida.addActionListener(new java.awt.event.ActionListener() {
@@ -363,24 +277,14 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         });
         jPanel2.add(jTextFieldFechSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 292, 200, 32));
 
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
         jTextFieldPrecio.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldPrecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextFieldPrecio.setOpaque(true);
         jTextFieldPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPrecioActionPerformed(evt);
             }
         });
-<<<<<<< HEAD
-        jTextFieldPrecio.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                jTextFieldPrecioKeyTyped(evt);
-            }
-        });
-=======
         jPanel2.add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 352, 200, 32));
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
 
         jLabelPrecio.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelPrecio.setText("Precio");
@@ -399,118 +303,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         });
         jPanel2.add(jTextFieldPrecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 402, 200, 32));
 
-<<<<<<< HEAD
-        try {
-            jTextFieldFechEntrada1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        try {
-            jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####/##/##")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(labelcliente1)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGap(45, 45, 45)
-                                    .addComponent(labelHabitacion))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                    .addContainerGap()
-                                    .addComponent(labelcliente))))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jTextFieldHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbuttonBuscarHabitacion))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jbuttonBuscarCliente))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(111, 111, 111)
-                        .addComponent(jRadioButton1)
-                        .addGap(65, 65, 65)
-                        .addComponent(jRadioButtonEstadia))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addGap(18, 18, 18)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabelFechaSalida)
-                                        .addComponent(jLabelPrecio))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                                            .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel2Layout.createSequentialGroup()
-                                            .addGap(31, 31, 31)
-                                            .addComponent(jFormattedTextField1))))
-                                .addGroup(jPanel2Layout.createSequentialGroup()
-                                    .addComponent(jLabelFechaEntrada1)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jTextFieldFechEntrada1))))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(jLabelPrecio1)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(jTextFieldPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(368, Short.MAX_VALUE))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(62, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbuttonBuscarHabitacion)
-                    .addComponent(labelHabitacion)
-                    .addComponent(jTextFieldHabitacion, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelcliente)
-                    .addComponent(jTextFieldCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbuttonBuscarCliente))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelcliente1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jRadioButton1)
-                    .addComponent(jRadioButtonEstadia))
-                .addGap(35, 35, 35)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabelFechaEntrada1)
-                    .addComponent(jTextFieldFechEntrada1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelFechaSalida)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPrecio))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldPrecio1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPrecio1))
-                .addGap(20, 20, 20))
-        );
-=======
         jComboBoxHabitacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jComboBoxHabitacion.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -518,7 +310,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jComboBoxHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 80, 200, 32));
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
 
         jbuttonIrRegistroCliente.setBackground(new java.awt.Color(216, 199, 162));
         jbuttonIrRegistroCliente.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
@@ -601,23 +392,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
     private void jbuttonRegistrahabitacionNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonRegistrahabitacionNowActionPerformed
 
-<<<<<<< HEAD
-    private void jbuttonBuscarHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonBuscarHabitacionActionPerformed
-//        try {
-//            DefaultTableModel modelo;
-//            CRUDCliente cli = new CRUDCliente();
-//            modelo = cli.buscarDatos(jTextFieldBuscar.getText());
-//            if (jTextFieldBuscar.getText().equals("")) {
-//                JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
-//                mostrar();
-//            } else {
-//                jTableClienteMuestra.setModel(modelo);
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, e);
-//        }
-    }//GEN-LAST:event_jbuttonBuscarHabitacionActionPerformed
-=======
         try {
             CRUDHabitacion hab = new CRUDHabitacion();
             boolean band = true;
@@ -656,7 +430,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         } catch (HeadlessException | NumberFormatException e) {
             JOptionPane.showMessageDialog(null, e);
         }
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
 
 
     }//GEN-LAST:event_jbuttonRegistrahabitacionNowActionPerformed
@@ -685,6 +458,10 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         PantallaBusquedaCliente.jtextButtonRefresh.setVisible(false);
     }//GEN-LAST:event_jbuttonBuscarClienteActionPerformed
 
+    private void jTextFieldFechSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechSalidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldFechSalidaActionPerformed
+
     private void jTextFieldPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPrecioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPrecioActionPerformed
@@ -693,22 +470,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldPrecio1ActionPerformed
 
-<<<<<<< HEAD
-    private void jTextFieldHabitacionKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldHabitacionKeyTyped
-        // TODO add your handling code here:
-        KeyTipedNUM(evt);
-    }//GEN-LAST:event_jTextFieldHabitacionKeyTyped
-
-    private void jTextFieldClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldClienteKeyTyped
-        // TODO add your handling code here:
-        KeyTipedTXT(evt);
-    }//GEN-LAST:event_jTextFieldClienteKeyTyped
-
-    private void jTextFieldPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPrecioKeyTyped
-        // TODO add your handling code here:
-        KeyTipedNUMPUN(evt);
-    }//GEN-LAST:event_jTextFieldPrecioKeyTyped
-=======
     private void jComboBoxEmpleadoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxEmpleadoItemStateChanged
 
     }//GEN-LAST:event_jComboBoxEmpleadoItemStateChanged
@@ -746,7 +507,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         } else
             JOptionPane.showConfirmDialog(null, "Seleccione el dato a eliminar");
     }//GEN-LAST:event_jbuttonRestarhabitacionNow1ActionPerformed
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
 
     /**
      * @param args the command line arguments
@@ -786,13 +546,8 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonRegistrarClient;
-<<<<<<< HEAD
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
-=======
     private javax.swing.JComboBox<Empleado> jComboBoxEmpleado;
     private javax.swing.JComboBox<Habitacion> jComboBoxHabitacion;
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelFechaEntrada1;
@@ -804,11 +559,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JRadioButton jRadioButtonEstadia;
-<<<<<<< HEAD
-    private javax.swing.JTextField jTextFieldCliente;
-    private javax.swing.JFormattedTextField jTextFieldFechEntrada1;
-    private javax.swing.JTextField jTextFieldHabitacion;
-=======
     private javax.swing.JRadioButton jRadioButtonReservacion;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablehabitaciones;
@@ -816,7 +566,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     public static javax.swing.JTextField jTextFieldClienteReser;
     private javax.swing.JTextField jTextFieldFechEntrada1;
     private javax.swing.JTextField jTextFieldFechSalida;
->>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
     private javax.swing.JTextField jTextFieldPrecio;
     private javax.swing.JTextField jTextFieldPrecio1;
     private javax.swing.JButton jbuttonBuscarCliente;
