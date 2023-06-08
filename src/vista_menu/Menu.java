@@ -10,6 +10,7 @@ import vistas.PantallaClienteRegistro;
 import vistas.PantallaIngresos;
 import vistas.PantallaRegistroReservacionEstancia;
 import vistas.RegistrarEmpleado;
+import vistas.PantallaRegistroReservacionEstancia;
 
 /**
  *
@@ -108,8 +109,8 @@ public final class Menu extends javax.swing.JFrame{
         jButtonRegistroReservacionEstancia = new javax.swing.JButton();
         jButtonBusquedaDeCliente = new javax.swing.JButton();
         jButtonRegistroCliente = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jButtonEmpleado = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabelFondo43 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,54 +119,25 @@ public final class Menu extends javax.swing.JFrame{
         jPanel1.setBackground(new java.awt.Color(0, 94, 144));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabelNombregrandeHotel.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabelNombregrandeHotel.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNombregrandeHotel.setText("Hotel Nuevo Milenio");
+        jPanel1.add(jLabelNombregrandeHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(7, 7, 441, 60));
 
         jLabelNombregrandeHotel1.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
         jLabelNombregrandeHotel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNombregrandeHotel1.setText("Nuevo Milenio-Juigalpa");
+        jPanel1.add(jLabelNombregrandeHotel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 71, 441, 60));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 3, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 30, 217, 51));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 3, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jLabelNombregrandeHotel1, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabelNombregrandeHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 857, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(183, 183, 183))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabelNombregrandeHotel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(4, 4, 4)
-                        .addComponent(jLabelNombregrandeHotel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 90, 217, 36));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1765, -1));
 
@@ -186,6 +158,7 @@ public final class Menu extends javax.swing.JFrame{
 
         jPanel3.setBackground(new java.awt.Color(98, 137, 179));
         jPanel3.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonIngreso.setBackground(new java.awt.Color(179, 140, 98));
         jButtonIngreso.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
@@ -196,6 +169,7 @@ public final class Menu extends javax.swing.JFrame{
                 jButtonIngresoActionPerformed(evt);
             }
         });
+        jPanel3.add(jButtonIngreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 290, 195, 50));
 
         jButtonBusquedaReserva.setBackground(new java.awt.Color(179, 140, 98));
         jButtonBusquedaReserva.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
@@ -206,6 +180,7 @@ public final class Menu extends javax.swing.JFrame{
                 jButtonBusquedaReservaActionPerformed(evt);
             }
         });
+        jPanel3.add(jButtonBusquedaReserva, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 195, 50));
 
         jButtonRegistroReservacionEstancia.setBackground(new java.awt.Color(179, 140, 98));
         jButtonRegistroReservacionEstancia.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
@@ -216,6 +191,7 @@ public final class Menu extends javax.swing.JFrame{
                 jButtonRegistroReservacionEstanciaActionPerformed(evt);
             }
         });
+        jPanel3.add(jButtonRegistroReservacionEstancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 195, 50));
 
         jButtonBusquedaDeCliente.setBackground(new java.awt.Color(179, 140, 98));
         jButtonBusquedaDeCliente.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
@@ -231,6 +207,7 @@ public final class Menu extends javax.swing.JFrame{
                 jButtonBusquedaDeClienteActionPerformed(evt);
             }
         });
+        jPanel3.add(jButtonBusquedaDeCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 195, 50));
 
         jButtonRegistroCliente.setBackground(new java.awt.Color(179, 140, 98));
         jButtonRegistroCliente.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
@@ -241,8 +218,7 @@ public final class Menu extends javax.swing.JFrame{
                 jButtonRegistroClienteActionPerformed(evt);
             }
         });
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistaimagen/hotel (1).png"))); // NOI18N
+        jPanel3.add(jButtonRegistroCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 195, 50));
 
         jButtonEmpleado.setBackground(new java.awt.Color(179, 140, 98));
         jButtonEmpleado.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
@@ -253,51 +229,12 @@ public final class Menu extends javax.swing.JFrame{
                 jButtonEmpleadoActionPerformed(evt);
             }
         });
+        jPanel3.add(jButtonEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 195, 50));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonBusquedaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonRegistroReservacionEstancia, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonBusquedaDeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonRegistroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(9, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addGap(21, 21, 21))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButtonIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButtonEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(54, 54, 54)
-                .addComponent(jButtonRegistroCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
-                .addComponent(jButtonBusquedaDeCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(jButtonRegistroReservacionEstancia, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
-                .addComponent(jButtonBusquedaReserva, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonEmpleado, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(203, Short.MAX_VALUE))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistaimagen/hotel (1).png"))); // NOI18N
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 150, 110));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 132, 210, 910));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 132, 220, 910));
 
         jLabelFondo43.setText("jLabel1");
         jLabelFondo43.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -319,10 +256,15 @@ public final class Menu extends javax.swing.JFrame{
     }//GEN-LAST:event_jButtonBusquedaReservaActionPerformed
 
     private void jButtonRegistroReservacionEstanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroReservacionEstanciaActionPerformed
+<<<<<<< HEAD
         // TODO add your handling code here:
         PantallaRegistroReservacionEstancia prr = new PantallaRegistroReservacionEstancia();
         this.dispose(); 
         prr.setVisible(true);
+=======
+        PantallaRegistroReservacionEstancia ReReser= new PantallaRegistroReservacionEstancia();
+        ReReser.setVisible(true);
+>>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
     }//GEN-LAST:event_jButtonRegistroReservacionEstanciaActionPerformed
 
     private void jButtonBusquedaDeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaDeClienteActionPerformed

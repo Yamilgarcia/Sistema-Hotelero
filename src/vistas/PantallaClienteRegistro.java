@@ -28,12 +28,16 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jTextFieldIDPersona.setVisible(false);
         jTextFieldIDCliente.setEnabled(false);
         jTextFieldIDCliente.setVisible(false);
+        
+        
 
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabelFondo, "src\\vistaimagen\\FondoHotel.jpg");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\hotel.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel3, "src\\vistaimagen\\hotel icono.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel4, "src\\vistaimagen\\icons8_contacts_512px_1.png");
     }
 
+    
     public void guardarCliente() {
         CRUDCliente cc = new CRUDCliente();
         Cliente cl = new Cliente(jtextCedula.getText(),
@@ -47,6 +51,10 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
 
     }
 
+    
+   
+    
+    
     public void editarCliente() {
 
         CRUDCliente cc = new CRUDCliente();
@@ -110,9 +118,16 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+<<<<<<< HEAD
         jButtonRegistrarCliente = new javax.swing.JButton();
         jTextNombre1 = new javax.swing.JTextField();
         jTextNombre2 = new javax.swing.JTextField();
+=======
+        jButtonRegistrarClient = new javax.swing.JButton();
+        jButtonActualizar = new javax.swing.JButton();
+        jTextFieldNombre1 = new javax.swing.JTextField();
+        jTextFieldNombre2 = new javax.swing.JTextField();
+>>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
         jLabelSegundoNombre = new javax.swing.JLabel();
         jTextApellido1 = new javax.swing.JTextField();
         jLabelPrimerApellido = new javax.swing.JLabel();
@@ -123,11 +138,17 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jTextFieldProcedencia = new javax.swing.JTextField();
         jLabelPrimerApellido2 = new javax.swing.JLabel();
         jLabelPrimerApellido3 = new javax.swing.JLabel();
+<<<<<<< HEAD
         jtextCedula = new javax.swing.JFormattedTextField();
         jtextTelefono = new javax.swing.JFormattedTextField();
         jButtonActualizar = new javax.swing.JButton();
+=======
+        jFormattedTextFieldCedula = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldTelefono = new javax.swing.JFormattedTextField();
+>>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
         jTextFieldIDPersona = new javax.swing.JTextField();
         jTextFieldIDCliente = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -150,9 +171,11 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(162, 179, 216));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabel1.setText("Nombre del Cliente");
+        jPanel2.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 35, -1, -1));
 
         jButtonRegistrarCliente.setBackground(new java.awt.Color(179, 140, 98));
         jButtonRegistrarCliente.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
@@ -163,6 +186,7 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                 jButtonRegistrarClienteActionPerformed(evt);
             }
         });
+<<<<<<< HEAD
 
         jTextNombre1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextNombre1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -228,6 +252,9 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
 
         jLabelPrimerApellido3.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelPrimerApellido3.setText("Telefono");
+=======
+        jPanel2.add(jButtonRegistrarClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, 195, 50));
+>>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
 
         try {
             jtextCedula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
@@ -250,19 +277,77 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                 jButtonActualizarActionPerformed(evt);
             }
         });
+        jPanel2.add(jButtonActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, 195, 50));
+
+        jTextFieldNombre1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldNombre1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldNombre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNombre1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextFieldNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 71, 200, 50));
+
+        jTextFieldNombre2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldNombre2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jTextFieldNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 71, 200, 50));
+
+        jLabelSegundoNombre.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelSegundoNombre.setText("Segundo Nombre");
+        jPanel2.add(jLabelSegundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 35, -1, -1));
+
+        jTextFieldApellido1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldApellido1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jTextFieldApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 207, 200, 50));
+
+        jLabelPrimerApellido.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelPrimerApellido.setText("Primer Apellido");
+        jPanel2.add(jLabelPrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 171, -1, -1));
+
+        jTextFieldApellido2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldApellido2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jTextFieldApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 207, 200, 50));
+
+        jLabelSegundoApellido.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelSegundoApellido.setText("Segundo Apellido");
+        jPanel2.add(jLabelSegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 171, -1, -1));
+
+        jLabel2.setText("jLabel2");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 35, 213, 235));
+
+        jLabelCedula.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelCedula.setText("Cedula Cliente ");
+        jPanel2.add(jLabelCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 300, -1, -1));
+
+        jTextFieldProcedencia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldProcedencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel2.add(jTextFieldProcedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 330, 200, 50));
+
+        jLabelPrimerApellido2.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelPrimerApellido2.setText("Procedencia");
+        jPanel2.add(jLabelPrimerApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(359, 294, -1, -1));
+
+        jLabelPrimerApellido3.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelPrimerApellido3.setText("Telefono");
+        jPanel2.add(jLabelPrimerApellido3, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 294, 91, -1));
+        jPanel2.add(jFormattedTextFieldCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 330, 200, 50));
+        jPanel2.add(jFormattedTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 330, 200, 50));
 
         jTextFieldIDPersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldIDPersonaActionPerformed(evt);
             }
         });
+        jPanel2.add(jTextFieldIDPersona, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 7, -1, -1));
 
         jTextFieldIDCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldIDClienteActionPerformed(evt);
             }
         });
+        jPanel2.add(jTextFieldIDCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 7, -1, -1));
 
+<<<<<<< HEAD
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -357,6 +442,10 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                     .addComponent(jButtonRegistrarCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29))
         );
+=======
+        jLabel4.setText("jLabel4");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 68, 60, 60));
+>>>>>>> 25eadebd8b0ca546e3566cb850291381ae87260d
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 860, 510));
 
@@ -381,7 +470,9 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Tiene datos vacio");
             } else {
                 guardarCliente();
+                limpiar();
                 JOptionPane.showMessageDialog(null, "Datos guardados");
+                
             }
 
         } catch (HeadlessException e) {
@@ -496,6 +587,7 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelCedula;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelNombregrandeHotel;

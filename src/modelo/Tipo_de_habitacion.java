@@ -9,58 +9,51 @@ package modelo;
  * @author Usuario
  */
 public class Tipo_de_habitacion {
-    int ID_tipoHabitacion;
-    String Baño;
-    int Num_cama;
-    boolean Aire_Acondi;// salen como bit en la bd, preguntar si es asi, de igual manera con television
-    boolean Television;
+    int ID_TipoHabitacion;
+    String Nombre;
+    String Descripcion;
 
-    public Tipo_de_habitacion(int ID_tipoHabitacion, String Baño, int Num_cama, boolean Aire_Acondi, boolean Television) {
-        this.ID_tipoHabitacion = ID_tipoHabitacion;
-        this.Baño = Baño;
-        this.Num_cama = Num_cama;
-        this.Aire_Acondi = Aire_Acondi;
-        this.Television = Television;
+    public Tipo_de_habitacion(int ID_TipoHabitacion, String Nombre, String Descripcion) {
+        this.ID_TipoHabitacion = ID_TipoHabitacion;
+        this.Nombre = Nombre;
+        this.Descripcion = Descripcion;
     }
 
-    public int getID_tipoHabitacion() {
-        return ID_tipoHabitacion;
+    public Tipo_de_habitacion() {
     }
 
-    public void setID_tipoHabitacion(int ID_tipoHabitacion) {
-        this.ID_tipoHabitacion = ID_tipoHabitacion;
+    public Tipo_de_habitacion(String Nombre) {
+        this.Nombre = Nombre;
     }
 
-    public String getBaño() {
-        return Baño;
+    
+    
+    
+    
+    public int getID_TipoHabitacion() {
+        return ID_TipoHabitacion;
     }
 
-    public void setBaño(String Baño) {
-        this.Baño = Baño;
+    public void setID_TipoHabitacion(int ID_TipoHabitacion) {
+        this.ID_TipoHabitacion = ID_TipoHabitacion;
     }
 
-    public int getNum_cama() {
-        return Num_cama;
+    public String getNombre() {
+        return Nombre;
     }
 
-    public void setNum_cama(int Num_cama) {
-        this.Num_cama = Num_cama;
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
-    public boolean isAire_Acondi() {
-        return Aire_Acondi;
+    public String getDescripcion() {
+        return Descripcion;
     }
 
-    public void setAire_Acondi(boolean Aire_Acondi) {
-        this.Aire_Acondi = Aire_Acondi;
+    public void setDescripcion(String Descripcion) {
+        this.Descripcion = Descripcion;
     }
-
-    public boolean isTelevision() {
-        return Television;
-    }
-
-    public void setTelevision(boolean Television) {
-        this.Television = Television;
-    }
+    
+    
     
 }
