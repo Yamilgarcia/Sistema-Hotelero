@@ -16,7 +16,7 @@ import vista_menu.Menu;
 
 /**
  *
- * @author Usuario
+ * @author Oreki
  */
 public class PantallaBusquedaCliente extends javax.swing.JFrame {
 
@@ -94,6 +94,12 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
 
         panel2.setBackground(new java.awt.Color(98, 137, 179));
         panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextFieldBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldBuscarActionPerformed(evt);
+            }
+        });
         panel2.add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 660, 50));
 
         jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
@@ -234,15 +240,15 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         if (datoSeleccionado>= 0) {
             PantallaClienteRegistro.jTextFieldIDPersona.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 0)));
             PantallaClienteRegistro.jTextFieldIDCliente.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 1)));
-            PantallaClienteRegistro.jFormattedTextFieldCedula.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 2)));
-            PantallaClienteRegistro.jTextFieldNombre1.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 3)));
-            PantallaClienteRegistro.jTextFieldNombre2.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 4)));
-            PantallaClienteRegistro.jTextFieldApellido1.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 5)));
-            PantallaClienteRegistro.jTextFieldApellido2.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 6)));
+            PantallaClienteRegistro.jtextCedula.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 2)));
+            PantallaClienteRegistro.jTextNombre1.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 3)));
+            PantallaClienteRegistro.jTextNombre2.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 4)));
+            PantallaClienteRegistro.jTextApellido1.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 5)));
+            PantallaClienteRegistro.jTextApellido2.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 6)));
             PantallaClienteRegistro.jTextFieldProcedencia.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 7)));
-            PantallaClienteRegistro.jFormattedTextFieldTelefono.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 8)));
+            PantallaClienteRegistro.jtextTelefono.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 8)));
 
-            PantallaClienteRegistro.jButtonRegistrarClient.setVisible(false);
+            PantallaClienteRegistro.jButtonRegistrarCliente.setVisible(false);
             cliente.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Debe seleccionar un registro a actualizar");
@@ -288,6 +294,10 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
     private void jtextButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextButtonRefreshActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtextButtonRefreshActionPerformed
+
+    private void jTextFieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldBuscarActionPerformed
 
     /**
      * @param args the command line arguments

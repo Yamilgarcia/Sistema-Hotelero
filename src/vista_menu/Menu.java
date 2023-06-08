@@ -1,39 +1,33 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package vista_menu;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import vistas.InicioSesion;
 import vistas.PantallaBusquedaCliente;
 import vistas.PantallaClienteRegistro;
+import vistas.PantallaIngresos;
+import vistas.PantallaRegistroReservacionEstancia;
 import vistas.RegistrarEmpleado;
 
 /**
  *
  * @author Usuario
  */
-public class Menu extends javax.swing.JFrame {
+public final class Menu extends javax.swing.JFrame{
 
     /**
      * Creates new form Menu
      */
     public Menu() {
-        
+//        InicSesion();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setExtendedState(Menu.MAXIMIZED_BOTH);
-
-        
 
         // Crear los JLabel para la fecha y la hora
         jLabel3 = new JLabel();
         jLabel1 = new JLabel();
-
-        
-        
 
         // Actualizar la fecha y la hora en los JLabel
         updateDateTime();
@@ -60,11 +54,21 @@ public class Menu extends javax.swing.JFrame {
         setVisible(true);
 
         initComponents();
-        
-        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\hotel (1).png" );
-        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelFondo43, "src\\vistaimagen\\FondoHotel.jpg" );
-        
+
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\hotel (1).png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelFondo43, "src\\vistaimagen\\FondoHotel.jpg");
+
     }
+//
+//    public void InicSesion() {
+//        Menu menu = new Menu();
+//        if (menu.isVisible()) {
+//            InicioSesion inic = new InicioSesion();
+//            setVisible(false);
+//            inic.setVisible(true);
+//        }
+//    }
+
     
     private void updateDateTime() {
         // Obtener la fecha y la hora actual
@@ -82,7 +86,6 @@ public class Menu extends javax.swing.JFrame {
         jLabel3.setText("Fecha: " + formattedDate);
         jLabel1.setText("Hora: " + formattedTime);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -298,13 +301,17 @@ public class Menu extends javax.swing.JFrame {
 
         jLabelFondo43.setText("jLabel1");
         jLabelFondo43.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabelFondo43, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 136, 1440, 710));
+        getContentPane().add(jLabelFondo43, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 1440, 890));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresoActionPerformed
         // TODO add your handling code here:
+        PantallaIngresos ingre = new PantallaIngresos();
+        this.dispose();
+        ingre.setVisible(true);
+        
     }//GEN-LAST:event_jButtonIngresoActionPerformed
 
     private void jButtonBusquedaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaReservaActionPerformed
@@ -313,6 +320,9 @@ public class Menu extends javax.swing.JFrame {
 
     private void jButtonRegistroReservacionEstanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroReservacionEstanciaActionPerformed
         // TODO add your handling code here:
+        PantallaRegistroReservacionEstancia prr = new PantallaRegistroReservacionEstancia();
+        this.dispose(); 
+        prr.setVisible(true);
     }//GEN-LAST:event_jButtonRegistroReservacionEstanciaActionPerformed
 
     private void jButtonBusquedaDeClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaDeClienteActionPerformed
@@ -320,7 +330,7 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBusquedaDeClienteActionPerformed
 
     private void jButtonRegistroClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroClienteActionPerformed
-        
+
         PantallaClienteRegistro ventanaNueva = new PantallaClienteRegistro();
         ventanaNueva.setVisible(true);
     }//GEN-LAST:event_jButtonRegistroClienteActionPerformed
@@ -341,14 +351,13 @@ public class Menu extends javax.swing.JFrame {
     public static void main(String args[]) {
         // Crear instancia de la pantalla principal
         Menu frame = new Menu();
-        
+
         // Establecer el comportamiento de cierre para la pantalla principal
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+
         // Establecer la visibilidad de la pantalla principal
         frame.setVisible(true);
-        
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -375,7 +384,7 @@ public class Menu extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
+                new Menu().setVisible(true);
             }
         });
     }

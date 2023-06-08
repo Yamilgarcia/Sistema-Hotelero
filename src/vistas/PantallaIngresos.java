@@ -3,9 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package vistas;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import java.awt.Image;
+
 /**
  *
  * @author Usuario
@@ -17,10 +19,18 @@ public class PantallaIngresos extends javax.swing.JFrame {
      */
     public PantallaIngresos() {
         initComponents();
-        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelfondoingreso, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\ingresos.png" );
-        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelfondoingreso1, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\ingresos (1).png" );
-        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1fondo, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\FondoHotel.jpg" );
-        
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelfondoingreso, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\ingresos.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabelfondoingreso1, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\ingresos (1).png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1fondo, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\FondoHotel.jpg");
+
+    }
+
+    //Metodo para tipar solo numeros.
+    private void KeyTipedNUM(java.awt.event.KeyEvent evt) {
+        char car = evt.getKeyChar();
+        if ((car < '0' || car > '9') && (car < '0' || car > '9')) {
+            evt.consume();
+        }
     }
 
     /**
@@ -88,14 +98,29 @@ public class PantallaIngresos extends javax.swing.JFrame {
 
         jTextFieldDia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldDia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldDia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldDiaKeyTyped(evt);
+            }
+        });
         jPanel2.add(jTextFieldDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 81, 200, 50));
 
         jTextFieldMes.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldMes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldMes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldMesKeyTyped(evt);
+            }
+        });
         jPanel2.add(jTextFieldMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 205, 200, 50));
 
         jTextFieldAño.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldAño.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldAño.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldAñoKeyTyped(evt);
+            }
+        });
         jPanel2.add(jTextFieldAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(333, 345, 200, 50));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 570, 460));
@@ -121,13 +146,26 @@ public class PantallaIngresos extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextFieldDiaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDiaKeyTyped
+        // TODO add your handling code here:
+        KeyTipedNUM(evt);
+    }//GEN-LAST:event_jTextFieldDiaKeyTyped
+
+    private void jTextFieldMesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldMesKeyTyped
+        // TODO add your handling code here:
+        KeyTipedNUM(evt);
+    }//GEN-LAST:event_jTextFieldMesKeyTyped
+
+    private void jTextFieldAñoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldAñoKeyTyped
+        // TODO add your handling code here:
+        KeyTipedNUM(evt);
+    }//GEN-LAST:event_jTextFieldAñoKeyTyped
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-                
-                
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
