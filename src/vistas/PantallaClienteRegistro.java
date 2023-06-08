@@ -28,12 +28,15 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jTextFieldIDCliente.setEnabled(false);
         jTextFieldIDCliente.setVisible(false);
         
+        
 
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabelFondo, "src\\vistaimagen\\FondoHotel.jpg");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\hotel.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel3, "src\\vistaimagen\\hotel icono.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel4, "src\\vistaimagen\\icons8_contacts_512px_1.png");
     }
 
+    
     public void guardarCliente() {
         CRUDCliente cc = new CRUDCliente();
         Cliente cl = new Cliente(jFormattedTextFieldCedula.getText(),
@@ -107,6 +110,7 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jFormattedTextFieldTelefono = new javax.swing.JFormattedTextField();
         jTextFieldIDPersona = new javax.swing.JTextField();
         jTextFieldIDCliente = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -225,6 +229,9 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         });
         jPanel2.add(jTextFieldIDCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(248, 7, -1, -1));
 
+        jLabel4.setText("jLabel4");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 68, 60, 60));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 860, 510));
 
         jLabelFondo.setText("Jlabelfondo");
@@ -248,6 +255,7 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Tiene datos vacio");
             } else {
                 guardarCliente();
+                limpiar();
                 JOptionPane.showMessageDialog(null, "Datos guardados");
             }
 
@@ -344,6 +352,7 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelCedula;
     private javax.swing.JLabel jLabelFondo;
     private javax.swing.JLabel jLabelNombregrandeHotel;

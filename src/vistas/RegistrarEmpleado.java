@@ -5,6 +5,7 @@
 package vistas;
 
 import Conexion.CRUDEmpleado;
+import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,30 +33,31 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         jTextFieldIDPersona.setVisible(false);
         jTextFieldIDEmpleado.setEnabled(false);
         jTextFieldIDEmpleado.setVisible(false);
+        botonmostrar.setVisible(false);
         
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\FondoHotel.jpg");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel3, "src\\vistaimagen\\5-estrellas.png");
         mostrar();
 
-        jtextButtonRefresh2.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                refreshTablaEmpleado();
-            }
-        });
+//        jtextButtonRefresh2.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                refreshTablaEmpleado();
+//            }
+//        });
 
     }
 
-    private void refreshTablaEmpleado() {
-
-        // se llama a un método de consulta a la base de datos
-        // obtenemos los nuevos datos en un objeto DefaultTableModel llamado "modelo"
-        CRUDEmpleado cl2 = new CRUDEmpleado();
-        DefaultTableModel modelo = cl2.mostrarDatosEmpleado();
-
-        // Actualizar el modelo de la tabla jTableCliente con los nuevos datos
-        jTableEmpleado.setModel(modelo);
-    }
+//    private void refreshTablaEmpleado() {
+//
+//        // se llama a un método de consulta a la base de datos
+//        // obtenemos los nuevos datos en un objeto DefaultTableModel llamado "modelo"
+//        CRUDEmpleado cl2 = new CRUDEmpleado();
+//        DefaultTableModel modelo = cl2.mostrarDatosEmpleado();
+//
+//        // Actualizar el modelo de la tabla jTableCliente con los nuevos datos
+//        jTableEmpleado.setModel(modelo);
+//    }
 
     public void mostrar() {
         try {
@@ -147,7 +149,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         jTextFieldBuscar = new javax.swing.JTextField();
         jbuttonBuscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jtextButtonRefresh2 = new javax.swing.JButton();
+        botonmostrar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -237,6 +239,11 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
                 jPasswordContraseñaMouseClicked(evt);
             }
         });
+        jPasswordContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPasswordContraseñaActionPerformed(evt);
+            }
+        });
         jPanel3.add(jPasswordContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 200, 50));
 
         jlabelcontra.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
@@ -324,6 +331,20 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTableEmpleado);
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 660, 250));
+
+        jTextFieldBuscar.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        jTextFieldBuscar.setForeground(new java.awt.Color(102, 102, 102));
+        jTextFieldBuscar.setText("Buscar");
+        jTextFieldBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTextFieldBuscarMouseClicked(evt);
+            }
+        });
+        jTextFieldBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldBuscarActionPerformed(evt);
+            }
+        });
         jPanel2.add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 660, 50));
 
         jbuttonBuscar.setBackground(new java.awt.Color(216, 199, 162));
@@ -345,21 +366,12 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         jLabel3.setText("jLabel3");
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 150, 130));
 
-        jtextButtonRefresh2.setBackground(new java.awt.Color(216, 199, 162));
-        jtextButtonRefresh2.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jtextButtonRefresh2.setText("Refrescar");
-        jtextButtonRefresh2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jtextButtonRefresh2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jtextButtonRefresh2MouseClicked(evt);
-            }
-        });
-        jtextButtonRefresh2.addActionListener(new java.awt.event.ActionListener() {
+        botonmostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtextButtonRefresh2ActionPerformed(evt);
+                botonmostrarActionPerformed(evt);
             }
         });
-        jPanel2.add(jtextButtonRefresh2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 460, 100, 50));
+        jPanel2.add(botonmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 800, 530));
 
@@ -384,6 +396,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
             } else {
                 guardarEmpleado();
                 limpiar();
+                RegistrarEmpleado.botonmostrar.doClick();
                 JOptionPane.showMessageDialog(null, "Datos guardados");
             }
 
@@ -418,14 +431,6 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, e);
         }
     }//GEN-LAST:event_jbuttonBuscarActionPerformed
-
-    private void jtextButtonRefresh2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtextButtonRefresh2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtextButtonRefresh2MouseClicked
-
-    private void jtextButtonRefresh2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextButtonRefresh2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtextButtonRefresh2ActionPerformed
 
     private void jbuttonEditarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuttonEditarMouseClicked
         // TODO add your handling code here:
@@ -472,6 +477,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
                 editarEmpleado();
                 limpiar();
                 RegistrarEmpleado.jButtonRegistrarEmpleado.setVisible(true);
+                RegistrarEmpleado.botonmostrar.doClick();
                 JOptionPane.showMessageDialog(null, "Datos actualizados correctamente");
 
             }
@@ -506,6 +512,25 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
                 "Debe seleccionar un registro de la tabla");
         }
     }//GEN-LAST:event_jbuttonEliminarEmpleadoActionPerformed
+
+    private void jPasswordContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jPasswordContraseñaActionPerformed
+
+    private void jTextFieldBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldBuscarMouseClicked
+        if (jTextFieldBuscar.getText().equals("Buscar")) {
+            jTextFieldBuscar.setText("");
+            jTextFieldBuscar.setForeground(Color.BLACK);
+        }
+    }//GEN-LAST:event_jTextFieldBuscarMouseClicked
+
+    private void botonmostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonmostrarActionPerformed
+        mostrar();
+    }//GEN-LAST:event_botonmostrarActionPerformed
+
+    private void jTextFieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBuscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -543,6 +568,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton botonmostrar;
     public static javax.swing.JButton jButtonActualizar;
     public static javax.swing.JButton jButtonRegistrarEmpleado;
     private javax.swing.JLabel jLabel1;
@@ -573,6 +599,5 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
     private javax.swing.JButton jbuttonEditar;
     private javax.swing.JButton jbuttonEliminarEmpleado;
     private javax.swing.JLabel jlabelcontra;
-    private javax.swing.JButton jtextButtonRefresh2;
     // End of variables declaration//GEN-END:variables
 }

@@ -231,7 +231,7 @@ public class Menu extends javax.swing.JFrame {
         });
         jPanel3.add(jButtonEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 476, 195, 50));
 
-        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 132, 210, 910));
+        getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 132, 220, 910));
 
         jLabelFondo43.setText("jLabel1");
         jLabelFondo43.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
