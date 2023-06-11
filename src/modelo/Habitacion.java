@@ -15,6 +15,8 @@ public class Habitacion extends Tipo_de_habitacion {
     int Num_Cama;
     boolean Estado;
     float Precio;
+    
+    
 
     public Habitacion(int N_de_habitacion, int ID_tipoHabitacion, int Num_Cama, boolean Estado, float Precio, int ID_TipoHabitacion, String Nombre, String Descripcion) {
         super(ID_TipoHabitacion, Nombre, Descripcion);
@@ -31,6 +33,10 @@ public class Habitacion extends Tipo_de_habitacion {
         this.Estado = Estado;
         this.Precio = Precio;
     }
+    
+    
+    
+    
 
     public Habitacion() {
         super();
@@ -77,6 +83,8 @@ public class Habitacion extends Tipo_de_habitacion {
     public String toString() {
         return N_de_habitacion + " - " + getNombre();
     }
+
+    
 
 }
 

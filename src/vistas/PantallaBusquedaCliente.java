@@ -316,6 +316,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
     private void jtextButtonAggCliReserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextButtonAggCliReserActionPerformed
         PantallaRegistroReservacionEstancia.jTextFieldClienteReser.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 3)));
         PantallaRegistroReservacionEstancia.jTextFieldClienteApellido.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 5)));
+        PantallaRegistroReservacionEstancia.jTextFieldIDclienteER.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 1)));
        
         dispose();
     }//GEN-LAST:event_jtextButtonAggCliReserActionPerformed

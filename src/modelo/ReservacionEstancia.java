@@ -8,20 +8,39 @@ import java.sql.Date;
  *
  * @author Usuario
  */
-public class ReservacionEstancia {
+public class ReservacionEstancia   {
     int ID_Reservaciones;
     int ID_cliente;
-    Date F_entreda;
+    Date F_entrada;
     Date F_salida;
     int ID_Empleado;
+    String TipoServicio;
+    String EstadoReserva;
+    
+    
 
-    public ReservacionEstancia(int ID_Reservaciones, int ID_cliente, Date F_entreda, Date F_salida, int ID_Empleado) {
+    public ReservacionEstancia(int ID_Reservaciones, int ID_cliente, Date F_entrada, Date F_salida, int ID_Empleado, String TipoServicio, String EstadoReserva) {
         this.ID_Reservaciones = ID_Reservaciones;
         this.ID_cliente = ID_cliente;
-        this.F_entreda = F_entreda;
+        this.F_entrada = F_entrada;
         this.F_salida = F_salida;
         this.ID_Empleado = ID_Empleado;
+        this.TipoServicio = TipoServicio;
+        this.EstadoReserva = EstadoReserva;
     }
+
+    public ReservacionEstancia(int ID_cliente, Date F_entrada, Date F_salida, int ID_Empleado, String TipoServicio, String EstadoReserva) {
+        this.ID_cliente = ID_cliente;
+        this.F_entrada =  F_entrada;
+        this.F_salida =  F_salida;
+        this.ID_Empleado = ID_Empleado;
+        this.TipoServicio = TipoServicio;
+        this.EstadoReserva = EstadoReserva;
+    }
+
+    
+    
+    
 
     public int getID_Reservaciones() {
         return ID_Reservaciones;
@@ -39,12 +58,12 @@ public class ReservacionEstancia {
         this.ID_cliente = ID_cliente;
     }
 
-    public Date getF_entreda() {
-        return F_entreda;
+    public Date getF_entrada() {
+        return F_entrada;
     }
 
-    public void setF_entreda(Date F_entreda) {
-        this.F_entreda = F_entreda;
+    public void setF_entrada(Date F_entrada) {
+        this.F_entrada = F_entrada;
     }
 
     public Date getF_salida() {
@@ -62,6 +81,24 @@ public class ReservacionEstancia {
     public void setID_Empleado(int ID_Empleado) {
         this.ID_Empleado = ID_Empleado;
     }
+
+    public String getTipoServicio() {
+        return TipoServicio;
+    }
+
+    public void setTipoServicio(String TipoServicio) {
+        this.TipoServicio = TipoServicio;
+    }
+
+    public String getEstadoReserva() {
+        return EstadoReserva;
+    }
+
+    public void setEstadoReserva(String EstadoReserva) {
+        this.EstadoReserva = EstadoReserva;
+    }
+
+   
     
     
 }

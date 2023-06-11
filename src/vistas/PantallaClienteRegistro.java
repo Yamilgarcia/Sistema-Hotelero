@@ -98,16 +98,11 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButtonRegistrarClient = new javax.swing.JButton();
         jButtonActualizar = new javax.swing.JButton();
-        jTextFieldNombre1 = new javax.swing.JTextField();
-        jTextFieldNombre2 = new javax.swing.JTextField();
         jLabelSegundoNombre = new javax.swing.JLabel();
-        jTextFieldApellido1 = new javax.swing.JTextField();
         jLabelPrimerApellido = new javax.swing.JLabel();
-        jTextFieldApellido2 = new javax.swing.JTextField();
         jLabelSegundoApellido = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabelCedula = new javax.swing.JLabel();
-        jTextFieldProcedencia = new javax.swing.JTextField();
         jLabelPrimerApellido2 = new javax.swing.JLabel();
         jLabelPrimerApellido3 = new javax.swing.JLabel();
         jFormattedTextFieldCedula = new javax.swing.JFormattedTextField();
@@ -115,6 +110,11 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jTextFieldIDPersona = new javax.swing.JTextField();
         jTextFieldIDCliente = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jTextFieldNombre1 = new javax.swing.JFormattedTextField();
+        jTextFieldNombre2 = new javax.swing.JFormattedTextField();
+        jTextFieldApellido2 = new javax.swing.JFormattedTextField();
+        jTextFieldApellido1 = new javax.swing.JFormattedTextField();
+        jTextFieldProcedencia = new javax.swing.JFormattedTextField();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -165,49 +165,24 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         });
         jPanel2.add(jButtonActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 430, 195, 50));
 
-        jTextFieldNombre1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextFieldNombre1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextFieldNombre1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldNombre1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextFieldNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 71, 200, 50));
-
-        jTextFieldNombre2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextFieldNombre2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextFieldNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 71, 200, 50));
-
         jLabelSegundoNombre.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelSegundoNombre.setText("Segundo Nombre");
         jPanel2.add(jLabelSegundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 35, -1, -1));
 
-        jTextFieldApellido1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextFieldApellido1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextFieldApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 207, 200, 50));
-
         jLabelPrimerApellido.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelPrimerApellido.setText("Primer Apellido");
         jPanel2.add(jLabelPrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 171, -1, -1));
-
-        jTextFieldApellido2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextFieldApellido2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextFieldApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 207, 200, 50));
 
         jLabelSegundoApellido.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelSegundoApellido.setText("Segundo Apellido");
         jPanel2.add(jLabelSegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 171, -1, -1));
 
         jLabel2.setText("jLabel2");
-        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 35, 213, 235));
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 35, 200, 235));
 
         jLabelCedula.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelCedula.setText("Cedula Cliente ");
         jPanel2.add(jLabelCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 300, -1, -1));
-
-        jTextFieldProcedencia.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextFieldProcedencia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextFieldProcedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(318, 330, 200, 50));
 
         jLabelPrimerApellido2.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelPrimerApellido2.setText("Procedencia");
@@ -216,8 +191,25 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jLabelPrimerApellido3.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelPrimerApellido3.setText("Telefono");
         jPanel2.add(jLabelPrimerApellido3, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 294, 91, -1));
-        jPanel2.add(jFormattedTextFieldCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(66, 330, 200, 50));
-        jPanel2.add(jFormattedTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 330, 200, 50));
+
+        try {
+            jFormattedTextFieldCedula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextFieldCedula.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldCedulaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jFormattedTextFieldCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 200, 50));
+
+        try {
+            jFormattedTextFieldTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel2.add(jFormattedTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 330, 200, 50));
 
         jTextFieldIDPersona.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -235,6 +227,41 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
 
         jLabel4.setText("jLabel4");
         jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 68, 60, 60));
+
+        jTextFieldNombre1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNombre1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextFieldNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 200, 50));
+
+        jTextFieldNombre2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldNombre2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextFieldNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 200, 50));
+
+        jTextFieldApellido2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldApellido2ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextFieldApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 200, 50));
+
+        jTextFieldApellido1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldApellido1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextFieldApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 200, 50));
+
+        jTextFieldProcedencia.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldProcedenciaActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextFieldProcedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 200, 50));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 860, 510));
 
@@ -272,10 +299,6 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonRegistrarClientActionPerformed
 
-    private void jTextFieldNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombre1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldNombre1ActionPerformed
-
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
         try {
             if (jTextFieldIDPersona.getText().isEmpty()
@@ -305,6 +328,30 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
     private void jTextFieldIDClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIDClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldIDClienteActionPerformed
+
+    private void jTextFieldNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombre1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombre1ActionPerformed
+
+    private void jTextFieldNombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombre2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldNombre2ActionPerformed
+
+    private void jTextFieldApellido1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldApellido1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldApellido1ActionPerformed
+
+    private void jTextFieldApellido2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldApellido2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldApellido2ActionPerformed
+
+    private void jTextFieldProcedenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldProcedenciaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldProcedenciaActionPerformed
+
+    private void jFormattedTextFieldCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCedulaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextFieldCedulaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -368,12 +415,12 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelSegundoNombre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    public static javax.swing.JTextField jTextFieldApellido1;
-    public static javax.swing.JTextField jTextFieldApellido2;
+    public static javax.swing.JFormattedTextField jTextFieldApellido1;
+    public static javax.swing.JFormattedTextField jTextFieldApellido2;
     public static javax.swing.JTextField jTextFieldIDCliente;
     public static javax.swing.JTextField jTextFieldIDPersona;
-    public static javax.swing.JTextField jTextFieldNombre1;
-    public static javax.swing.JTextField jTextFieldNombre2;
-    public static javax.swing.JTextField jTextFieldProcedencia;
+    public static javax.swing.JFormattedTextField jTextFieldNombre1;
+    public static javax.swing.JFormattedTextField jTextFieldNombre2;
+    public static javax.swing.JFormattedTextField jTextFieldProcedencia;
     // End of variables declaration//GEN-END:variables
 }

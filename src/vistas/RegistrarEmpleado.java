@@ -131,7 +131,6 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         jLabelPrimerApellido = new javax.swing.JLabel();
         jTextFieldApellido2 = new javax.swing.JTextField();
         jLabelSegundoApellido = new javax.swing.JLabel();
-        jTextFieldTelefono = new javax.swing.JTextField();
         jLabelPrimerApellido1 = new javax.swing.JLabel();
         jTextFieldusuarioSesion = new javax.swing.JTextField();
         jLabelusuarioSesion = new javax.swing.JLabel();
@@ -141,6 +140,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         jTextFieldIDPersona = new javax.swing.JTextField();
         jButtonActualizar = new javax.swing.JButton();
         jTextFieldIDEmpleado = new javax.swing.JTextField();
+        jTextFieldTelefono = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jbuttonEditar = new javax.swing.JButton();
         jbuttonEliminarEmpleado = new javax.swing.JButton();
@@ -217,10 +217,6 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         jLabelSegundoApellido.setText("Segundo Apellido");
         jPanel3.add(jLabelSegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
 
-        jTextFieldTelefono.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextFieldTelefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 200, 50));
-
         jLabelPrimerApellido1.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelPrimerApellido1.setText("Telefono ");
         jPanel3.add(jLabelPrimerApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, -1, -1));
@@ -244,7 +240,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
                 jPasswordContraseñaActionPerformed(evt);
             }
         });
-        jPanel3.add(jPasswordContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, 200, 50));
+        jPanel3.add(jPasswordContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, 200, 50));
 
         jlabelcontra.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jlabelcontra.setText("Contraseña");
@@ -273,6 +269,18 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         });
         jPanel3.add(jButtonActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 430, 195, 50));
         jPanel3.add(jTextFieldIDEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 540, -1, -1));
+
+        try {
+            jTextFieldTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jTextFieldTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTelefonoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 200, 50));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 140, 520, 530));
 
@@ -532,6 +540,10 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldBuscarActionPerformed
 
+    private void jTextFieldTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTelefonoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -593,7 +605,7 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
     public static javax.swing.JTextField jTextFieldIDPersona;
     public static javax.swing.JTextField jTextFieldNombre1;
     public static javax.swing.JTextField jTextFieldNombre2;
-    public static javax.swing.JTextField jTextFieldTelefono;
+    public static javax.swing.JFormattedTextField jTextFieldTelefono;
     public static javax.swing.JTextField jTextFieldusuarioSesion;
     private javax.swing.JButton jbuttonBuscar;
     private javax.swing.JButton jbuttonEditar;
