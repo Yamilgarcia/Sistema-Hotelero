@@ -27,8 +27,6 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jTextFieldIDPersona.setVisible(false);
         jTextFieldIDCliente.setEnabled(false);
         jTextFieldIDCliente.setVisible(false);
-        
-        
 
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabelFondo, "src\\vistaimagen\\FondoHotel.jpg");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\hotel.png");
@@ -36,7 +34,6 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel4, "src\\vistaimagen\\icons8_contacts_512px_1.png");
     }
 
-    
     public void guardarCliente() {
         CRUDCliente cc = new CRUDCliente();
         Cliente cl = new Cliente(jFormattedTextFieldCedula.getText(),
@@ -50,10 +47,6 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
 
     }
 
-    
-   
-    
-    
     public void editarCliente() {
 
         CRUDCliente cc = new CRUDCliente();
@@ -285,17 +278,21 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                     || (jFormattedTextFieldTelefono.getText().equals(""))) {
                 JOptionPane.showMessageDialog(null, "Tiene datos vacio");
             } else {
-                guardarCliente();
-                limpiar();
-                JOptionPane.showMessageDialog(null, "Datos guardados");
-                
+                if (cl.VerificarDatos(jFormattedTextFieldCedula.getText())) {
+                    JOptionPane.showMessageDialog(null, "Ya existe un cliente con ese numero de Cedula");
+
+                } else {
+                    guardarCliente();
+                    limpiar();
+                    JOptionPane.showMessageDialog(null, "Datos guardados");
+
+                }
             }
 
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
 
         }
-
 
     }//GEN-LAST:event_jButtonRegistrarClientActionPerformed
 

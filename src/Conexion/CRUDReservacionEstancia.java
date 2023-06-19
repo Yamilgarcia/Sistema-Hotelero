@@ -10,31 +10,87 @@ import java.sql.Connection;
 import modelo.ReservacionEstancia;
 import java.sql.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import modelo.DetalleReservacion;
+
 /**
  *
  * @author Usuario
  */
 public class CRUDReservacionEstancia {
+
     private final Conexion con = new Conexion();
     private final Connection cn = (Connection) con.conectar();
+
+    public void GuardarReservacionYDetalle(ReservacionEstancia reservacion, DetalleReservacion detalle) {
+    try {
+        CallableStatement cbst = cn.prepareCall("{call InsertarReservaEstayDetalleReserva(?,?,?,?,?,?,?)}");
+
+        // Parámetros de la tabla ReservacionEstancia
+        cbst.setInt(1, reservacion.getID_cliente());
+        cbst.setDate(2, reservacion.getF_entrada());
+        cbst.setTimestamp(3, reservacion.getF_salida());
+        cbst.setInt(4, reservacion.getID_Empleado());
+        cbst.setString(5, reservacion.getTipoServicio());
+        cbst.setString(6, reservacion.getEstadoReserva());
+
+        // Parámetros de la tabla DetalleReservacion
+        cbst.setInt(7, detalle.getN_de_habitacion());
+
+        boolean result = cbst.execute();
+
+        if (result) {
+            ResultSet rs = cbst.getResultSet();
+            if (rs.next()) {
+                int idReservaEstancia = rs.getInt("ID_ReservaEstancia");
+                int idDetalleReservacion = rs.getInt("ID_DetalleReservacion");
+                
+            }
+        }
+
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e);
+    }
+}
+
     
-    public void Guardar(ReservacionEstancia Cl) {
+    
+    
+    
+    public DefaultTableModel mostrarDatosReservaEstancia() {
+        ResultSet rs;
+        DefaultTableModel modelo;
+        String[] titulos = {"ID_ReservaEstancia", "ID_DetalleReservacion", "Nombre",  "Apellido",  "Cedula", "F_entrada",
+            "F_Salida","Tipo_Servicio","N_Habitacion", "Nombre Empleado"};
+        String[] registro = new String[10];
+        modelo = new DefaultTableModel(null, titulos);
+
         try {
-            CallableStatement cbst = cn.prepareCall("{call CrearEstaReserv(?,?,?,?,?,?)}");
+            CallableStatement cbstc = cn.prepareCall("{call MostrarReservacionDetalle}");
+            rs = cbstc.executeQuery();
 
-            cbst.setInt(1, Cl.getID_cliente());
-            cbst.setDate(2, Cl.getF_entrada());
-            cbst.setDate(3, Cl.getF_salida());
-            cbst.setInt(4, Cl.getID_Empleado());
-            cbst.setString(5, Cl.getTipoServicio());
-            cbst.setString(6, Cl.getEstadoReserva());
-            
+            while (rs.next()) {
+                registro[0] = rs.getString("ID_ReservaEstancia");
+                registro[1] = rs.getString("ID_DetalleReservacion");
+                registro[2] = rs.getString("Nombre");
+                registro[3] = rs.getString("Apellido");
+                registro[4] = rs.getString("Cedula");
+                registro[5] = rs.getString("F_entrada");
+                registro[6] = rs.getString("F_salida");
+                registro[7] = rs.getString("TipoServicio");
+                registro[8] = rs.getString("N_de_habitacion");
+                registro[9] = rs.getString("NombreEmpleado");
 
-            cbst.executeUpdate();
+                modelo.addRow(registro);
+            }
+            return modelo;
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
+            return null;
         }
 
     }
     
+
+
 }

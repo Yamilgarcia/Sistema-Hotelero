@@ -14,6 +14,7 @@ import java.util.concurrent.Callable;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Habitacion;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -67,7 +68,7 @@ public class CRUDHabitacion {
                 ha.setNombre(rs.getString("Nombre"));
                 ha.setDescripcion(rs.getString("Descripcion"));
                 ha.setNum_Cama(rs.getInt("Num_cama"));
-                ha.setEstado(rs.getBoolean("Estado"));
+                ha.setEstado(rs.getString("Estado"));
                 ha.setPrecio(rs.getFloat("Precio"));
                 habit.add(ha);
             }
@@ -78,4 +79,28 @@ public class CRUDHabitacion {
         return habit;
     }
 
+    
+    
+    
+    public void ActualizarDatosEstadoHabit(Habitacion C5) {
+        try {
+            CallableStatement cbst = cn.prepareCall("{call ModificarEstadoHabitacion(?,?)}");
+
+            cbst.setInt(1, C5.getN_de_habitacion());
+            cbst.setString(2, C5.getEstado());
+            
+            cbst.executeUpdate();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    
+    
+    
+   
+
+    
+    
 }

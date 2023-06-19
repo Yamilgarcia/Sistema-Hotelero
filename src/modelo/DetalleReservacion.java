@@ -5,6 +5,7 @@
 package modelo;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 
 /**
  *
@@ -15,12 +16,25 @@ public class DetalleReservacion extends ReservacionEstancia{
     int N_de_habitacion;
     int ID_Reservaciones;
 
-    public DetalleReservacion(int ID_DetalleReservacion, int N_de_habitacion, int ID_Reservaciones, int ID_cliente, Date F_entrada, Date F_salida, int ID_Empleado, String TipoServicio, String EstadoReserva) {
+    public DetalleReservacion(int ID_DetalleReservacion, int N_de_habitacion, int ID_Reservaciones, int ID_cliente, Date F_entrada, Timestamp F_salida, int ID_Empleado, String TipoServicio, String EstadoReserva) {
         super(ID_Reservaciones, ID_cliente, F_entrada, F_salida, ID_Empleado, TipoServicio, EstadoReserva);
         this.ID_DetalleReservacion = ID_DetalleReservacion;
         this.N_de_habitacion = N_de_habitacion;
         this.ID_Reservaciones = ID_Reservaciones;
     }
+
+        public DetalleReservacion(int N_de_habitacion, int ID_Reservaciones ) {
+        super(ID_Reservaciones);
+        this.N_de_habitacion = N_de_habitacion;
+        this.ID_Reservaciones = ID_Reservaciones;
+    }
+
+    public DetalleReservacion() {
+    }
+
+    
+
+    
 
     
 
@@ -40,12 +54,8 @@ public class DetalleReservacion extends ReservacionEstancia{
         this.N_de_habitacion = N_de_habitacion;
     }
 
-    public int getID_Reservaciones() {
-        return ID_Reservaciones;
-    }
+   
 
-    public void setID_Reservaciones(int ID_Reservaciones) {
-        this.ID_Reservaciones = ID_Reservaciones;
-    }
+    
     
 }

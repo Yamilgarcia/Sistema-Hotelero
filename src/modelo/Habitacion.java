@@ -13,12 +13,12 @@ public class Habitacion extends Tipo_de_habitacion {
     int N_de_habitacion;
     int ID_tipoHabitacion;
     int Num_Cama;
-    boolean Estado;
+    String Estado;
     float Precio;
     
     
 
-    public Habitacion(int N_de_habitacion, int ID_tipoHabitacion, int Num_Cama, boolean Estado, float Precio, int ID_TipoHabitacion, String Nombre, String Descripcion) {
+    public Habitacion(int N_de_habitacion, int ID_tipoHabitacion, int Num_Cama, String Estado, float Precio, int ID_TipoHabitacion, String Nombre, String Descripcion) {
         super(ID_TipoHabitacion, Nombre, Descripcion);
         this.N_de_habitacion = N_de_habitacion;
         this.ID_tipoHabitacion = ID_tipoHabitacion;
@@ -27,11 +27,15 @@ public class Habitacion extends Tipo_de_habitacion {
         this.Precio = Precio;
     }
 
-    public Habitacion(int N_de_habitacion, int Num_Cama, boolean Estado, float Precio) {
+    public Habitacion(int N_de_habitacion, int Num_Cama, String Estado, float Precio) {
         this.N_de_habitacion = N_de_habitacion;
         this.Num_Cama = Num_Cama;
         this.Estado = Estado;
         this.Precio = Precio;
+    }
+
+    public Habitacion(String Estado) {
+        this.Estado = Estado;
     }
     
     
@@ -63,11 +67,11 @@ public class Habitacion extends Tipo_de_habitacion {
         this.Num_Cama = Num_Cama;
     }
 
-    public boolean isEstado() {
+    public String isEstado() {
         return Estado;
     }
 
-    public void setEstado(boolean Estado) {
+    public void setEstado(String Estado) {
         this.Estado = Estado;
     }
 
@@ -82,6 +86,10 @@ public class Habitacion extends Tipo_de_habitacion {
     @Override
     public String toString() {
         return N_de_habitacion + " - " + getNombre();
+    }
+
+    public String getEstado() {
+        return Estado;
     }
 
     

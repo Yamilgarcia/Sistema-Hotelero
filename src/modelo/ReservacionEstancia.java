@@ -3,23 +3,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package modelo;
+
 import java.sql.Date;
+import java.sql.Timestamp;
+
 /**
  *
  * @author Usuario
  */
-public class ReservacionEstancia   {
+public class ReservacionEstancia {
+
     int ID_Reservaciones;
     int ID_cliente;
     Date F_entrada;
-    Date F_salida;
+    Timestamp F_salida;
     int ID_Empleado;
     String TipoServicio;
     String EstadoReserva;
-    
-    
 
-    public ReservacionEstancia(int ID_Reservaciones, int ID_cliente, Date F_entrada, Date F_salida, int ID_Empleado, String TipoServicio, String EstadoReserva) {
+    public ReservacionEstancia(int ID_Reservaciones, int ID_cliente, Date F_entrada, Timestamp F_salida, int ID_Empleado, String TipoServicio, String EstadoReserva) {
         this.ID_Reservaciones = ID_Reservaciones;
         this.ID_cliente = ID_cliente;
         this.F_entrada = F_entrada;
@@ -29,18 +31,21 @@ public class ReservacionEstancia   {
         this.EstadoReserva = EstadoReserva;
     }
 
-    public ReservacionEstancia(int ID_cliente, Date F_entrada, Date F_salida, int ID_Empleado, String TipoServicio, String EstadoReserva) {
+    public ReservacionEstancia(int ID_cliente, Date F_entrada, Timestamp F_salida, int ID_Empleado, String TipoServicio, String EstadoReserva) {
         this.ID_cliente = ID_cliente;
-        this.F_entrada =  F_entrada;
-        this.F_salida =  F_salida;
+        this.F_entrada = F_entrada;
+        this.F_salida = F_salida;
         this.ID_Empleado = ID_Empleado;
         this.TipoServicio = TipoServicio;
         this.EstadoReserva = EstadoReserva;
     }
 
-    
-    
-    
+    public ReservacionEstancia(int ID_Reservaciones) {
+        this.ID_Reservaciones = ID_Reservaciones;
+    }
+
+    public ReservacionEstancia() {
+    }
 
     public int getID_Reservaciones() {
         return ID_Reservaciones;
@@ -66,11 +71,11 @@ public class ReservacionEstancia   {
         this.F_entrada = F_entrada;
     }
 
-    public Date getF_salida() {
+    public Timestamp getF_salida() {
         return F_salida;
     }
 
-    public void setF_salida(Date F_salida) {
+    public void setF_salida(Timestamp F_salida) {
         this.F_salida = F_salida;
     }
 
@@ -98,7 +103,4 @@ public class ReservacionEstancia   {
         this.EstadoReserva = EstadoReserva;
     }
 
-   
-    
-    
 }

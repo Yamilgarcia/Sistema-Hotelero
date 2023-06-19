@@ -131,17 +131,22 @@ public class CRUDCliente {
 
     }
 
-    public boolean VerificarDatos(String Dato) {
-        ResultSet rs;
-        try {
-            CallableStatement call = cn.prepareCall("{call ConsultarClientes(?)}");
-            call.setString(1, Dato);
-            rs = call.executeQuery();
-            return rs.next();
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-            return false;
-        }
-    }
+   public boolean VerificarDatos(String cedula) {
+  try {
+    CallableStatement call = cn.prepareCall("{call VerificarCedula(?, ?)}");
+    call.setString(1, cedula);
+    call.registerOutParameter(2, Types.BIT);
+    call.execute();
+    
+    boolean existe = call.getBoolean(2);
+    return existe;
+  } catch (SQLException e) {
+    JOptionPane.showMessageDialog(null, e);
+    return false;
+  }
+}
+
+
+
 
 }

@@ -100,6 +100,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         panel2.add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 660, 50));
 
+        jTableCliente.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},

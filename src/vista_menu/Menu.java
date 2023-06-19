@@ -8,10 +8,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import vistas.PantallBusquedaReservacionEstancia;
 import vistas.PantallaBusquedaCliente;
 import vistas.PantallaClienteRegistro;
+import vistas.PantallaIngresos;
 import vistas.RegistrarEmpleado;
 import vistas.PantallaRegistroReservacionEstancia;
+import vistas.VistaHabitaciones;
 
 /**
  *
@@ -108,6 +111,7 @@ public class Menu extends javax.swing.JFrame {
         jButtonRegistroCliente = new javax.swing.JButton();
         jButtonEmpleado = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButtonHabitaciones = new javax.swing.JButton();
         jLabelFondo43 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -160,6 +164,7 @@ public class Menu extends javax.swing.JFrame {
         jButtonIngreso.setBackground(new java.awt.Color(179, 140, 98));
         jButtonIngreso.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
         jButtonIngreso.setText("Ingresos");
+        jButtonIngreso.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonIngreso.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonIngreso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -171,6 +176,7 @@ public class Menu extends javax.swing.JFrame {
         jButtonBusquedaReserva.setBackground(new java.awt.Color(179, 140, 98));
         jButtonBusquedaReserva.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
         jButtonBusquedaReserva.setText("Busqueda Reservacion");
+        jButtonBusquedaReserva.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonBusquedaReserva.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBusquedaReserva.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -182,6 +188,7 @@ public class Menu extends javax.swing.JFrame {
         jButtonRegistroReservacionEstancia.setBackground(new java.awt.Color(179, 140, 98));
         jButtonRegistroReservacionEstancia.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
         jButtonRegistroReservacionEstancia.setText("Registro Estancia/Reserv");
+        jButtonRegistroReservacionEstancia.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonRegistroReservacionEstancia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRegistroReservacionEstancia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +200,7 @@ public class Menu extends javax.swing.JFrame {
         jButtonBusquedaDeCliente.setBackground(new java.awt.Color(179, 140, 98));
         jButtonBusquedaDeCliente.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
         jButtonBusquedaDeCliente.setText("Busqueda Cliente");
+        jButtonBusquedaDeCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonBusquedaDeCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBusquedaDeCliente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -209,6 +217,7 @@ public class Menu extends javax.swing.JFrame {
         jButtonRegistroCliente.setBackground(new java.awt.Color(179, 140, 98));
         jButtonRegistroCliente.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
         jButtonRegistroCliente.setText("Registro Cliente");
+        jButtonRegistroCliente.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonRegistroCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRegistroCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -220,6 +229,7 @@ public class Menu extends javax.swing.JFrame {
         jButtonEmpleado.setBackground(new java.awt.Color(179, 140, 98));
         jButtonEmpleado.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
         jButtonEmpleado.setText("Empleado");
+        jButtonEmpleado.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jButtonEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonEmpleado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,23 +239,37 @@ public class Menu extends javax.swing.JFrame {
         jPanel3.add(jButtonEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 195, 50));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistaimagen/hotel (1).png"))); // NOI18N
-        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 440, 150, 110));
+        jPanel3.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, 150, 110));
+
+        jButtonHabitaciones.setBackground(new java.awt.Color(179, 140, 98));
+        jButtonHabitaciones.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
+        jButtonHabitaciones.setText("Habitaciones");
+        jButtonHabitaciones.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jButtonHabitaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonHabitaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonHabitacionesActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jButtonHabitaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 195, 50));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 132, 220, 910));
 
         jLabelFondo43.setText("jLabel1");
         jLabelFondo43.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(jLabelFondo43, new org.netbeans.lib.awtextra.AbsoluteConstraints(207, 136, 1440, 710));
+        getContentPane().add(jLabelFondo43, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 1430, 720));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonIngresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIngresoActionPerformed
-        // TODO add your handling code here:
+        PantallaIngresos Ing= new PantallaIngresos();
+        Ing.setVisible(true);
     }//GEN-LAST:event_jButtonIngresoActionPerformed
 
     private void jButtonBusquedaReservaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBusquedaReservaActionPerformed
-        // TODO add your handling code here:
+        PantallBusquedaReservacionEstancia BusRE = new PantallBusquedaReservacionEstancia();
+        BusRE.setVisible(true);
     }//GEN-LAST:event_jButtonBusquedaReservaActionPerformed
 
     private void jButtonRegistroReservacionEstanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistroReservacionEstanciaActionPerformed
@@ -272,6 +296,11 @@ public class Menu extends javax.swing.JFrame {
         RegistrarEmpleado VentanaRegistroEmpleado = new RegistrarEmpleado();
         VentanaRegistroEmpleado.setVisible(true);
     }//GEN-LAST:event_jButtonEmpleadoActionPerformed
+
+    private void jButtonHabitacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonHabitacionesActionPerformed
+        VistaHabitaciones VH= new VistaHabitaciones();
+        VH.setVisible(true);
+    }//GEN-LAST:event_jButtonHabitacionesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -322,6 +351,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBusquedaDeCliente;
     private javax.swing.JButton jButtonBusquedaReserva;
     private javax.swing.JButton jButtonEmpleado;
+    private javax.swing.JButton jButtonHabitaciones;
     private javax.swing.JButton jButtonIngreso;
     private javax.swing.JButton jButtonRegistroCliente;
     private javax.swing.JButton jButtonRegistroReservacionEstancia;
