@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import modelo.ValidarCampos;
 import vista_menu.Menu;
 
 /**
@@ -20,6 +21,7 @@ import vista_menu.Menu;
  */
 public class PantallaBusquedaCliente extends javax.swing.JFrame {
 
+    ValidarCampos validar = new ValidarCampos();
     int datoSeleccionado = -1;
 
     CRUDCliente Actu = new CRUDCliente();
@@ -29,7 +31,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
      */
     public PantallaBusquedaCliente() {
         initComponents();
-        
+
         jtextButtonAggCliReser.setEnabled(false);
         jtextButtonAggCliReser.setVisible(false);
 
@@ -98,6 +100,12 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
 
         panel2.setBackground(new java.awt.Color(98, 137, 179));
         panel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextFieldBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldBuscarKeyTyped(evt);
+            }
+        });
         panel2.add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 660, 50));
 
         jTableCliente.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
@@ -252,7 +260,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         cliente.setLocationRelativeTo(null); // Opcional: Centrar la ventana en la pantalla
         cliente.setVisible(true);
 
-        if (datoSeleccionado>= 0) {
+        if (datoSeleccionado >= 0) {
             PantallaClienteRegistro.jTextFieldIDPersona.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 0)));
             PantallaClienteRegistro.jTextFieldIDCliente.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 1)));
             PantallaClienteRegistro.jFormattedTextFieldCedula.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 2)));
@@ -318,9 +326,14 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         PantallaRegistroReservacionEstancia.jTextFieldClienteReser.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 3)));
         PantallaRegistroReservacionEstancia.jTextFieldClienteApellido.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 5)));
         PantallaRegistroReservacionEstancia.jTextFieldIDclienteER.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 1)));
-       
+
         dispose();
     }//GEN-LAST:event_jtextButtonAggCliReserActionPerformed
+
+    private void jTextFieldBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscarKeyTyped
+        // TODO add your handling code here:
+        validar.KeyTipedTXT(evt);
+    }//GEN-LAST:event_jTextFieldBuscarKeyTyped
 
     /**
      * @param args the command line arguments

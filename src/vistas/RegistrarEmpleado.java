@@ -14,13 +14,15 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import modelo.Empleado;
+import modelo.ValidarCampos;
 
 /**
  *
  * @author Usuario
  */
 public class RegistrarEmpleado extends javax.swing.JFrame {
-
+    
+ValidarCampos validar = new ValidarCampos();
     int datoSeleccionado = -1;
 
     /**
@@ -187,6 +189,11 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
 
         jTextFieldNombre1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldNombre1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldNombre1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNombre1KeyTyped(evt);
+            }
+        });
         jPanel3.add(jTextFieldNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 50));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
@@ -195,6 +202,11 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
 
         jTextFieldNombre2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldNombre2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldNombre2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNombre2KeyTyped(evt);
+            }
+        });
         jPanel3.add(jTextFieldNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 200, 50));
 
         jLabelSegundoNombre.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
@@ -203,6 +215,11 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
 
         jTextFieldApellido1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldApellido1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldApellido1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldApellido1KeyTyped(evt);
+            }
+        });
         jPanel3.add(jTextFieldApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 200, 50));
 
         jLabelPrimerApellido.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
@@ -211,6 +228,11 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
 
         jTextFieldApellido2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldApellido2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldApellido2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldApellido2KeyTyped(evt);
+            }
+        });
         jPanel3.add(jTextFieldApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 200, 50));
 
         jLabelSegundoApellido.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
@@ -351,6 +373,11 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
         jTextFieldBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldBuscarActionPerformed(evt);
+            }
+        });
+        jTextFieldBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldBuscarKeyTyped(evt);
             }
         });
         jPanel2.add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 660, 50));
@@ -543,6 +570,31 @@ public class RegistrarEmpleado extends javax.swing.JFrame {
     private void jTextFieldTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTelefonoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldTelefonoActionPerformed
+
+    private void jTextFieldBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscarKeyTyped
+        // TODO add your handling code here:
+         validar.KeyTipedTXT(evt);
+    }//GEN-LAST:event_jTextFieldBuscarKeyTyped
+
+    private void jTextFieldNombre1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombre1KeyTyped
+        // TODO add your handling code here:
+        validar.KeyTipedTXT(evt);
+    }//GEN-LAST:event_jTextFieldNombre1KeyTyped
+
+    private void jTextFieldNombre2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombre2KeyTyped
+        // TODO add your handling code here:
+           validar.KeyTipedTXT(evt);
+    }//GEN-LAST:event_jTextFieldNombre2KeyTyped
+
+    private void jTextFieldApellido1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellido1KeyTyped
+        // TODO add your handling code here:
+           validar.KeyTipedTXT(evt);
+    }//GEN-LAST:event_jTextFieldApellido1KeyTyped
+
+    private void jTextFieldApellido2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellido2KeyTyped
+        // TODO add your handling code here:
+           validar.KeyTipedTXT(evt);
+    }//GEN-LAST:event_jTextFieldApellido2KeyTyped
 
     /**
      * @param args the command line arguments
