@@ -32,6 +32,7 @@ import modelo.Empleado;
 import modelo.Habitacion;
 import modelo.Persona;
 import modelo.ReservacionEstancia;
+import modelo.ValidarCampos;
 import static vistas.RegistrarEmpleado.jTextFieldIDEmpleado;
 
 /**
@@ -40,6 +41,7 @@ import static vistas.RegistrarEmpleado.jTextFieldIDEmpleado;
  */
 public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
+    ValidarCampos validar = new ValidarCampos();
     int columnaPrecio = 5;
     double sumaTotal = 0.0;
 
@@ -369,6 +371,11 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
         jTextFieldClienteReser.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldClienteReser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldClienteReser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldClienteReserKeyTyped(evt);
+            }
+        });
         jPanel2.add(jTextFieldClienteReser, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 130, 32));
 
         labelcliente.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
@@ -506,6 +513,11 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
         jTextFieldClienteApellido.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldClienteApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldClienteApellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldClienteApellidoKeyTyped(evt);
+            }
+        });
         jPanel2.add(jTextFieldClienteApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 130, 32));
 
         labelcliente2.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
@@ -734,6 +746,16 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     private void jComboBoxHabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxHabitacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxHabitacionActionPerformed
+
+    private void jTextFieldClienteReserKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldClienteReserKeyTyped
+        // TODO add your handling code here:
+        validar.KeyTipedTXT(evt);
+    }//GEN-LAST:event_jTextFieldClienteReserKeyTyped
+
+    private void jTextFieldClienteApellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldClienteApellidoKeyTyped
+        // TODO add your handling code here:
+        validar.KeyTipedTXT(evt);
+    }//GEN-LAST:event_jTextFieldClienteApellidoKeyTyped
 
     /**
      * @param args the command line arguments

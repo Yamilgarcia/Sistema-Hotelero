@@ -47,7 +47,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         jbottonChangeSucio = new javax.swing.JButton();
         jbottonChangeDisponible = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(98, 137, 179));
@@ -111,7 +111,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         });
         jPanel1.add(jbottonChangeDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, 130, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 1300, 610));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 1320, 640));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

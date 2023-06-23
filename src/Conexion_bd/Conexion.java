@@ -16,7 +16,7 @@ public class Conexion {
     
 
     private final String 
-            conexionUrl = "jdbc:sqlserver://localhost:51745;"
+            conexionUrl = "jdbc:sqlserver://localhost:53679;"
             + "database=DB_HotelMilenio;"
             + "integratedSecurity = true;" + " encrypt= true;trustServerCertificate= true;";
 

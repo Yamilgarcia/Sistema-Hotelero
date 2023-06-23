@@ -1,8 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package vistas;
+
+import Conexion_bd.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import modelo.ValidarCampos;
+import vista_menu.Menu;
 
 /**
  *
@@ -10,6 +16,9 @@ package vistas;
  */
 public class InicioSesion extends javax.swing.JFrame {
 
+    ValidarCampos validar = new ValidarCampos();
+    private final Conexion con = new Conexion();
+    private final Connection cn = (Connection) con.conectar();
     /**
      * Creates new form InicioSesion
      */
@@ -17,6 +26,45 @@ public class InicioSesion extends javax.swing.JFrame {
         initComponents(); 
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel3, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\FondoHotel.jpg");
         
+    }
+     //Metodo para autenticar usuarios en la base de datos.
+    private boolean Autenticacion(String username, String password) {
+        try {
+            String sql = "SELECT * FROM IniciodeSesion WHERE Usuario = ? AND Contrasena = ?";
+            PreparedStatement statement = cn.prepareStatement(sql);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                String user = result.getString("Usuario");
+                String pass = result.getString("Contrasena");
+                return username.equals(user) && password.equals(pass);
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return false;
+    }
+    
+    //Metodo para ingresar con la accion de boton.
+    private void AccesoBoton(java.awt.event.ActionEvent evt) {
+        String username = txtUsuario.getText();
+        String password = new String(txtPassword.getPassword());
+        if (Autenticacion(username, password)) {
+            Menu principal = new Menu();
+            principal.setVisible(true);
+            principal.setLocationRelativeTo(null);
+            principal.setResizable(false);
+            this.dispose();
+            JOptionPane.showMessageDialog(null,"Acceso concedido.");
+        } else {
+            txtUsuario.setText("");
+            txtPassword.setText("");
+            JOptionPane.showMessageDialog(null, "Acceso denegado.");
+        }
     }
 
     /**
@@ -33,8 +81,8 @@ public class InicioSesion extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelNombre = new javax.swing.JLabel();
         Contraseñajlabel = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
+        txtUsuario = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -62,16 +110,16 @@ public class InicioSesion extends javax.swing.JFrame {
         Contraseñajlabel.setText("Contraseña");
         jPanel1.add(Contraseñajlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 209, 143, 49));
 
-        jPasswordField1.setText("**********");
-        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        txtPassword.setText("**********");
+        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jPasswordField1MouseClicked(evt);
+                txtPasswordMouseClicked(evt);
             }
         });
-        jPanel1.add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 264, 290, 50));
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 264, 290, 50));
 
-        jTextField1.setText("jTextField1");
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 101, 290, 50));
+        txtUsuario.setText("jTextField1");
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 101, 290, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 620, 430));
 
@@ -81,11 +129,11 @@ public class InicioSesion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
-        if (jPasswordField1.getText().equals("**********")) {
-            jPasswordField1.setText("");
+    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
+        if (txtPassword.getText().equals("**********")) {
+            txtPassword.setText("");
         }
-    }//GEN-LAST:event_jPasswordField1MouseClicked
+    }//GEN-LAST:event_txtPasswordMouseClicked
 
     /**
      * @param args the command line arguments
@@ -129,7 +177,7 @@ public class InicioSesion extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }

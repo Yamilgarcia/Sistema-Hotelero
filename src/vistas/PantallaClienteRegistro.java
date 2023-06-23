@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+
 package vistas;
 
 import Conexion.CRUDCliente;
@@ -11,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import modelo.Cliente;
 import modelo.Persona;
+import modelo.ValidarCampos;
 
 /**
  *
@@ -18,6 +16,7 @@ import modelo.Persona;
  */
 public class PantallaClienteRegistro extends javax.swing.JFrame {
 
+     ValidarCampos validar = new ValidarCampos();
     /**
      * Creates new form PantallaClienteRegistro
      */
@@ -226,11 +225,21 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                 jTextFieldNombre1ActionPerformed(evt);
             }
         });
+        jTextFieldNombre1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNombre1KeyTyped(evt);
+            }
+        });
         jPanel2.add(jTextFieldNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 200, 50));
 
         jTextFieldNombre2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldNombre2ActionPerformed(evt);
+            }
+        });
+        jTextFieldNombre2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldNombre2KeyTyped(evt);
             }
         });
         jPanel2.add(jTextFieldNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, 200, 50));
@@ -240,6 +249,11 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                 jTextFieldApellido2ActionPerformed(evt);
             }
         });
+        jTextFieldApellido2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldApellido2KeyTyped(evt);
+            }
+        });
         jPanel2.add(jTextFieldApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 210, 200, 50));
 
         jTextFieldApellido1.addActionListener(new java.awt.event.ActionListener() {
@@ -247,11 +261,21 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
                 jTextFieldApellido1ActionPerformed(evt);
             }
         });
+        jTextFieldApellido1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldApellido1KeyTyped(evt);
+            }
+        });
         jPanel2.add(jTextFieldApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 200, 50));
 
         jTextFieldProcedencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldProcedenciaActionPerformed(evt);
+            }
+        });
+        jTextFieldProcedencia.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextFieldProcedenciaKeyTyped(evt);
             }
         });
         jPanel2.add(jTextFieldProcedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 200, 50));
@@ -328,27 +352,57 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
 
     private void jTextFieldNombre1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombre1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextFieldNombre1ActionPerformed
 
     private void jTextFieldNombre2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNombre2ActionPerformed
         // TODO add your handling code here:
+         
     }//GEN-LAST:event_jTextFieldNombre2ActionPerformed
 
     private void jTextFieldApellido1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldApellido1ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextFieldApellido1ActionPerformed
 
     private void jTextFieldApellido2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldApellido2ActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextFieldApellido2ActionPerformed
 
     private void jTextFieldProcedenciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldProcedenciaActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_jTextFieldProcedenciaActionPerformed
 
     private void jFormattedTextFieldCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCedulaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jFormattedTextFieldCedulaActionPerformed
+
+    private void jTextFieldNombre1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombre1KeyTyped
+        // TODO add your handling code here:
+        validar.KeyTipedTXT(evt);
+    }//GEN-LAST:event_jTextFieldNombre1KeyTyped
+
+    private void jTextFieldNombre2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombre2KeyTyped
+        // TODO add your handling code here:
+        validar.KeyTipedTXT(evt);
+    }//GEN-LAST:event_jTextFieldNombre2KeyTyped
+
+    private void jTextFieldApellido1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellido1KeyTyped
+        // TODO add your handling code here:
+        validar.KeyTipedTXT(evt);
+    }//GEN-LAST:event_jTextFieldApellido1KeyTyped
+
+    private void jTextFieldApellido2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldApellido2KeyTyped
+        // TODO add your handling code here:
+        validar.KeyTipedTXT(evt);
+    }//GEN-LAST:event_jTextFieldApellido2KeyTyped
+
+    private void jTextFieldProcedenciaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldProcedenciaKeyTyped
+        // TODO add your handling code here:
+        validar.KeyTipedTXT(evt);
+    }//GEN-LAST:event_jTextFieldProcedenciaKeyTyped
 
     /**
      * @param args the command line arguments
