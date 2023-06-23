@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import vista_menu.Menu;
 
 /**
@@ -29,7 +30,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
      */
     public PantallaBusquedaCliente() {
         initComponents();
-        
+
         jtextButtonAggCliReser.setEnabled(false);
         jtextButtonAggCliReser.setVisible(false);
 
@@ -44,6 +45,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
 
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src\\vistaimagen\\FondoHotel.jpg");
 
+        ocultartabla();
     }
 
     public void mostrar() {
@@ -57,6 +59,15 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         }
     }
 
+    public void ocultartabla() {
+        int columnIndex = 0; // Índice de la columna que deseas ocultar
+        TableColumnModel columnModel = jTableCliente.getColumnModel();
+        columnModel.getColumn(columnIndex).setWidth(0);
+        columnModel.getColumn(columnIndex).setMinWidth(0);
+        columnModel.getColumn(columnIndex).setMaxWidth(0);
+        columnModel.getColumn(columnIndex).setPreferredWidth(0);
+    }
+
     private void refreshTablaCliente() {
 
         // se llama a un método de consulta a la base de datos
@@ -66,6 +77,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
 
         // Actualizar el modelo de la tabla jTableCliente con los nuevos datos
         jTableCliente.setModel(modelo);
+        ocultartabla();
     }
 
     /**
@@ -252,7 +264,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         cliente.setLocationRelativeTo(null); // Opcional: Centrar la ventana en la pantalla
         cliente.setVisible(true);
 
-        if (datoSeleccionado>= 0) {
+        if (datoSeleccionado >= 0) {
             PantallaClienteRegistro.jTextFieldIDPersona.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 0)));
             PantallaClienteRegistro.jTextFieldIDCliente.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 1)));
             PantallaClienteRegistro.jFormattedTextFieldCedula.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 2)));
@@ -318,7 +330,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         PantallaRegistroReservacionEstancia.jTextFieldClienteReser.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 3)));
         PantallaRegistroReservacionEstancia.jTextFieldClienteApellido.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 5)));
         PantallaRegistroReservacionEstancia.jTextFieldIDclienteER.setText(String.valueOf(jTableCliente.getValueAt(datoSeleccionado, 1)));
-       
+
         dispose();
     }//GEN-LAST:event_jtextButtonAggCliReserActionPerformed
 

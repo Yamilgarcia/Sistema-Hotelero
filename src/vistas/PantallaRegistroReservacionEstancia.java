@@ -221,27 +221,35 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
             int columnaNHabitacion = 0;
             int columnaEstado = 4;
 
-            // Iterar sobre las filas de la tabla
-            for (int i = 0; i < jTablehabitaciones.getRowCount(); i++) {
-                // Obtener el número de habitación y el nuevo estado de la fila
-                int numeroHabitacion = Integer.parseInt(jTablehabitaciones.getValueAt(i, columnaNHabitacion).toString());
-                String nuevoEstado = "Ocupado"; // Reemplaza con el nuevo estado que desees
+            // Obtener el valor del JTextFieldSeleccion
+            String seleccion = jTextFieldSeleccion.getText();
 
-                // Crear un objeto Habitacion con el número de habitación y el nuevo estado
-                Habitacion habitacion = new Habitacion();
-                habitacion.setN_de_habitacion(numeroHabitacion);
-                habitacion.setEstado(nuevoEstado);
+            // Verificar el valor del JTextFieldSeleccion
+            if (seleccion.equals("Estadia")) {
+                // Iterar sobre las filas de la tabla
+                for (int i = 0; i < jTablehabitaciones.getRowCount(); i++) {
+                    // Obtener el número de habitación y el nuevo estado de la fila
+                    int numeroHabitacion = Integer.parseInt(jTablehabitaciones.getValueAt(i, columnaNHabitacion).toString());
+                    String nuevoEstado = "Ocupado"; // Reemplaza con el nuevo estado que desees
 
-                // Llamar al método para actualizar el estado de la habitación
-                CRUDHabitacion crudHabitacion = new CRUDHabitacion();
-                crudHabitacion.ActualizarDatosEstadoHabit(habitacion);
-            }
+                    // Crear un objeto Habitacion con el número de habitación y el nuevo estado
+                    Habitacion habitacion = new Habitacion();
+                    habitacion.setN_de_habitacion(numeroHabitacion);
+                    habitacion.setEstado(nuevoEstado);
 
-            // Refrescar el ComboBox
-            llenarCombo2();
+                    // Llamar al método para actualizar el estado de la habitación
+                    CRUDHabitacion crudHabitacion = new CRUDHabitacion();
+                    crudHabitacion.ActualizarDatosEstadoHabit(habitacion);
+                }
 
-            // Resto del código para realizar otras acciones
-            // ...
+                // Refrescar el ComboBox
+                llenarCombo2();
+
+                // Resto del código para realizar otras acciones
+                // ...
+            } else if (seleccion.equals("Reservacion")) {
+                // No se realiza ninguna acción
+            } 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
