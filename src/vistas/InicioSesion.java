@@ -24,20 +24,20 @@ public class InicioSesion extends javax.swing.JFrame {
      */
     public InicioSesion() {
         initComponents(); 
-        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel3, "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\vistaimagen\\FondoHotel.jpg");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel3, "src\\vistaimagen\\FondoHotel.jpg");
         
     }
      //Metodo para autenticar usuarios en la base de datos.
     private boolean Autenticacion(String username, String password) {
         try {
-            String sql = "SELECT * FROM IniciodeSesion WHERE Usuario = ? AND Contrasena = ?";
+            String sql = "SELECT * FROM Empleado WHERE Usuario = ? AND Contraseña = ?";
             PreparedStatement statement = cn.prepareStatement(sql);
             statement.setString(1, username);
             statement.setString(2, password);
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 String user = result.getString("Usuario");
-                String pass = result.getString("Contrasena");
+                String pass = result.getString("Contraseña");
                 return username.equals(user) && password.equals(pass);
 
             }
@@ -57,7 +57,7 @@ public class InicioSesion extends javax.swing.JFrame {
             Menu principal = new Menu();
             principal.setVisible(true);
             principal.setLocationRelativeTo(null);
-            principal.setResizable(false);
+            principal.setResizable(true);
             this.dispose();
             JOptionPane.showMessageDialog(null,"Acceso concedido.");
         } else {
@@ -81,8 +81,9 @@ public class InicioSesion extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabelNombre = new javax.swing.JLabel();
         Contraseñajlabel = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JPasswordField();
         txtUsuario = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
+        InicioSeci = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -109,17 +110,18 @@ public class InicioSesion extends javax.swing.JFrame {
         Contraseñajlabel.setFont(new java.awt.Font("Roboto", 3, 24)); // NOI18N
         Contraseñajlabel.setText("Contraseña");
         jPanel1.add(Contraseñajlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 209, 143, 49));
+        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 101, 290, 50));
 
-        txtPassword.setText("**********");
-        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtPasswordMouseClicked(evt);
+        txtPassword.setText("jPasswordField1");
+        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 270, 290, 50));
+
+        InicioSeci.setText("Iniciar Sesión");
+        InicioSeci.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InicioSeciActionPerformed(evt);
             }
         });
-        jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 264, 290, 50));
-
-        txtUsuario.setText("jTextField1");
-        jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 101, 290, 50));
+        jPanel1.add(InicioSeci, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 110, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 620, 430));
 
@@ -129,11 +131,9 @@ public class InicioSesion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
-        if (txtPassword.getText().equals("**********")) {
-            txtPassword.setText("");
-        }
-    }//GEN-LAST:event_txtPasswordMouseClicked
+    private void InicioSeciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioSeciActionPerformed
+        AccesoBoton(evt);
+    }//GEN-LAST:event_InicioSeciActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,6 +172,7 @@ public class InicioSesion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Contraseñajlabel;
+    private javax.swing.JButton InicioSeci;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelBusquedaReservacion;
     private javax.swing.JLabel jLabelNombre;
