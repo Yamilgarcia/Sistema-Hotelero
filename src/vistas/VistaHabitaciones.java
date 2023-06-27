@@ -22,6 +22,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
     public VistaHabitaciones() {
         initComponents();
         mostrar();
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src\\vistaimagen\\FondoHotel.jpg");
 
     }
 
@@ -46,6 +47,9 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jbottonChangeSucio = new javax.swing.JButton();
         jbottonChangeDisponible = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabelBusquedaReservacion = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -72,7 +76,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTablevistahabitacion);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 1100, 360));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 860, 360));
 
         jTextField1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(102, 102, 102));
@@ -87,7 +91,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 720, 50));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 720, 50));
 
         jbottonChangeSucio.setBackground(new java.awt.Color(102, 102, 0));
         jbottonChangeSucio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -98,9 +102,9 @@ public class VistaHabitaciones extends javax.swing.JFrame {
                 jbottonChangeSucioActionPerformed(evt);
             }
         });
-        jPanel1.add(jbottonChangeSucio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 530, 130, 50));
+        jPanel1.add(jbottonChangeSucio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 130, 50));
 
-        jbottonChangeDisponible.setBackground(new java.awt.Color(102, 102, 0));
+        jbottonChangeDisponible.setBackground(new java.awt.Color(0, 102, 102));
         jbottonChangeDisponible.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jbottonChangeDisponible.setForeground(new java.awt.Color(255, 255, 255));
         jbottonChangeDisponible.setText("Disponible");
@@ -109,9 +113,23 @@ public class VistaHabitaciones extends javax.swing.JFrame {
                 jbottonChangeDisponibleActionPerformed(evt);
             }
         });
-        jPanel1.add(jbottonChangeDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, 130, 50));
+        jPanel1.add(jbottonChangeDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, 130, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 1320, 640));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 1070, 590));
+
+        jPanel2.setBackground(new java.awt.Color(0, 94, 144));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelBusquedaReservacion.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabelBusquedaReservacion.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelBusquedaReservacion.setText("Habitaciones");
+        jPanel2.add(jLabelBusquedaReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 270, 60));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 120));
+
+        jLabel1.setText("jLabel1");
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1600, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -238,7 +256,10 @@ public class VistaHabitaciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelBusquedaReservacion;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTablevistahabitacion;
     private javax.swing.JTextField jTextField1;
