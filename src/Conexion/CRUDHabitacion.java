@@ -5,6 +5,7 @@
 package Conexion;
 
 import Conexion_bd.Conexion;
+import java.security.Timestamp;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -15,6 +16,10 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Habitacion;
 import java.sql.PreparedStatement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import javax.print.attribute.standard.DateTimeAtCompleted;
 
 /**
  *
@@ -25,35 +30,62 @@ public class CRUDHabitacion {
     private final Conexion con = new Conexion();
     private final Connection cn = (Connection) con.conectar();
 
-    public DefaultTableModel mostrarDatosHabitacion() {
-        ResultSet rs;
-        DefaultTableModel modelo;
-        String[] titulos = {"Numero de habitacion", "Nombre", "Descripcion", "Num_cama", "Estado", "Precio"};
-        String[] registro = new String[6];
-        modelo = new DefaultTableModel(null, titulos);
+public DefaultTableModel mostrarDatosHabitacion() {
+    ResultSet rs;
+    DefaultTableModel modelo;
+    String[] titulos = {"ID_Reserva","Numero de habitacion", "Nombre", "Descripcion", "Num_cama", "Estado", "Precio", "F_Entrada", "F_Salida"};
+    String[] registro = new String[9];
+    modelo = new DefaultTableModel(null, titulos);
 
-        try {
-            CallableStatement cbstc = cn.prepareCall("{call MostrarHabitacion}");
-            rs = cbstc.executeQuery();
+    try {
+        CallableStatement cbstc = cn.prepareCall("{call MostrarHabitacion}");
+        rs = cbstc.executeQuery();
 
-            while (rs.next()) {
+        // Obtener el formato deseado para la fecha
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
 
-                registro[0] = rs.getString("N_de_habitacion");
-                registro[1] = rs.getString("Nombre");
-                registro[2] = rs.getString("Descripcion");
-                registro[3] = rs.getString("Num_Cama");
-                registro[4] = rs.getString("Estado");
-                registro[5] = rs.getString("Precio");
+        while (rs.next()) {
+            registro[0] = rs.getString("ID_ReservaEstancia");
+            registro[1] = rs.getString("N_de_habitacion");
+            registro[2] = rs.getString("Nombre");
+            registro[3] = rs.getString("Descripcion");
+            registro[4] = rs.getString("Num_Cama");
+            registro[5] = rs.getString("Estado");
+            registro[6] = rs.getString("Precio");
 
-                modelo.addRow(registro);
+            // Obtener la fecha de entrada como una cadena de texto
+            String fechaEntrada = rs.getString("F_entrada");
+
+            // Obtener la fecha de salida como una cadena de texto
+            String fechaSalida = rs.getString("F_salida");
+
+            // Formatear la fecha de entrada al formato deseado
+            String fechaEntradaFormateada = "";
+            if (fechaEntrada != null && !fechaEntrada.isEmpty()) {
+                fechaEntradaFormateada = formatoFecha.format(formatoFecha.parse(fechaEntrada));
             }
-            return modelo;
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-            return null;
-        }
 
+            // Formatear la fecha de salida al formato deseado
+            String fechaSalidaFormateada = "";
+            if (fechaSalida != null && !fechaSalida.isEmpty()) {
+                fechaSalidaFormateada = formatoFecha.format(formatoFecha.parse(fechaSalida));
+            }
+
+            registro[7] = fechaEntradaFormateada;
+            registro[8] = fechaSalidaFormateada;
+
+            modelo.addRow(registro);
+        }
+        return modelo;
+    } catch (SQLException | ParseException e) {
+        JOptionPane.showMessageDialog(null, e);
+        return null;
     }
+}
+
+
+
+
 
     public ArrayList<Habitacion> mostrarDatosCombo2() {
         ArrayList<Habitacion> habit = new ArrayList<>();
@@ -64,6 +96,7 @@ public class CRUDHabitacion {
 
             while (rs.next()) {
                 Habitacion ha = new Habitacion();
+                ha.setID_Habitacion(Integer.parseInt(rs.getString("ID_Habitacion")));
                 ha.setN_de_habitacion(Integer.parseInt(rs.getString("N_de_habitacion")));
                 ha.setNombre(rs.getString("Nombre"));
                 ha.setDescripcion(rs.getString("Descripcion"));
@@ -82,25 +115,37 @@ public class CRUDHabitacion {
     
     
     
-    public void ActualizarDatosEstadoHabit(Habitacion C5) {
-        try {
-            CallableStatement cbst = cn.prepareCall("{call ModificarEstadoHabitacion(?,?)}");
+   public void ActualizarDatosEstadoHabit(Habitacion habitacion) {
+    try {
+        CallableStatement cbst = cn.prepareCall("{call ModificarEstadoHabitacion(?, ?)}");
 
-            cbst.setInt(1, C5.getN_de_habitacion());
-            cbst.setString(2, C5.getEstado());
-            
-            cbst.executeUpdate();
+        cbst.setInt(1, habitacion.getID_Habitacion());
+        cbst.setString(2, habitacion.getEstado());
 
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
+        cbst.executeUpdate();
+    } catch (SQLException e) {
+        JOptionPane.showMessageDialog(null, e);
     }
+}
+   
+
+
+
+
+
+
+
 
     
     
     
    
 
+
     
+
+
+    
+
     
 }

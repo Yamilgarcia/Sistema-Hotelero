@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import modelo.Habitacion;
 
 /**
@@ -24,6 +25,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         mostrar();
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src\\vistaimagen\\FondoHotel.jpg");
 
+//        ocultartabla();
     }
 
     public void mostrar() {
@@ -37,6 +39,15 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         }
     }
 
+    
+     public void ocultartabla() {
+        int columnIndex = 0; // Índice de la columna que deseas ocultar
+        TableColumnModel columnModel = jTablevistahabitacion.getColumnModel();
+        columnModel.getColumn(columnIndex).setWidth(0);
+        columnModel.getColumn(columnIndex).setMinWidth(0);
+        columnModel.getColumn(columnIndex).setMaxWidth(0);
+        columnModel.getColumn(columnIndex).setPreferredWidth(0);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -148,25 +159,26 @@ public class VistaHabitaciones extends javax.swing.JFrame {
 
         if (datoSeleccionado != -1) {
             DefaultTableModel modelo = (DefaultTableModel) jTablevistahabitacion.getModel();
-            String estadoActual = (String) modelo.getValueAt(datoSeleccionado, 4);
+            String estadoActual = (String) modelo.getValueAt(datoSeleccionado, 5);
 
             if (!estadoActual.equals("Sucio")) {
                 if (!estadoActual.equals("Disponible")) {
-                    modelo.setValueAt("Sucio", datoSeleccionado, 4);
+                    modelo.setValueAt("Sucio", datoSeleccionado, 5);
                     jTablevistahabitacion.setModel(modelo);
 
                     // Obtener el número de habitación de la fila seleccionada
-                    String numeroHabitacionStr = (String) modelo.getValueAt(datoSeleccionado, 0);
-                    int numeroHabitacion = Integer.parseInt(numeroHabitacionStr);
+                    String idhabitacion = (String) modelo.getValueAt(datoSeleccionado, 0);
+                    int numeroHabitacion = Integer.parseInt(idhabitacion);
 
                     String nuevoEstado = "Sucio";
                     Habitacion habitacion = new Habitacion();
-                    habitacion.setN_de_habitacion(numeroHabitacion);
+                    habitacion.setID_Habitacion(numeroHabitacion);
                     habitacion.setEstado(nuevoEstado);
 
                     // Actualizar el estado en la base de datos
                     CRUDHabitacion crudHabitacion = new CRUDHabitacion();
                     crudHabitacion.ActualizarDatosEstadoHabit(habitacion);
+                    mostrar();
                 } else {
                     JOptionPane.showMessageDialog(null, "La habitación está en estado 'Disponible'. No se puede cambiar a 'Sucio'.");
                 }
@@ -187,25 +199,26 @@ public class VistaHabitaciones extends javax.swing.JFrame {
     private void jbottonChangeDisponibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbottonChangeDisponibleActionPerformed
         if (datoSeleccionado != -1) {
             DefaultTableModel modelo = (DefaultTableModel) jTablevistahabitacion.getModel();
-            String estadoActual = (String) modelo.getValueAt(datoSeleccionado, 4);
+            String estadoActual = (String) modelo.getValueAt(datoSeleccionado, 5);
 
             if (!estadoActual.equals("Disponible")) {
                 if (!estadoActual.equals("Ocupada")) {
-                    modelo.setValueAt("Disponible", datoSeleccionado, 4);
+                    modelo.setValueAt("Disponible", datoSeleccionado, 5);
                     jTablevistahabitacion.setModel(modelo);
 
                     // Obtener el número de habitación de la fila seleccionada
-                    String numeroHabitacionStr = (String) modelo.getValueAt(datoSeleccionado, 0);
-                    int numeroHabitacion = Integer.parseInt(numeroHabitacionStr);
+                    String idhabitacion = (String) modelo.getValueAt(datoSeleccionado, 0);
+                    int numeroHabitacion = Integer.parseInt(idhabitacion);
 
                     String nuevoEstado = "Disponible";
                     Habitacion habitacion = new Habitacion();
-                    habitacion.setN_de_habitacion(numeroHabitacion);
+                    habitacion.setID_Habitacion(numeroHabitacion);
                     habitacion.setEstado(nuevoEstado);
 
                     // Actualizar el estado en la base de datos
                     CRUDHabitacion crudHabitacion = new CRUDHabitacion();
                     crudHabitacion.ActualizarDatosEstadoHabit(habitacion);
+                    mostrar();
                 } else {
                     JOptionPane.showMessageDialog(null, "La habitación está en estado 'Ocupada'. No se puede cambiar a 'Disponible'.");
                 }
@@ -261,9 +274,9 @@ public class VistaHabitaciones extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTablevistahabitacion;
+    public static javax.swing.JTable jTablevistahabitacion;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton jbottonChangeDisponible;
-    private javax.swing.JButton jbottonChangeSucio;
+    public static javax.swing.JButton jbottonChangeDisponible;
+    public static javax.swing.JButton jbottonChangeSucio;
     // End of variables declaration//GEN-END:variables
 }

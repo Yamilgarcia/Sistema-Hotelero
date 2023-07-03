@@ -23,45 +23,41 @@ public class CRUDReservacionEstancia {
     private final Connection cn = (Connection) con.conectar();
 
     public void GuardarReservacionYDetalle(ReservacionEstancia reservacion, DetalleReservacion detalle) {
-    try {
-        CallableStatement cbst = cn.prepareCall("{call InsertarReservaEstayDetalleReserva(?,?,?,?,?,?,?)}");
+        try {
+            CallableStatement cbst = cn.prepareCall("{call InsertarReservaEstayDetalleReserva(?,?,?,?,?,?,?)}");
 
-        // Parámetros de la tabla ReservacionEstancia
-        cbst.setInt(1, reservacion.getID_cliente());
-        cbst.setDate(2, reservacion.getF_entrada());
-        cbst.setTimestamp(3, reservacion.getF_salida());
-        cbst.setInt(4, reservacion.getID_Empleado());
-        cbst.setString(5, reservacion.getTipoServicio());
-        cbst.setString(6, reservacion.getEstadoReserva());
+            // Parámetros de la tabla ReservacionEstancia
+            cbst.setInt(1, reservacion.getID_cliente());
+            cbst.setDate(2, reservacion.getF_entrada());
+            cbst.setTimestamp(3, reservacion.getF_salida());
+            cbst.setInt(4, reservacion.getID_Empleado());
+            cbst.setString(5, reservacion.getTipoServicio());
+            cbst.setString(6, reservacion.getEstadoReserva());
 
-        // Parámetros de la tabla DetalleReservacion
-        cbst.setInt(7, detalle.getN_de_habitacion());
+            // Parámetros de la tabla DetalleReservacion
+            cbst.setInt(7, detalle.getID_Habitacion());
 
-        boolean result = cbst.execute();
+            boolean result = cbst.execute();
 
-        if (result) {
-            ResultSet rs = cbst.getResultSet();
-            if (rs.next()) {
-                int idReservaEstancia = rs.getInt("ID_ReservaEstancia");
-                int idDetalleReservacion = rs.getInt("ID_DetalleReservacion");
-                
+            if (result) {
+                ResultSet rs = cbst.getResultSet();
+                if (rs.next()) {
+                    int idReservaEstancia = rs.getInt("ID_ReservaEstancia");
+                    int idDetalleReservacion = rs.getInt("ID_DetalleReservacion");
+
+                }
             }
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
         }
-
-    } catch (SQLException e) {
-        JOptionPane.showMessageDialog(null, e);
     }
-}
 
-    
-    
-    
-    
     public DefaultTableModel mostrarDatosReservaEstancia() {
         ResultSet rs;
         DefaultTableModel modelo;
-        String[] titulos = {"ID_ReservaEstancia", "ID_DetalleReservacion", "Nombre",  "Apellido",  "Cedula", "F_entrada",
-            "F_Salida","Tipo_Servicio","N_Habitacion", "Nombre Empleado"};
+        String[] titulos = {"ID_ReservaEstancia", "ID_DetalleReservacion", "Nombre", "Apellido", "Cedula", "F_entrada",
+            "F_Salida", "Tipo_Servicio", "N_Habitacion", "Nombre Empleado"};
         String[] registro = new String[10];
         modelo = new DefaultTableModel(null, titulos);
 
@@ -90,7 +86,33 @@ public class CRUDReservacionEstancia {
         }
 
     }
+
+    public void ActualizarDatos(ReservacionEstancia C1) {
+        try {
+            CallableStatement cbst = cn.prepareCall("{call ModificarEstanciaReserva(?,?,?,?)}");
+
+            cbst.setInt(1, C1.getID_Reservaciones());
+            cbst.setString(2, C1.getTipoServicio());
+            cbst.setDate(3, C1.getF_entrada());
+            cbst.setTimestamp(4, C1.getF_salida());
+
+            cbst.executeUpdate();
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
     
-
-
+    
+    
+    public void EliminarReservaEstancia(int ID_ReservaEst) {
+        try {
+            CallableStatement cbst = cn.prepareCall("{call EliminarEstanciaReserv(?)}");
+            cbst.setInt(1, ID_ReservaEst);
+            cbst.executeUpdate();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 }

@@ -4,6 +4,9 @@ import Conexion.CRUDEmpleado;
 import Conexion.CRUDReservacionEstancia;
 import javax.swing.*;
 import java.awt.event.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -13,8 +16,8 @@ import javax.swing.table.DefaultTableModel;
 public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
 
     private JTextField txtBuscar;
-    
-    
+
+    int datoSeleccionado = -1;
 
     /**
      * Creates new form PantallaReservacion
@@ -25,9 +28,17 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabelFondoBusCliente, "src\\vistaimagen\\FondoHotel.jpg");
 
         mostrar();
+        
+        
+        
+        jtextButtonRefresh.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                refreshTablaCliente();
+            }
+        });
     }
 
-    
     public void mostrar() {
         try {
             DefaultTableModel modelo;
@@ -39,7 +50,18 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
         }
     }
     
-    
+    private void refreshTablaCliente() {
+
+        // se llama a un método de consulta a la base de datos
+        // obtenemos los nuevos datos en un objeto DefaultTableModel llamado "modelo"
+        CRUDReservacionEstancia cl2 = new CRUDReservacionEstancia();
+        DefaultTableModel modelo = cl2.mostrarDatosReservaEstancia();
+
+        // Actualizar el modelo de la tabla jTableCliente con los nuevos datos
+        jTableReservaEstancia.setModel(modelo);
+        
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -47,12 +69,15 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabelBusquedaReservacion = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
+        jtextButtonRefresh = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableReservaEstancia = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
+        jbottonEditar = new javax.swing.JButton();
+        jbottonEliminar = new javax.swing.JButton();
         jLabelFondoBusCliente = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(0, 94, 144));
@@ -68,7 +93,23 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(98, 137, 179));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTableReservaEstancia.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
+        jtextButtonRefresh.setBackground(new java.awt.Color(216, 199, 162));
+        jtextButtonRefresh.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jtextButtonRefresh.setText("Refrescar");
+        jtextButtonRefresh.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jtextButtonRefresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtextButtonRefreshMouseClicked(evt);
+            }
+        });
+        jtextButtonRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtextButtonRefreshActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jtextButtonRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 110, 40));
+
+        jTableReservaEstancia.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jTableReservaEstancia.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -80,9 +121,14 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableReservaEstancia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableReservaEstanciaMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableReservaEstancia);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 1100, 400));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 1100, 340));
 
         jTextField1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(102, 102, 102));
@@ -98,6 +144,29 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 720, 50));
+
+        jbottonEditar.setBackground(new java.awt.Color(216, 199, 162));
+        jbottonEditar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jbottonEditar.setText("Editar");
+        jbottonEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbottonEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbottonEditarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbottonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 530, 110, 40));
+
+        jbottonEliminar.setBackground(new java.awt.Color(255, 51, 51));
+        jbottonEliminar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jbottonEliminar.setForeground(new java.awt.Color(255, 255, 255));
+        jbottonEliminar.setText("Eliminar");
+        jbottonEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbottonEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbottonEliminarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbottonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 530, 110, 40));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 1300, 610));
 
@@ -118,6 +187,108 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jTextField1MouseClicked
+
+    private void jbottonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbottonEditarActionPerformed
+        PantallaRegistroReservacionEstancia RESTANCIA = new PantallaRegistroReservacionEstancia();
+        RESTANCIA.setLocationRelativeTo(null); // Opcional: Centrar la ventana en la pantalla
+        RESTANCIA.setVisible(true);
+
+        if (datoSeleccionado >= 0) {
+            PantallaRegistroReservacionEstancia.jTextFieldIDReservaEstancia.setText(String.valueOf(jTableReservaEstancia.getValueAt(datoSeleccionado, 0)));
+            PantallaRegistroReservacionEstancia.jTextFieldClienteReser.setText(String.valueOf(jTableReservaEstancia.getValueAt(datoSeleccionado, 2)));
+            PantallaRegistroReservacionEstancia.jTextFieldClienteApellido.setText(String.valueOf(jTableReservaEstancia.getValueAt(datoSeleccionado, 3)));
+
+            PantallaRegistroReservacionEstancia.jTextFieldSeleccion.setText(String.valueOf(jTableReservaEstancia.getValueAt(datoSeleccionado, 7)));
+
+            PantallaRegistroReservacionEstancia.jButtonRegistrarReservaEstancia.setVisible(false);
+            PantallaRegistroReservacionEstancia.jTextFieldClienteReser.setEnabled(false);
+            PantallaRegistroReservacionEstancia.jTextFieldClienteApellido.setEnabled(false);
+            PantallaRegistroReservacionEstancia.jComboBoxEmpleado.setEnabled(false);
+            RESTANCIA.setVisible(true);
+            
+
+            // Obtener la fecha de la tabla en formato "yyyy/mm/dd"
+            String fechaTabla = String.valueOf(jTableReservaEstancia.getValueAt(datoSeleccionado, 5));
+
+            try {
+                // Parsear la fecha de entrada en formato "yyyy-MM-dd" a un objeto LocalDate
+                LocalDate fechaLocal = LocalDate.parse(fechaTabla, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
+
+                // Crear un objeto DateTimeFormatter para el formato de salida "dd/MM/yyyy"
+                DateTimeFormatter formatoSalida = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                // Formatear la fecha en el formato deseado "dd/mm/yyyy"
+                String fechaFormateada = fechaLocal.format(formatoSalida);
+
+                // Establecer el valor formateado en el JTextField
+                PantallaRegistroReservacionEstancia.jTextFieldFechEntrada1.setText(fechaFormateada);
+            } catch (DateTimeParseException e) {
+                // Manejar cualquier error de parsing de la fecha
+                e.printStackTrace();
+            }
+
+            // Obtener la fecha de la tabla en formato "yyyy/mm/dd"
+            String fechaTablaas = String.valueOf(jTableReservaEstancia.getValueAt(datoSeleccionado, 6));
+
+            try {
+                // Parsear la fecha de entrada en formato "yyyy-MM-dd" a un objeto LocalDate
+                LocalDate fechaLocal = LocalDate.parse(fechaTablaas, DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.S"));
+
+                // Crear un objeto DateTimeFormatter para el formato de salida "dd/MM/yyyy"
+                DateTimeFormatter formatoSalida = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                // Formatear la fecha en el formato deseado "dd/mm/yyyy"
+                String fechaFormateada = fechaLocal.format(formatoSalida);
+
+                // Establecer el valor formateado en el JTextField
+                PantallaRegistroReservacionEstancia.jTextFieldFechSalida.setText(fechaFormateada);
+                
+                
+            } catch (DateTimeParseException e) {
+                // Manejar cualquier error de parsing de la fecha
+                e.printStackTrace();
+            }
+            
+
+            PantallaRegistroReservacionEstancia.jButtonRegistrarReservaEstancia.setVisible(false);
+        } else {
+            JOptionPane.showMessageDialog(null, "Debe seleccionar un registro a actualizar");
+        }
+    }//GEN-LAST:event_jbottonEditarActionPerformed
+
+    private void jTableReservaEstanciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableReservaEstanciaMouseClicked
+        datoSeleccionado = jTableReservaEstancia.rowAtPoint(evt.getPoint());
+    }//GEN-LAST:event_jTableReservaEstanciaMouseClicked
+
+    private void jtextButtonRefreshMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtextButtonRefreshMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextButtonRefreshMouseClicked
+
+    private void jtextButtonRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextButtonRefreshActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtextButtonRefreshActionPerformed
+
+    private void jbottonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbottonEliminarActionPerformed
+        if (datoSeleccionado >= 0) {
+            int dato = Integer.valueOf(jTableReservaEstancia.getValueAt(datoSeleccionado, 1).toString());
+            CRUDReservacionEstancia cli = new CRUDReservacionEstancia();
+            if (JOptionPane.showConfirmDialog(rootPane,
+                "Se eliminará el registro, ¿desea continuar?",
+                "Eliminar Registro",
+                JOptionPane.WARNING_MESSAGE,
+                JOptionPane.YES_NO_OPTION)
+            == JOptionPane.YES_OPTION) {
+
+            cli.EliminarReservaEstancia(dato);
+            mostrar();
+            JOptionPane.showMessageDialog(null,
+                "Dato eliminado correctamente");
+        }
+        } else {
+            JOptionPane.showMessageDialog(null,
+                "Debe seleccionar un registro de la tabla");
+        }
+    }//GEN-LAST:event_jbottonEliminarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -171,5 +342,8 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTableReservaEstancia;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton jbottonEditar;
+    private javax.swing.JButton jbottonEliminar;
+    public static javax.swing.JButton jtextButtonRefresh;
     // End of variables declaration//GEN-END:variables
 }
