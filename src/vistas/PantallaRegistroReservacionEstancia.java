@@ -281,8 +281,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jRadioButtonEstadia = new javax.swing.JRadioButton();
         jLabelFechaEntrada1 = new javax.swing.JLabel();
         jLabelFechaSalida = new javax.swing.JLabel();
-        jTextFieldFechEntrada1 = new javax.swing.JTextField();
-        jTextFieldFechSalida = new javax.swing.JTextField();
         jTextFieldPrecio = new javax.swing.JTextField();
         jLabelPrecio = new javax.swing.JLabel();
         jComboBoxHabitacion = new javax.swing.JComboBox<>();
@@ -293,6 +291,8 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jbuttonRestarhabitacionNow1 = new javax.swing.JButton();
         jTextFieldIDclienteER = new javax.swing.JTextField();
         jTextFieldSeleccion = new javax.swing.JTextField();
+        jTextFieldFechEntrada1 = new javax.swing.JFormattedTextField();
+        jTextFieldFechSalida = new javax.swing.JFormattedTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -444,19 +444,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jLabelFechaSalida.setText("Fecha Salida");
         jPanel2.add(jLabelFechaSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
 
-        jTextFieldFechEntrada1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextFieldFechEntrada1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel2.add(jTextFieldFechEntrada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, 200, 32));
-
-        jTextFieldFechSalida.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextFieldFechSalida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTextFieldFechSalida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldFechSalidaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jTextFieldFechSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 200, 32));
-
         jTextFieldPrecio.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldPrecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextFieldPrecio.addActionListener(new java.awt.event.ActionListener() {
@@ -544,6 +531,20 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jTextFieldSeleccion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldSeleccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.add(jTextFieldSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, 200, 32));
+
+        try {
+            jTextFieldFechEntrada1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel2.add(jTextFieldFechEntrada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 272, 200, 30));
+
+        try {
+            jTextFieldFechSalida.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel2.add(jTextFieldFechSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 200, 30));
 
         panel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 560, 520));
 
@@ -681,10 +682,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         PantallaBusquedaCliente.jtextButtonRefresh.setVisible(false);
     }//GEN-LAST:event_jbuttonBuscarClienteActionPerformed
 
-    private void jTextFieldFechSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechSalidaActionPerformed
-
-    }//GEN-LAST:event_jTextFieldFechSalidaActionPerformed
-
 
     private void jTextFieldPrecioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPrecioActionPerformed
         // TODO add your handling code here:
@@ -812,8 +809,8 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     private javax.swing.JTable jTablehabitaciones;
     public static javax.swing.JTextField jTextFieldClienteApellido;
     public static javax.swing.JTextField jTextFieldClienteReser;
-    private javax.swing.JTextField jTextFieldFechEntrada1;
-    private javax.swing.JTextField jTextFieldFechSalida;
+    private javax.swing.JFormattedTextField jTextFieldFechEntrada1;
+    private javax.swing.JFormattedTextField jTextFieldFechSalida;
     public static javax.swing.JTextField jTextFieldIDclienteER;
     private javax.swing.JTextField jTextFieldPrecio;
     private javax.swing.JTextField jTextFieldSeleccion;
