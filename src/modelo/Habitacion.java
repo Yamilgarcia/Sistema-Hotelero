@@ -8,14 +8,16 @@ package modelo;
  *
  * @author Usuario
  */
+
 public class Habitacion extends Tipo_de_habitacion {
 
+    int ID_Habitacion;
     int N_de_habitacion;
     int ID_tipoHabitacion;
     int Num_Cama;
     String Estado;
     float Precio;
-    
+   
     
 
     public Habitacion(int N_de_habitacion, int ID_tipoHabitacion, int Num_Cama, String Estado, float Precio, int ID_TipoHabitacion, String Nombre, String Descripcion) {
@@ -49,6 +51,14 @@ public class Habitacion extends Tipo_de_habitacion {
     public Habitacion(int N_de_habitacion, String Nombre) {
         super(Nombre);
         this.N_de_habitacion = N_de_habitacion;
+    }
+    
+    public int getID_Habitacion(){
+        return ID_Habitacion;
+    }
+    
+    public void setID_Habitacion(int ID_Habitacion){
+        this.ID_Habitacion = ID_Habitacion;
     }
 
     public int getN_de_habitacion() {
@@ -91,6 +101,10 @@ public class Habitacion extends Tipo_de_habitacion {
     public String getEstado() {
         return Estado;
     }
+
+     
+
+    
 
     
 

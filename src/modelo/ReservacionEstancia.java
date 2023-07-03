@@ -20,6 +20,8 @@ public class ReservacionEstancia {
     int ID_Empleado;
     String TipoServicio;
     String EstadoReserva;
+    
+    
 
     public ReservacionEstancia(int ID_Reservaciones, int ID_cliente, Date F_entrada, Timestamp F_salida, int ID_Empleado, String TipoServicio, String EstadoReserva) {
         this.ID_Reservaciones = ID_Reservaciones;
@@ -40,10 +42,24 @@ public class ReservacionEstancia {
         this.EstadoReserva = EstadoReserva;
     }
 
+    public ReservacionEstancia(int ID_Reservaciones, String TipoServicio, Date F_entrada, Timestamp F_salida) {
+        this.ID_Reservaciones = ID_Reservaciones;
+        this.F_entrada = F_entrada;
+        this.F_salida = F_salida;
+        this.TipoServicio = TipoServicio;
+        
+    }
+
     public ReservacionEstancia(int ID_Reservaciones) {
         this.ID_Reservaciones = ID_Reservaciones;
     }
 
+    
+    
+    
+    
+
+    
     public ReservacionEstancia() {
     }
 
@@ -103,4 +119,5 @@ public class ReservacionEstancia {
         this.EstadoReserva = EstadoReserva;
     }
 
+    
 }

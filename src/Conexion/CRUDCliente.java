@@ -82,7 +82,7 @@ public class CRUDCliente {
             return null;
         }
     }
-//Preguntar como se hace esto xd
+
 
     public void ActualizarDatos(Cliente C1) {
         try {

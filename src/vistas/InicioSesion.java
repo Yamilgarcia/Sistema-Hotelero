@@ -25,6 +25,8 @@ public class InicioSesion extends javax.swing.JFrame {
     public InicioSesion() {
         initComponents(); 
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel3, "src\\vistaimagen\\FondoHotel.jpg");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src\\vistaimagen\\icons8_contacts_512px_2.png");
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel4, "src\\vistaimagen\\icons8_lock_32px.png");
         
     }
      //Metodo para autenticar usuarios en la base de datos.
@@ -84,6 +86,8 @@ public class InicioSesion extends javax.swing.JFrame {
         txtUsuario = new javax.swing.JTextField();
         txtPassword = new javax.swing.JPasswordField();
         InicioSeci = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -112,16 +116,30 @@ public class InicioSesion extends javax.swing.JFrame {
         jPanel1.add(Contraseñajlabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 209, 143, 49));
         jPanel1.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 101, 290, 50));
 
-        txtPassword.setText("jPasswordField1");
+        txtPassword.setText("**********");
+        txtPassword.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPasswordMouseClicked(evt);
+            }
+        });
         jPanel1.add(txtPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 270, 290, 50));
 
+        InicioSeci.setBackground(new java.awt.Color(216, 199, 162));
+        InicioSeci.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         InicioSeci.setText("Iniciar Sesión");
+        InicioSeci.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         InicioSeci.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 InicioSeciActionPerformed(evt);
             }
         });
-        jPanel1.add(InicioSeci, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 110, 40));
+        jPanel1.add(InicioSeci, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 130, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistaimagen/icons8_contacts_512px.png"))); // NOI18N
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 80, 70));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistaimagen/icons8_contacts_512px.png"))); // NOI18N
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 80, 60));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 620, 430));
 
@@ -134,6 +152,15 @@ public class InicioSesion extends javax.swing.JFrame {
     private void InicioSeciActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InicioSeciActionPerformed
         AccesoBoton(evt);
     }//GEN-LAST:event_InicioSeciActionPerformed
+
+    private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
+        if(txtPassword.getText().equals("**********")){
+            txtPassword.setText("");
+            
+        }
+        
+        
+    }//GEN-LAST:event_txtPasswordMouseClicked
 
     /**
      * @param args the command line arguments
@@ -173,7 +200,9 @@ public class InicioSesion extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Contraseñajlabel;
     private javax.swing.JButton InicioSeci;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabelBusquedaReservacion;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JPanel jPanel1;

@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import modelo.Habitacion;
 
 /**
@@ -22,7 +23,9 @@ public class VistaHabitaciones extends javax.swing.JFrame {
     public VistaHabitaciones() {
         initComponents();
         mostrar();
+        rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src\\vistaimagen\\FondoHotel.jpg");
 
+//        ocultartabla();
     }
 
     public void mostrar() {
@@ -36,6 +39,15 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         }
     }
 
+    
+     public void ocultartabla() {
+        int columnIndex = 0; // Índice de la columna que deseas ocultar
+        TableColumnModel columnModel = jTablevistahabitacion.getColumnModel();
+        columnModel.getColumn(columnIndex).setWidth(0);
+        columnModel.getColumn(columnIndex).setMinWidth(0);
+        columnModel.getColumn(columnIndex).setMaxWidth(0);
+        columnModel.getColumn(columnIndex).setPreferredWidth(0);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -46,6 +58,9 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jbottonChangeSucio = new javax.swing.JButton();
         jbottonChangeDisponible = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabelBusquedaReservacion = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -72,7 +87,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTablevistahabitacion);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 1100, 360));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 860, 360));
 
         jTextField1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(102, 102, 102));
@@ -87,7 +102,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 720, 50));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 720, 50));
 
         jbottonChangeSucio.setBackground(new java.awt.Color(102, 102, 0));
         jbottonChangeSucio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -98,9 +113,9 @@ public class VistaHabitaciones extends javax.swing.JFrame {
                 jbottonChangeSucioActionPerformed(evt);
             }
         });
-        jPanel1.add(jbottonChangeSucio, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 530, 130, 50));
+        jPanel1.add(jbottonChangeSucio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 130, 50));
 
-        jbottonChangeDisponible.setBackground(new java.awt.Color(102, 102, 0));
+        jbottonChangeDisponible.setBackground(new java.awt.Color(0, 102, 102));
         jbottonChangeDisponible.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jbottonChangeDisponible.setForeground(new java.awt.Color(255, 255, 255));
         jbottonChangeDisponible.setText("Disponible");
@@ -109,9 +124,23 @@ public class VistaHabitaciones extends javax.swing.JFrame {
                 jbottonChangeDisponibleActionPerformed(evt);
             }
         });
-        jPanel1.add(jbottonChangeDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 530, 130, 50));
+        jPanel1.add(jbottonChangeDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, 130, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 1320, 640));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 1070, 590));
+
+        jPanel2.setBackground(new java.awt.Color(0, 94, 144));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelBusquedaReservacion.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
+        jLabelBusquedaReservacion.setForeground(new java.awt.Color(255, 255, 255));
+        jLabelBusquedaReservacion.setText("Habitaciones");
+        jPanel2.add(jLabelBusquedaReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 270, 60));
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 120));
+
+        jLabel1.setText("jLabel1");
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 1600, 780));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -130,25 +159,26 @@ public class VistaHabitaciones extends javax.swing.JFrame {
 
         if (datoSeleccionado != -1) {
             DefaultTableModel modelo = (DefaultTableModel) jTablevistahabitacion.getModel();
-            String estadoActual = (String) modelo.getValueAt(datoSeleccionado, 4);
+            String estadoActual = (String) modelo.getValueAt(datoSeleccionado, 5);
 
             if (!estadoActual.equals("Sucio")) {
                 if (!estadoActual.equals("Disponible")) {
-                    modelo.setValueAt("Sucio", datoSeleccionado, 4);
+                    modelo.setValueAt("Sucio", datoSeleccionado, 5);
                     jTablevistahabitacion.setModel(modelo);
 
                     // Obtener el número de habitación de la fila seleccionada
-                    String numeroHabitacionStr = (String) modelo.getValueAt(datoSeleccionado, 0);
-                    int numeroHabitacion = Integer.parseInt(numeroHabitacionStr);
+                    String idhabitacion = (String) modelo.getValueAt(datoSeleccionado, 0);
+                    int numeroHabitacion = Integer.parseInt(idhabitacion);
 
                     String nuevoEstado = "Sucio";
                     Habitacion habitacion = new Habitacion();
-                    habitacion.setN_de_habitacion(numeroHabitacion);
+                    habitacion.setID_Habitacion(numeroHabitacion);
                     habitacion.setEstado(nuevoEstado);
 
                     // Actualizar el estado en la base de datos
                     CRUDHabitacion crudHabitacion = new CRUDHabitacion();
                     crudHabitacion.ActualizarDatosEstadoHabit(habitacion);
+                    mostrar();
                 } else {
                     JOptionPane.showMessageDialog(null, "La habitación está en estado 'Disponible'. No se puede cambiar a 'Sucio'.");
                 }
@@ -169,25 +199,26 @@ public class VistaHabitaciones extends javax.swing.JFrame {
     private void jbottonChangeDisponibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbottonChangeDisponibleActionPerformed
         if (datoSeleccionado != -1) {
             DefaultTableModel modelo = (DefaultTableModel) jTablevistahabitacion.getModel();
-            String estadoActual = (String) modelo.getValueAt(datoSeleccionado, 4);
+            String estadoActual = (String) modelo.getValueAt(datoSeleccionado, 5);
 
             if (!estadoActual.equals("Disponible")) {
                 if (!estadoActual.equals("Ocupada")) {
-                    modelo.setValueAt("Disponible", datoSeleccionado, 4);
+                    modelo.setValueAt("Disponible", datoSeleccionado, 5);
                     jTablevistahabitacion.setModel(modelo);
 
                     // Obtener el número de habitación de la fila seleccionada
-                    String numeroHabitacionStr = (String) modelo.getValueAt(datoSeleccionado, 0);
-                    int numeroHabitacion = Integer.parseInt(numeroHabitacionStr);
+                    String idhabitacion = (String) modelo.getValueAt(datoSeleccionado, 0);
+                    int numeroHabitacion = Integer.parseInt(idhabitacion);
 
                     String nuevoEstado = "Disponible";
                     Habitacion habitacion = new Habitacion();
-                    habitacion.setN_de_habitacion(numeroHabitacion);
+                    habitacion.setID_Habitacion(numeroHabitacion);
                     habitacion.setEstado(nuevoEstado);
 
                     // Actualizar el estado en la base de datos
                     CRUDHabitacion crudHabitacion = new CRUDHabitacion();
                     crudHabitacion.ActualizarDatosEstadoHabit(habitacion);
+                    mostrar();
                 } else {
                     JOptionPane.showMessageDialog(null, "La habitación está en estado 'Ocupada'. No se puede cambiar a 'Disponible'.");
                 }
@@ -238,11 +269,14 @@ public class VistaHabitaciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelBusquedaReservacion;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTablevistahabitacion;
+    public static javax.swing.JTable jTablevistahabitacion;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JButton jbottonChangeDisponible;
-    private javax.swing.JButton jbottonChangeSucio;
+    public static javax.swing.JButton jbottonChangeDisponible;
+    public static javax.swing.JButton jbottonChangeSucio;
     // End of variables declaration//GEN-END:variables
 }
