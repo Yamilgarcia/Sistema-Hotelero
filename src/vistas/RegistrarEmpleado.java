@@ -9,12 +9,14 @@ import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ButtonGroup;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import modelo.Empleado;
 import modelo.ValidarCampos;
+import static vistas.PantallaRegistroReservacionEstancia.jTextFieldSeleccion;
 
 /**
  *
@@ -40,6 +42,25 @@ ValidarCampos validar = new ValidarCampos();
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\FondoHotel.jpg");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel3, "src\\vistaimagen\\5-estrellas.png");
         mostrar();
+        
+        ButtonGroup grupoRadios = new ButtonGroup();
+        grupoRadios.add(jRadioButtonAdmin);
+        grupoRadios.add(jRadioButtonEmpleado);
+        
+        
+        jRadioButtonAdmin.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                jTextFieldusuarioSesion.setText(jRadioButtonAdmin.getText());
+            }
+        });
+
+        jRadioButtonEmpleado.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                jTextFieldusuarioSesion.setText(jRadioButtonEmpleado.getText());
+            }
+        });
+        
+        jTextFieldusuarioSesion.setEditable(false);
 
 //        jtextButtonRefresh2.addActionListener(new ActionListener() {
 //            @Override
@@ -143,6 +164,8 @@ ValidarCampos validar = new ValidarCampos();
         jButtonActualizar = new javax.swing.JButton();
         jTextFieldIDEmpleado = new javax.swing.JTextField();
         jTextFieldTelefono = new javax.swing.JFormattedTextField();
+        jRadioButtonAdmin = new javax.swing.JRadioButton();
+        jRadioButtonEmpleado = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
         jbuttonEditar = new javax.swing.JButton();
         jbuttonEliminarEmpleado = new javax.swing.JButton();
@@ -194,11 +217,11 @@ ValidarCampos validar = new ValidarCampos();
                 jTextFieldNombre1KeyTyped(evt);
             }
         });
-        jPanel3.add(jTextFieldNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 200, 50));
+        jPanel3.add(jTextFieldNombre1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 200, 50));
 
         jLabel1.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabel1.setText("Nombre del Empleado");
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
 
         jTextFieldNombre2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldNombre2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -207,11 +230,11 @@ ValidarCampos validar = new ValidarCampos();
                 jTextFieldNombre2KeyTyped(evt);
             }
         });
-        jPanel3.add(jTextFieldNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, 200, 50));
+        jPanel3.add(jTextFieldNombre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 60, 200, 50));
 
         jLabelSegundoNombre.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelSegundoNombre.setText("Segundo Nombre");
-        jPanel3.add(jLabelSegundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 50, -1, -1));
+        jPanel3.add(jLabelSegundoNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
         jTextFieldApellido1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldApellido1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -220,11 +243,11 @@ ValidarCampos validar = new ValidarCampos();
                 jTextFieldApellido1KeyTyped(evt);
             }
         });
-        jPanel3.add(jTextFieldApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 200, 50));
+        jPanel3.add(jTextFieldApellido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 200, 50));
 
         jLabelPrimerApellido.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelPrimerApellido.setText("Primer Apellido");
-        jPanel3.add(jLabelPrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, -1, -1));
+        jPanel3.add(jLabelPrimerApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, -1, -1));
 
         jTextFieldApellido2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldApellido2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -233,11 +256,11 @@ ValidarCampos validar = new ValidarCampos();
                 jTextFieldApellido2KeyTyped(evt);
             }
         });
-        jPanel3.add(jTextFieldApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 200, 200, 50));
+        jPanel3.add(jTextFieldApellido2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 170, 200, 50));
 
         jLabelSegundoApellido.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelSegundoApellido.setText("Segundo Apellido");
-        jPanel3.add(jLabelSegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
+        jPanel3.add(jLabelSegundoApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 140, -1, -1));
 
         jLabelPrimerApellido1.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelPrimerApellido1.setText("Telefono ");
@@ -249,7 +272,7 @@ ValidarCampos validar = new ValidarCampos();
 
         jLabelusuarioSesion.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelusuarioSesion.setText("Usuario de Sesión");
-        jPanel3.add(jLabelusuarioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 270, -1, -1));
+        jPanel3.add(jLabelusuarioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 240, -1, -1));
 
         jPasswordContraseña.setText("**********");
         jPasswordContraseña.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -303,6 +326,26 @@ ValidarCampos validar = new ValidarCampos();
             }
         });
         jPanel3.add(jTextFieldTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 200, 50));
+
+        jRadioButtonAdmin.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jRadioButtonAdmin.setText("Admin");
+        jRadioButtonAdmin.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jRadioButtonAdmin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonAdminActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jRadioButtonAdmin, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 280, -1, -1));
+
+        jRadioButtonEmpleado.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jRadioButtonEmpleado.setText("Empleado");
+        jRadioButtonEmpleado.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jRadioButtonEmpleado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButtonEmpleadoActionPerformed(evt);
+            }
+        });
+        jPanel3.add(jRadioButtonEmpleado, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 280, -1, -1));
 
         getContentPane().add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 140, 520, 530));
 
@@ -596,6 +639,14 @@ ValidarCampos validar = new ValidarCampos();
            validar.KeyTipedTXT(evt);
     }//GEN-LAST:event_jTextFieldApellido2KeyTyped
 
+    private void jRadioButtonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonAdminActionPerformed
+
+    }//GEN-LAST:event_jRadioButtonAdminActionPerformed
+
+    private void jRadioButtonEmpleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonEmpleadoActionPerformed
+
+    }//GEN-LAST:event_jRadioButtonEmpleadoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -648,6 +699,8 @@ ValidarCampos validar = new ValidarCampos();
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     public static javax.swing.JPasswordField jPasswordContraseña;
+    private javax.swing.JRadioButton jRadioButtonAdmin;
+    private javax.swing.JRadioButton jRadioButtonEmpleado;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableEmpleado;
     public static javax.swing.JTextField jTextFieldApellido1;

@@ -47,13 +47,13 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
     int datoSeleccionado = -1;
-    String[] titulos = {"ID_Habitacion","N_habitacion", "Nombre", "Descripcion", "Num_Cama", "Estado", "Precio"};
+    String[] titulos = {"ID_Habitacion", "N_habitacion", "Nombre", "Descripcion", "Num_Cama", "Estado", "Precio"};
     String[] datos = new String[7];
 
     public PantallaRegistroReservacionEstancia() {
 
         initComponents();
-        
+
         jTextFieldIDReservaEstancia.setVisible(false);
         jTextFieldSeleccion.setEnabled(false);
         jTextFieldSeleccion.setVisible(false);
@@ -82,10 +82,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         llenarCombo1();
         llenarCombo2();
         modelo = new DefaultTableModel(null, titulos);
-        
-        
-        
-        
 
     }
 
@@ -226,7 +222,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     public void editarEstadoReseEstancia() {
         try {
             // Obtener el número de columna de N_habitacion y Estado en la tabla
-            int columnaIDHabitacion= 0;
+            int columnaIDHabitacion = 0;
             int columnaEstado = 5;
 
             // Obtener el valor del JTextFieldSeleccion
@@ -253,13 +249,12 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
                 // Refrescar el ComboBox
                 llenarCombo2();
 
-                
             } else if (seleccion.equals("Reservacion")) {
                 for (int i = 0; i < jTablehabitaciones.getRowCount(); i++) {
                     // Obtener el número de habitación y el nuevo estado de la fila
                     int idhabitacion = Integer.parseInt(jTablehabitaciones.getValueAt(i, columnaIDHabitacion).toString());
                     String nuevoEstado = "Reservado"; // Reemplaza con el nuevo estado que desees
-                    
+
                     // Crear un objeto Habitacion con el número de habitación y el nuevo estado
                     Habitacion habitacion = new Habitacion();
                     habitacion.setID_Habitacion(idhabitacion);
@@ -672,28 +667,42 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     private void jButtonRegistrarReservaEstanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarReservaEstanciaActionPerformed
         CRUDReservacionEstancia cl = new CRUDReservacionEstancia();
         try {
-            if ((jTextFieldClienteReser.getText().equals(""))
-                    || (jTextFieldClienteApellido.getText().equals(""))
-                    || (jTextFieldSeleccion.getText().equals(""))
-                    || (jTextFieldFechEntrada1.getText().equals(""))
-                    || (jTextFieldFechSalida.getText().equals(""))
-                    || (jTextFieldPrecio.getText().equals(""))) {
-                JOptionPane.showMessageDialog(null, "Tiene datos vacio");
-                JOptionPane.showMessageDialog(null, "Si no tiene campos vacios seleccione nuevamente el tipo de servicio");
+            if (jTextFieldClienteReser.getText().equals("")
+                    || jTextFieldClienteApellido.getText().equals("")
+                    || jTextFieldSeleccion.getText().equals("")
+                    || jTextFieldFechEntrada1.getText().equals("")
+                    || jTextFieldFechSalida.getText().equals("")
+                    || jTextFieldPrecio.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Tiene datos vacíos");
+                JOptionPane.showMessageDialog(null, "Si no tiene campos vacíos, seleccione nuevamente el tipo de servicio");
             } else {
-                guardarRE();
-                editarEstadoReseEstancia();
-                limpiar();
-                DefaultTableModel modelo = (DefaultTableModel) jTablehabitaciones.getModel();
-                limpiarTabla(modelo);
+                int columnaEstado = 5;
+                boolean habitacionOcupada = false;
 
-                JOptionPane.showMessageDialog(null, "Datos guardados");
+                for (int i = 0; i < jTablehabitaciones.getRowCount(); i++) {
+                    habitacionOcupada = jTablehabitaciones.getValueAt(i, columnaEstado).equals("Ocupado");
+                    if (habitacionOcupada) {
+                        break;
+                    }
+                }
+
+                if (habitacionOcupada) {
+                    JOptionPane.showMessageDialog(null, "Hay habitaciones ocupadas. Seleccione otra habitación.");
+                } else {
+                    guardarRE();
+                    editarEstadoReseEstancia();
+                    limpiar();
+                    DefaultTableModel modelo = (DefaultTableModel) jTablehabitaciones.getModel();
+                    limpiarTabla(modelo);
+
+                    JOptionPane.showMessageDialog(null, "Datos guardados");
+                }
             }
-
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
-
         }
+
+
     }//GEN-LAST:event_jButtonRegistrarReservaEstanciaActionPerformed
 
     private void jbuttonRegistrahabitacionNowMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuttonRegistrahabitacionNowMouseClicked
@@ -864,7 +873,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldClienteApellidoKeyTyped
 
     private void jButtonACTUALIZARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonACTUALIZARActionPerformed
-         try {
+        try {
             if (jTextFieldIDReservaEstancia.getText().isEmpty()
                     || jTextFieldFechEntrada1.getText().isEmpty()
                     || jTextFieldFechSalida.getText().isEmpty()

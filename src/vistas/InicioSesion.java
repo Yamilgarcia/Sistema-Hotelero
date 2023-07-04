@@ -1,4 +1,3 @@
-
 package vistas;
 
 import Conexion_bd.Conexion;
@@ -19,17 +18,19 @@ public class InicioSesion extends javax.swing.JFrame {
     ValidarCampos validar = new ValidarCampos();
     private final Conexion con = new Conexion();
     private final Connection cn = (Connection) con.conectar();
+
     /**
      * Creates new form InicioSesion
      */
     public InicioSesion() {
-        initComponents(); 
+        initComponents();
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel3, "src\\vistaimagen\\FondoHotel.jpg");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src\\vistaimagen\\icons8_contacts_512px_2.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel4, "src\\vistaimagen\\icons8_lock_32px.png");
-        
+
     }
-     //Metodo para autenticar usuarios en la base de datos.
+    //Metodo para autenticar usuarios en la base de datos.
+
     private boolean Autenticacion(String username, String password) {
         try {
             String sql = "SELECT * FROM Empleado WHERE Usuario = ? AND Contraseña = ?";
@@ -40,28 +41,31 @@ public class InicioSesion extends javax.swing.JFrame {
             if (result.next()) {
                 String user = result.getString("Usuario");
                 String pass = result.getString("Contraseña");
+                boolean isAdmin = user.equals("Admin"); // Verificar si el usuario es "Admin"
+                // Realizar acciones adicionales para el usuario "Admin" si es necesario
+
                 return username.equals(user) && password.equals(pass);
-
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
         return false;
     }
-    
-    //Metodo para ingresar con la accion de boton.
+
     private void AccesoBoton(java.awt.event.ActionEvent evt) {
         String username = txtUsuario.getText();
         String password = new String(txtPassword.getPassword());
         if (Autenticacion(username, password)) {
             Menu principal = new Menu();
+            boolean isAdmin = username.equals("Admin"); // Verificar si el usuario es "Admin"
+            if (!isAdmin) {
+                principal.jButtonIngreso.setEnabled(false); // Desactivar el botón si no es administrador
+            }
             principal.setVisible(true);
             principal.setLocationRelativeTo(null);
             principal.setResizable(true);
             this.dispose();
-            JOptionPane.showMessageDialog(null,"Acceso concedido.");
+            JOptionPane.showMessageDialog(null, "Acceso concedido.");
         } else {
             txtUsuario.setText("");
             txtPassword.setText("");
@@ -133,7 +137,7 @@ public class InicioSesion extends javax.swing.JFrame {
                 InicioSeciActionPerformed(evt);
             }
         });
-        jPanel1.add(InicioSeci, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 350, 130, 40));
+        jPanel1.add(InicioSeci, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 130, 40));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vistaimagen/icons8_contacts_512px.png"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 90, 80, 70));
@@ -154,12 +158,12 @@ public class InicioSesion extends javax.swing.JFrame {
     }//GEN-LAST:event_InicioSeciActionPerformed
 
     private void txtPasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPasswordMouseClicked
-        if(txtPassword.getText().equals("**********")){
+        if (txtPassword.getText().equals("**********")) {
             txtPassword.setText("");
-            
+
         }
-        
-        
+
+
     }//GEN-LAST:event_txtPasswordMouseClicked
 
     /**

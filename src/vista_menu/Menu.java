@@ -349,7 +349,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBusquedaReserva;
     private javax.swing.JButton jButtonEmpleado;
     private javax.swing.JButton jButtonHabitaciones;
-    private javax.swing.JButton jButtonIngreso;
+    public javax.swing.JButton jButtonIngreso;
     private javax.swing.JButton jButtonRegistroCliente;
     private javax.swing.JButton jButtonRegistroReservacionEstancia;
     private javax.swing.JLabel jLabel1;
