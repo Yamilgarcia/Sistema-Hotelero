@@ -687,7 +687,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
                 }
 
                 if (habitacionOcupada) {
-                    JOptionPane.showMessageDialog(null, "Hay habitaciones ocupadas. Seleccione otra habitación.");
+                    JOptionPane.showMessageDialog(null, "Hay habitaciones ocupadas. Seleccione otra habitación");
                 } else {
                     guardarRE();
                     editarEstadoReseEstancia();
