@@ -121,7 +121,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
                 jTextFieldBuscarKeyTyped(evt);
             }
         });
-        panel2.add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 660, 50));
+        panel2.add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 720, 50));
 
         jTableCliente.setFont(new java.awt.Font("Roboto", 0, 12)); // NOI18N
         jTableCliente.setModel(new javax.swing.table.DefaultTableModel(
@@ -346,8 +346,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_jtextButtonAggCliReserActionPerformed
 
     private void jTextFieldBuscarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldBuscarKeyTyped
-        // TODO add your handling code here:
-        validar.KeyTipedTXT(evt);
+        
     }//GEN-LAST:event_jTextFieldBuscarKeyTyped
 
     /**

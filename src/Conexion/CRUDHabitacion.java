@@ -33,7 +33,7 @@ public class CRUDHabitacion {
 public DefaultTableModel mostrarDatosHabitacion() {
     ResultSet rs;
     DefaultTableModel modelo;
-    String[] titulos = {"ID_Reserva","Numero de habitacion", "Nombre", "Descripcion", "Num_cama", "Estado", "Precio", "F_Entrada", "F_Salida"};
+    String[] titulos = {"ID_ReservaEstancia","Numero de habitacion", "Nombre", "Descripcion", "Num_cama", "Estado", "Precio", "F_Entrada", "F_Salida"};
     String[] registro = new String[9];
     modelo = new DefaultTableModel(null, titulos);
 
@@ -114,7 +114,7 @@ public DefaultTableModel mostrarDatosHabitacion() {
 
     
     
-    
+    //PRINCIPAL
    public void ActualizarDatosEstadoHabit(Habitacion habitacion) {
     try {
         CallableStatement cbst = cn.prepareCall("{call ModificarEstadoHabitacion(?, ?)}");
@@ -128,16 +128,57 @@ public DefaultTableModel mostrarDatosHabitacion() {
     }
 }
    
-
-
-
-
-
-
+    
+   
+   
 
 
     
     
+
+
+
+
+  public DefaultTableModel buscarDatos(String Dato) {
+    ResultSet rs;
+    DefaultTableModel modelo;
+    String[] titulos = {"ID_Reserva", "Numero de habitacion", "Nombre", "Descripcion", "Num_cama", "Estado", "Precio", "F_Entrada", "F_Salida"};
+    String[] registro = new String[9];
+    modelo = new DefaultTableModel(null, titulos);
+    try {
+        CallableStatement call = cn.prepareCall("{call ConsultarHabitacion(?)}");
+        call.setString(1, Dato);
+        rs = call.executeQuery();
+
+        while (rs.next()) {
+            registro[0] = rs.getString("ID_ReservaEstancia");
+            registro[1] = rs.getString("N_de_habitacion");
+            registro[2] = rs.getString("Nombre");
+            registro[3] = rs.getString("Descripcion");
+            registro[4] = rs.getString("Num_Cama");
+            registro[5] = rs.getString("Estado");
+            registro[6] = rs.getString("Precio");
+            registro[7] = rs.getString("F_entrada");
+            registro[8] = rs.getString("F_salida");
+
+            modelo.addRow(registro);
+        }
+        return modelo;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+        return null;
+    }
+}
+
+
+
+ 
+
+
+     
+    
+
+
     
    
 

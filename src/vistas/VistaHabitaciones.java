@@ -5,6 +5,7 @@
 package vistas;
 
 import Conexion.CRUDHabitacion;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -39,8 +40,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         }
     }
 
-    
-     public void ocultartabla() {
+    public void ocultartabla() {
         int columnIndex = 0; // Índice de la columna que deseas ocultar
         TableColumnModel columnModel = jTablevistahabitacion.getColumnModel();
         columnModel.getColumn(columnIndex).setWidth(0);
@@ -48,6 +48,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         columnModel.getColumn(columnIndex).setMaxWidth(0);
         columnModel.getColumn(columnIndex).setPreferredWidth(0);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -55,9 +56,10 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTablevistahabitacion = new javax.swing.JTable();
-        jTextField1 = new javax.swing.JTextField();
+        jTextFieldBuscar = new javax.swing.JTextField();
         jbottonChangeSucio = new javax.swing.JButton();
         jbottonChangeDisponible = new javax.swing.JButton();
+        jbuttonBuscar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabelBusquedaReservacion = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -89,20 +91,20 @@ public class VistaHabitaciones extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 860, 360));
 
-        jTextField1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(102, 102, 102));
-        jTextField1.setText("Buscar");
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTextFieldBuscar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldBuscar.setForeground(new java.awt.Color(102, 102, 102));
+        jTextFieldBuscar.setText("Buscar");
+        jTextFieldBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextField1MouseClicked(evt);
+                jTextFieldBuscarMouseClicked(evt);
             }
         });
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextFieldBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 720, 50));
+        jPanel1.add(jTextFieldBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 720, 50));
 
         jbottonChangeSucio.setBackground(new java.awt.Color(102, 102, 0));
         jbottonChangeSucio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -126,6 +128,22 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         });
         jPanel1.add(jbottonChangeDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, 130, 50));
 
+        jbuttonBuscar.setBackground(new java.awt.Color(216, 199, 162));
+        jbuttonBuscar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jbuttonBuscar.setText("Buscar");
+        jbuttonBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbuttonBuscar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbuttonBuscarMouseClicked(evt);
+            }
+        });
+        jbuttonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbuttonBuscarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbuttonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 60, 80, 50));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 1070, 590));
 
         jPanel2.setBackground(new java.awt.Color(0, 94, 144));
@@ -145,18 +163,20 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MouseClicked
-        if (jTextField1.getText().equals("Buscar")) {
-            jTextField1.setText("");
+    private void jTextFieldBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldBuscarMouseClicked
+        if (jTextFieldBuscar.getText().equals("Buscar")) {
+            jTextFieldBuscar.setText("");
+            jTextFieldBuscar.setForeground(Color.BLACK);
         }
-    }//GEN-LAST:event_jTextField1MouseClicked
+    }//GEN-LAST:event_jTextFieldBuscarMouseClicked
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextFieldBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldBuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextFieldBuscarActionPerformed
 
     private void jbottonChangeSucioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbottonChangeSucioActionPerformed
 
+//PRINCIPAL PRINCIPAL PRINCIPAL PRINCIPAL PRINCIPAL
         if (datoSeleccionado != -1) {
             DefaultTableModel modelo = (DefaultTableModel) jTablevistahabitacion.getModel();
             String estadoActual = (String) modelo.getValueAt(datoSeleccionado, 5);
@@ -167,7 +187,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
                     jTablevistahabitacion.setModel(modelo);
 
                     // Obtener el número de habitación de la fila seleccionada
-                    String idhabitacion = (String) modelo.getValueAt(datoSeleccionado, 0);
+                    String idhabitacion = (String) modelo.getValueAt(datoSeleccionado, 1);
                     int numeroHabitacion = Integer.parseInt(idhabitacion);
 
                     String nuevoEstado = "Sucio";
@@ -197,6 +217,8 @@ public class VistaHabitaciones extends javax.swing.JFrame {
     }//GEN-LAST:event_jTablevistahabitacionMouseClicked
 
     private void jbottonChangeDisponibleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbottonChangeDisponibleActionPerformed
+        
+
         if (datoSeleccionado != -1) {
             DefaultTableModel modelo = (DefaultTableModel) jTablevistahabitacion.getModel();
             String estadoActual = (String) modelo.getValueAt(datoSeleccionado, 5);
@@ -207,7 +229,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
                     jTablevistahabitacion.setModel(modelo);
 
                     // Obtener el número de habitación de la fila seleccionada
-                    String idhabitacion = (String) modelo.getValueAt(datoSeleccionado, 0);
+                    String idhabitacion = (String) modelo.getValueAt(datoSeleccionado, 1);
                     int numeroHabitacion = Integer.parseInt(idhabitacion);
 
                     String nuevoEstado = "Disponible";
@@ -229,9 +251,29 @@ public class VistaHabitaciones extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecciona una fila de la tabla.");
         }
 
-
-    
     }//GEN-LAST:event_jbottonChangeDisponibleActionPerformed
+
+    private void jbuttonBuscarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbuttonBuscarMouseClicked
+
+    }//GEN-LAST:event_jbuttonBuscarMouseClicked
+
+    private void jbuttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonBuscarActionPerformed
+        try {
+            DefaultTableModel modelo;
+            DefaultTableModel modelo2;
+            CRUDHabitacion cli = new CRUDHabitacion();
+            modelo = cli.buscarDatos(jTextFieldBuscar.getText());
+
+            if (jTextFieldBuscar.getText().equals("")) {
+                JOptionPane.showMessageDialog(null, "Escriba el dato a buscar");
+                mostrar();
+            } else {
+                jTablevistahabitacion.setModel(modelo);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }//GEN-LAST:event_jbuttonBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -275,8 +317,9 @@ public class VistaHabitaciones extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane2;
     public static javax.swing.JTable jTablevistahabitacion;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextFieldBuscar;
     public static javax.swing.JButton jbottonChangeDisponible;
     public static javax.swing.JButton jbottonChangeSucio;
+    private javax.swing.JButton jbuttonBuscar;
     // End of variables declaration//GEN-END:variables
 }

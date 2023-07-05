@@ -56,7 +56,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
         jTextFieldIDReservaEstancia.setVisible(false);
         jTextFieldSeleccion.setEnabled(false);
-        jTextFieldSeleccion.setVisible(false);
+        jTextFieldSeleccion.setVisible(true);
 
         jRadioButtonReservacion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {

@@ -12,6 +12,7 @@ package modelo;
 public class Habitacion extends Tipo_de_habitacion {
 
     int ID_Habitacion;
+    int ID_ReservaEstancia;
     int N_de_habitacion;
     int ID_tipoHabitacion;
     int Num_Cama;
@@ -38,6 +39,18 @@ public class Habitacion extends Tipo_de_habitacion {
 
     public Habitacion(String Estado) {
         this.Estado = Estado;
+    }
+
+    public Habitacion(int ID_ReservaEstancia) {
+        this.ID_ReservaEstancia = ID_ReservaEstancia;
+    }
+
+    public int getID_ReservaEstancia() {
+        return ID_ReservaEstancia;
+    }
+
+    public void setID_ReservaEstancia(int ID_ReservaEstancia) {
+        this.ID_ReservaEstancia = ID_ReservaEstancia;
     }
     
     
