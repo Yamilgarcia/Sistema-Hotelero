@@ -176,7 +176,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
 
     private void jbottonChangeSucioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbottonChangeSucioActionPerformed
 
-//PRINCIPAL PRINCIPAL PRINCIPAL PRINCIPAL PRINCIPAL
+
         if (datoSeleccionado != -1) {
             DefaultTableModel modelo = (DefaultTableModel) jTablevistahabitacion.getModel();
             String estadoActual = (String) modelo.getValueAt(datoSeleccionado, 5);
@@ -260,7 +260,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
     private void jbuttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuttonBuscarActionPerformed
         try {
             DefaultTableModel modelo;
-            DefaultTableModel modelo2;
+            
             CRUDHabitacion cli = new CRUDHabitacion();
             modelo = cli.buscarDatos(jTextFieldBuscar.getText());
 
