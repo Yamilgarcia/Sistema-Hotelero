@@ -5,8 +5,10 @@
 package vistas;
 
 import Conexion.CRUDCliente;
+import Conexion_bd.Conexion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -16,6 +18,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
 import modelo.ValidarCampos;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 import vista_menu.Menu;
 
@@ -104,6 +112,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         jbuttonEliminar = new javax.swing.JButton();
         jtextButtonAggCliReser = new javax.swing.JButton();
         jtextButtonRefresh = new javax.swing.JButton();
+        jButtonReporte = new javax.swing.JButton();
         panel5 = new java.awt.Panel();
         jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -223,6 +232,16 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
             }
         });
         panel2.add(jtextButtonRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 100, 50));
+
+        jButtonReporte.setBackground(new java.awt.Color(216, 199, 162));
+        jButtonReporte.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jButtonReporte.setText("Clientes Frencuente");
+        jButtonReporte.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonReporteMouseClicked(evt);
+            }
+        });
+        panel2.add(jButtonReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 160, 50));
 
         panel1.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 1000, 510));
 
@@ -349,6 +368,23 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jTextFieldBuscarKeyTyped
 
+    private void jButtonReporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonReporteMouseClicked
+        Conexion con = new Conexion();
+        Connection cn = (Connection) con.conectar();
+ 
+        String path = "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\Conexion_bd\\report1.jrxml";
+        JasperReport jr;
+        try {
+            jr = JasperCompileManager.compileReport(path);
+            JasperPrint mostrarReporte = JasperFillManager.fillReport(jr, null, cn);
+            JasperViewer.viewReport(mostrarReporte);
+
+        } catch (JRException e ) {
+            JOptionPane.showMessageDialog(null, e);
+            
+        }
+    }//GEN-LAST:event_jButtonReporteMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -393,6 +429,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonReporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
