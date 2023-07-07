@@ -5,17 +5,30 @@
 package vistas;
 
 import Conexion.CRUDEmpleado;
+import Conexion_bd.Conexion;
+
+
 import java.awt.Color;
 import java.awt.HeadlessException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import modelo.Empleado;
 import modelo.ValidarCampos;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
+
+
 import static vistas.PantallaRegistroReservacionEstancia.jTextFieldSeleccion;
 
 /**
@@ -68,6 +81,9 @@ ValidarCampos validar = new ValidarCampos();
 //                refreshTablaEmpleado();
 //            }
 //        });
+
+//Cambiar icono
+        setIconImage(new ImageIcon(getClass().getResource("../vistaimagen/icon3.png")).getImage());
 
     }
 
@@ -175,6 +191,7 @@ ValidarCampos validar = new ValidarCampos();
         jbuttonBuscar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         botonmostrar = new javax.swing.JButton();
+        jButtonReporte = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -451,6 +468,17 @@ ValidarCampos validar = new ValidarCampos();
         });
         jPanel2.add(botonmostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
+        jButtonReporte.setBackground(new java.awt.Color(216, 199, 162));
+        jButtonReporte.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jButtonReporte.setText("Reporte Empleado");
+        jButtonReporte.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonReporte.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonReporteMouseClicked(evt);
+            }
+        });
+        jPanel2.add(jButtonReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, 150, 50));
+
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 800, 530));
 
         jLabel2.setText("jLabel2");
@@ -647,6 +675,21 @@ ValidarCampos validar = new ValidarCampos();
 
     }//GEN-LAST:event_jRadioButtonEmpleadoActionPerformed
 
+    private void jButtonReporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonReporteMouseClicked
+        Conexion con = new Conexion();
+        Connection cn = (Connection) con.conectar();
+        String path = "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\Conexion_bd\\report3.jrxml";
+        JasperReport jr;
+        try{
+            jr = JasperCompileManager.compileReport(path);
+            JasperPrint mostrarReporte = JasperFillManager.fillReport(jr, null, cn);
+            JasperViewer.viewReport(mostrarReporte);
+        }catch(JRException e ) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+    }//GEN-LAST:event_jButtonReporteMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -686,6 +729,7 @@ ValidarCampos validar = new ValidarCampos();
     public static javax.swing.JButton botonmostrar;
     public static javax.swing.JButton jButtonActualizar;
     public static javax.swing.JButton jButtonRegistrarEmpleado;
+    private javax.swing.JButton jButtonReporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

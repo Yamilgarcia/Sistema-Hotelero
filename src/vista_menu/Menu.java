@@ -3,6 +3,7 @@ package vista_menu;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import vistas.PantallBusquedaReservacionEstancia;
@@ -64,7 +65,8 @@ public class Menu extends javax.swing.JFrame {
         
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\hotel (1).png" );
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabelFondo43, "src\\vistaimagen\\FondoHotel.jpg" );
-        
+        //Cambiar icono
+        setIconImage(new ImageIcon(getClass().getResource("../vistaimagen/icon3.png")).getImage());
     }
     
     private void updateDateTime() {

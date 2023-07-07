@@ -161,9 +161,9 @@ HAVING
 	<title>
 		<band height="79" splitType="Stretch">
 			<staticText>
-				<reportElement x="301" y="0" width="220" height="31" uuid="e9451131-1a16-4141-8b18-f985719838b9"/>
+				<reportElement x="0" y="0" width="805" height="42" forecolor="#000000" backcolor="#FFFFFF" uuid="e9451131-1a16-4141-8b18-f985719838b9"/>
 				<textElement textAlignment="Center">
-					<font fontName="Roboto Black" size="24"/>
+					<font fontName="Roboto Medium" size="24" isBold="false" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Clientes Frencuente]]></text>
 			</staticText>

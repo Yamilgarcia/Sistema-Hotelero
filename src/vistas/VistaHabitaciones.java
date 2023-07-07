@@ -5,13 +5,22 @@
 package vistas;
 
 import Conexion.CRUDHabitacion;
+import Conexion_bd.Conexion;
+import com.sun.jdi.connect.spi.Connection;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import modelo.Habitacion;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.view.JasperViewer;
 
 /**
  *
@@ -26,6 +35,8 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         mostrar();
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src\\vistaimagen\\FondoHotel.jpg");
 
+        //Cambiar icono
+        setIconImage(new ImageIcon(getClass().getResource("../vistaimagen/icon3.png")).getImage());
 //        ocultartabla();
     }
 
@@ -60,6 +71,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         jbottonChangeSucio = new javax.swing.JButton();
         jbottonChangeDisponible = new javax.swing.JButton();
         jbuttonBuscar = new javax.swing.JButton();
+        jButtonReportehabit = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabelBusquedaReservacion = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -143,6 +155,22 @@ public class VistaHabitaciones extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jbuttonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 60, 80, 50));
+
+        jButtonReportehabit.setBackground(new java.awt.Color(216, 199, 162));
+        jButtonReportehabit.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jButtonReportehabit.setText("Habitaciones Frecuentes");
+        jButtonReportehabit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonReportehabit.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonReportehabitMouseClicked(evt);
+            }
+        });
+        jButtonReportehabit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReportehabitActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButtonReportehabit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 190, 50));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 1070, 590));
 
@@ -275,6 +303,27 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbuttonBuscarActionPerformed
 
+    private void jButtonReportehabitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonReportehabitMouseClicked
+        Conexion con = new Conexion();
+        java.sql.Connection cn = (java.sql.Connection) con.conectar();
+ 
+        String path = "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\Conexion_bd\\report2.jrxml";
+        JasperReport jr;
+        try {
+            jr = JasperCompileManager.compileReport(path);
+            JasperPrint mostrarReporte = JasperFillManager.fillReport(jr, null, cn);
+            JasperViewer.viewReport(mostrarReporte);
+
+        } catch (JRException e ) {
+            JOptionPane.showMessageDialog(null, e);
+            
+        }
+    }//GEN-LAST:event_jButtonReportehabitMouseClicked
+
+    private void jButtonReportehabitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReportehabitActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReportehabitActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,6 +360,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public static javax.swing.JButton jButtonReportehabit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelBusquedaReservacion;
     private javax.swing.JPanel jPanel1;

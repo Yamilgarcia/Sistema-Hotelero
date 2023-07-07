@@ -103,7 +103,7 @@ public class CRUDCliente {
         }
     }
 
-    public void Eliminar(int ID_Persona) {
+        public void Eliminar(int ID_Persona) {
         try {
             CallableStatement cbst = cn.prepareCall("{call EliminarCliente(?)}");
             cbst.setInt(1, ID_Persona);

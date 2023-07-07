@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -59,6 +60,8 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src\\vistaimagen\\FondoHotel.jpg");
 
         ocultartabla();
+        //Cambiar icono
+        setIconImage(new ImageIcon(getClass().getResource("../vistaimagen/icon3.png")).getImage());
     }
 
     public void mostrar() {
@@ -241,6 +244,11 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
                 jButtonReporteMouseClicked(evt);
             }
         });
+        jButtonReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReporteActionPerformed(evt);
+            }
+        });
         panel2.add(jButtonReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 160, 50));
 
         panel1.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 1000, 510));
@@ -385,6 +393,10 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonReporteMouseClicked
 
+    private void jButtonReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReporteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReporteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -429,7 +441,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonReporte;
+    public static javax.swing.JButton jButtonReporte;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;

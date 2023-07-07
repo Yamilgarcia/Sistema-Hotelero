@@ -3,6 +3,7 @@ package vistas;
 
 import Conexion.CRUDCliente;
 import java.awt.HeadlessException;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -30,7 +31,8 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabelFondo, "src\\vistaimagen\\FondoHotel.jpg");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel2, "src\\vistaimagen\\hotel.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel3, "src\\vistaimagen\\hotel icono.png");
-        
+        //Cambiar icono
+        setIconImage(new ImageIcon(getClass().getResource("../vistaimagen/icon3.png")).getImage());
     }
 
     public void guardarCliente() {

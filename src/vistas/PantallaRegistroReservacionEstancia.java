@@ -23,9 +23,11 @@ import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import modelo.DetalleReservacion;
 import modelo.Empleado;
@@ -56,7 +58,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
         jTextFieldIDReservaEstancia.setVisible(false);
         jTextFieldSeleccion.setEnabled(false);
-        jTextFieldSeleccion.setVisible(true);
+        jTextFieldSeleccion.setVisible(false);
 
         jRadioButtonReservacion.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -83,6 +85,8 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         llenarCombo2();
         modelo = new DefaultTableModel(null, titulos);
 
+        //Cambiar icono
+        setIconImage(new ImageIcon(getClass().getResource("../vistaimagen/icon3.png")).getImage());
     }
 
     public void mostrar() {
@@ -313,6 +317,12 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
     }
 
+    public void CANCELAR() {
+        CRUDReservacionEstancia xd = new CRUDReservacionEstancia();
+        ReservacionEstancia cl = new ReservacionEstancia(Integer.parseInt(jTextFieldIDReservaEstancia.getText()));
+        xd.CancelarReserva(cl);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -354,6 +364,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jTextFieldIDReservaEstancia = new javax.swing.JTextField();
         jbottonVerHabitacion = new javax.swing.JButton();
         jbottonVerReservaciones = new javax.swing.JButton();
+        jbottonCancelar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -644,6 +655,16 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         });
         jPanel2.add(jbottonVerReservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 150, 30));
 
+        jbottonCancelar.setBackground(new java.awt.Color(216, 199, 162));
+        jbottonCancelar.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
+        jbottonCancelar.setText("Cancelar");
+        jbottonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbottonCancelarActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jbottonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 120, 40));
+
         panel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 560, 520));
 
         jLabel2.setText("jLabel10");
@@ -665,6 +686,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonRegistrarReservaEstanciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistrarReservaEstanciaActionPerformed
+
         CRUDReservacionEstancia cl = new CRUDReservacionEstancia();
         try {
             if (jTextFieldClienteReser.getText().equals("")
@@ -689,13 +711,34 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
                 if (habitacionOcupada) {
                     JOptionPane.showMessageDialog(null, "Hay habitaciones ocupadas. Seleccione otra habitación");
                 } else {
-                    guardarRE();
-                    editarEstadoReseEstancia();
-                    limpiar();
-                    DefaultTableModel modelo = (DefaultTableModel) jTablehabitaciones.getModel();
-                    limpiarTabla(modelo);
+                    int Fechainicio = 7;
+                    int FECHAsalida =8;
+                    String fechaEntrada = jTextFieldFechEntrada1.getText();
+                    String fechaSalida = jTextFieldFechSalida.getText();
+                    boolean fechaOcupada = false;
 
-                    JOptionPane.showMessageDialog(null, "Datos guardados");
+                    JTable TablaHab = VistaHabitaciones.jTablevistahabitacion;
+
+                    for (int i = 0; i < TablaHab.getRowCount(); i++) {
+                        fechaOcupada = TablaHab.getValueAt(i, Fechainicio).equals(fechaEntrada);
+                        fechaOcupada = TablaHab.getValueAt(i, FECHAsalida).equals(fechaSalida);
+
+                        if (fechaOcupada) {
+                            break;
+                        }
+                    }
+
+                    if (fechaOcupada) {
+                        JOptionPane.showMessageDialog(null, "Habitaciones ocupadas en esa fecha");
+                    } else {
+                        guardarRE();
+                        editarEstadoReseEstancia();
+                        limpiar();
+                        DefaultTableModel modelo = (DefaultTableModel) jTablehabitaciones.getModel();
+                        limpiarTabla(modelo);
+
+                        JOptionPane.showMessageDialog(null, "Datos guardados");
+                    }
                 }
             }
         } catch (HeadlessException e) {
@@ -794,6 +837,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         PantallaBusquedaCliente.jbuttonEditar.setVisible(false);
         PantallaBusquedaCliente.jbuttonEliminar.setVisible(false);
         PantallaBusquedaCliente.jtextButtonRefresh.setVisible(false);
+        PantallaBusquedaCliente.jButtonReporte.setVisible(false);
     }//GEN-LAST:event_jbuttonBuscarClienteActionPerformed
 
     private void jTextFieldFechSalidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldFechSalidaActionPerformed
@@ -895,12 +939,20 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         VH.setVisible(true);
         VH.jbottonChangeSucio.setVisible(false);
         VH.jbottonChangeDisponible.setVisible(false);
+        VH.jButtonReportehabit.setVisible(false);
     }//GEN-LAST:event_jbottonVerHabitacionActionPerformed
 
     private void jbottonVerReservacionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbottonVerReservacionesActionPerformed
         PantallBusquedaReservacionEstancia BUR = new PantallBusquedaReservacionEstancia();
         BUR.setVisible(true);
     }//GEN-LAST:event_jbottonVerReservacionesActionPerformed
+
+    private void jbottonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbottonCancelarActionPerformed
+
+        CANCELAR();
+        JOptionPane.showMessageDialog(null, "Reservacion Cancelada Exitosamente");
+        dispose();
+    }//GEN-LAST:event_jbottonCancelarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -965,6 +1017,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     public static javax.swing.JTextField jTextFieldIDclienteER;
     private javax.swing.JTextField jTextFieldPrecio;
     public static javax.swing.JTextField jTextFieldSeleccion;
+    private javax.swing.JButton jbottonCancelar;
     private javax.swing.JButton jbottonVerHabitacion;
     private javax.swing.JButton jbottonVerReservaciones;
     private javax.swing.JButton jbuttonBuscarCliente;

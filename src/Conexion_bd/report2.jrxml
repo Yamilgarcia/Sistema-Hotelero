@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null"  pageWidth="845" pageHeight="845" columnWidth="805" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f33add43-d0c6-4694-b0a2-bf933a9bd61a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="New Dataset xd" uuid="785e67f9-8c01-4995-9760-cb5d7010d462">
+		<queryString language="SQL">
+			<![CDATA[SELECT H.ID_Habitacion, T.Nombre AS NombreHabitacion, T.Descripcion AS DescripcionHabitacion, COUNT(DR.ID_ReservaEstancia) AS Num_Registros
+FROM Habitacion H
+LEFT JOIN DetalleReservacion DR ON H.ID_Habitacion = DR.ID_Habitacion
+INNER JOIN Tipo_de_habitacion T ON H.ID_tipoHabitacion = T.ID_tipoHabitacion
+GROUP BY H.ID_Habitacion, T.Nombre, T.Descripcion
+ORDER BY Num_Registros DESC;]]>
+		</queryString>
+		<field name="ID_Habitacion" class="java.lang.Integer"/>
+		<field name="NombreHabitacion" class="java.lang.String"/>
+		<field name="DescripcionHabitacion" class="java.lang.String"/>
+		<field name="Num_Registros" class="java.lang.Integer"/>
+	</subDataset>
+	<queryString language="SQL">
+		<![CDATA[SELECT H.ID_Habitacion, T.Nombre AS NombreHabitacion, T.Descripcion AS DescripcionHabitacion, COUNT(DR.ID_ReservaEstancia) AS Num_Registros
+FROM Habitacion H
+LEFT JOIN DetalleReservacion DR ON H.ID_Habitacion = DR.ID_Habitacion
+INNER JOIN Tipo_de_habitacion T ON H.ID_tipoHabitacion = T.ID_tipoHabitacion
+GROUP BY H.ID_Habitacion, T.Nombre, T.Descripcion
+ORDER BY Num_Registros DESC;]]>
+	</queryString>
+	<field name="ID_Habitacion" class="java.lang.Integer"/>
+	<field name="NombreHabitacion" class="java.lang.String"/>
+	<field name="DescripcionHabitacion" class="java.lang.String"/>
+	<field name="Num_Registros" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="245" y="14" width="314" height="50" uuid="ee415408-bd03-480c-b544-9f0715a2dc2b"/>
+				<textElement>
+					<font fontName="Roboto Medium" size="24" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Habitaciones más solicitadas]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="29" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{REPORT_COUNT}==1]]></printWhenExpression>
+			<componentElement>
+				<reportElement key="table 2" style="table 2" x="86" y="17" width="719" height="108" uuid="657eae78-7596-4c64-8885-d2f3298daf2b"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="New Dataset xd" uuid="ce314430-925e-4ce4-a2d5-df190a257d3e">
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="105" uuid="c43e29e2-d97b-423f-8fe7-14664a6b477b">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="15" y="0" width="90" height="30" uuid="5d2399d3-1725-4c75-97f8-66a5510ff3ca"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[ID_Habitacion]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="15" y="0" width="90" height="20" uuid="bf2579de-c48e-4ab8-b017-a50a7252cd6a"/>
+								<textFieldExpression><![CDATA[$F{ID_Habitacion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="182" uuid="460b7f5f-5350-4c77-b189-580762139dfe">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="23" y="0" width="126" height="30" uuid="b9aba91b-8338-4790-97ba-1e869884e863"/>
+								<textElement textAlignment="Center">
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[NombreHabitacion]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="41" y="0" width="90" height="20" uuid="3aa8be54-366e-4020-8553-13f3834863de"/>
+								<textFieldExpression><![CDATA[$F{NombreHabitacion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="192" uuid="7a8820d2-b8e1-4c8b-8442-656f2e6511e9">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="25" y="0" width="167" height="30" uuid="78d53dd6-078e-4209-b927-611dbc79e6a8"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[Descripcion Habitacion]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="52" y="0" width="90" height="20" uuid="17bbaca3-fe9b-4f54-8fbb-8bbc8a74d2c5"/>
+								<textFieldExpression><![CDATA[$F{DescripcionHabitacion}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="156" uuid="bb8ae691-4a2e-493c-91ef-2e2095f06005">
+						<jr:tableHeader style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table 2_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table 2_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement x="21" y="0" width="90" height="30" uuid="3b440e9c-a92c-4a7d-8f14-4cc7ce8ddb24"/>
+								<textElement>
+									<font size="14"/>
+								</textElement>
+								<text><![CDATA[Num_Registros]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table 2_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table 2_TD" height="20" rowSpan="1">
+							<textField>
+								<reportElement x="21" y="0" width="90" height="20" uuid="4cf15a3d-72dd-4302-9ce6-840f50fecafb"/>
+								<textFieldExpression><![CDATA[$F{Num_Registros}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="29" y="34" width="100" height="20" uuid="c0133add-a1c5-4e73-ac57-2629ee478048"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Generado el:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="117" y="34" width="100" height="20" uuid="f2d181a5-7307-4824-bd34-0067b5970f98"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="621" y="34" width="80" height="20" uuid="a818a99a-947d-47c9-b331-cad165a13de8"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="701" y="34" width="40" height="20" uuid="8f5d25b1-aa73-4c05-9072-d4588f59d44b"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

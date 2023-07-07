@@ -57,8 +57,8 @@ public class CRUDReservacionEstancia {
         ResultSet rs;
         DefaultTableModel modelo;
         String[] titulos = {"ID_ReservaEstancia", "ID_DetalleReservacion", "Nombre", "Apellido", "Cedula", "F_entrada",
-            "F_Salida", "Tipo_Servicio", "N_Habitacion", "Nombre Empleado"};
-        String[] registro = new String[10];
+            "F_Salida", "Tipo_Servicio", "Estado de Reserva", "N_Habitacion", "Nombre Empleado"};
+        String[] registro = new String[11];
         modelo = new DefaultTableModel(null, titulos);
 
         try {
@@ -74,8 +74,9 @@ public class CRUDReservacionEstancia {
                 registro[5] = rs.getString("F_entrada");
                 registro[6] = rs.getString("F_salida");
                 registro[7] = rs.getString("TipoServicio");
-                registro[8] = rs.getString("N_de_habitacion");
-                registro[9] = rs.getString("NombreEmpleado");
+                registro[8] = rs.getString("EstadoReserva");
+                registro[9] = rs.getString("N_de_habitacion");
+                registro[10] = rs.getString("NombreEmpleado");
 
                 modelo.addRow(registro);
             }
@@ -103,9 +104,6 @@ public class CRUDReservacionEstancia {
         }
     }
 
-    
-    
-    
     public void EliminarReservaEstancia(int ID_ReservaEst) {
         try {
             CallableStatement cbst = cn.prepareCall("{call EliminarEstanciaReserv(?)}");
@@ -113,6 +111,50 @@ public class CRUDReservacionEstancia {
             cbst.executeUpdate();
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    public void CancelarReserva(ReservacionEstancia CL) {
+        try {
+            CallableStatement cbst = cn.prepareCall("{call CambiarEstadoReservacion(?)}");
+            cbst.setInt(1, CL.getID_Reservaciones());
+
+            cbst.executeUpdate();
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+    
+    public DefaultTableModel buscarDatos(String Dato) {
+        ResultSet rs;
+        DefaultTableModel modelo;
+        String[] titulos = {"ID_ReservaEstancia",  "Nombre", "Apellido", "Cedula", "F_entrada",
+            "F_Salida", "Tipo_Servicio", "Estado de Reserva", "N_Habitacion", "Nombre Empleado"};
+        String[] registro = new String[11];
+        modelo = new DefaultTableModel(null, titulos);
+        try {
+            CallableStatement call = cn.prepareCall("{call ConsultarReservacionEstancia(?)}");
+            call.setString(1, Dato);
+            rs = call.executeQuery();
+
+             while (rs.next()) {
+                registro[0] = rs.getString("ID_ReservaEstancia");
+                registro[1] = rs.getString("Nombre");
+                registro[2] = rs.getString("Apellido");
+                registro[3] = rs.getString("Cedula");
+                registro[4] = rs.getString("F_entrada");
+                registro[5] = rs.getString("F_salida");
+                registro[6] = rs.getString("TipoServicio");
+                registro[7] = rs.getString("EstadoReserva");
+                registro[8] = rs.getString("N_de_habitacion");
+                registro[9] = rs.getString("NombreEmpleado");
+
+                modelo.addRow(registro);
+            }
+            return modelo;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+            return null;
         }
     }
 }

@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import modelo.ValidarCampos;
 import vista_menu.Menu;
@@ -28,6 +29,8 @@ public class InicioSesion extends javax.swing.JFrame {
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel1, "src\\vistaimagen\\icons8_contacts_512px_2.png");
         rsscalelabel.RSScaleLabel.setScaleLabel(jLabel4, "src\\vistaimagen\\icons8_lock_32px.png");
 
+        //Cambiar icono
+        setIconImage(new ImageIcon(getClass().getResource("../vistaimagen/icon3.png")).getImage());
     }
     //Metodo para autenticar usuarios en la base de datos.
 

@@ -31,113 +31,62 @@ public class CRUDHabitacion {
     private final Connection cn = (Connection) con.conectar();
 
     public DefaultTableModel mostrarDatosHabitacion() {
+        
         ResultSet rs;
-        DefaultTableModel modelo;
-        String[] titulos = {"ID_ReservaEstancia", "Numero de habitacion", "Nombre", "Descripcion", "Num_cama", "Estado", "Precio", "F_Entrada", "F_Salida"};
-        String[] registro = new String[9];
-        modelo = new DefaultTableModel(null, titulos);
+    DefaultTableModel modelo;
+    String[] titulos = {"ID_Habitacion", "N_de_habitacion", "Nombre", "Descripcion", "Num_Cama", "Estado", "Precio", "F_entrada", "F_salida"};
+    String[] registro = new String[9];
+    modelo = new DefaultTableModel(null, titulos);
 
-        try {
-            CallableStatement cbstc = cn.prepareCall("{call MostrarHabitacion}");
-            rs = cbstc.executeQuery();
+    try {
+        CallableStatement cbstc = cn.prepareCall("{call MostrarHabitacion}");
+        rs = cbstc.executeQuery();
 
-            // Obtener el formato deseado para la fecha
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
+        // Obtener el formato deseado para la fecha
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
 
-            while (rs.next()) {
-                registro[0] = rs.getString("ID_ReservaEstancia");
-                registro[1] = rs.getString("N_de_habitacion");
-                registro[2] = rs.getString("Nombre");
-                registro[3] = rs.getString("Descripcion");
-                registro[4] = rs.getString("Num_Cama");
-                registro[5] = rs.getString("Estado");
-                registro[6] = rs.getString("Precio");
+        while (rs.next()) {
+            registro[0] = rs.getString("ID_Habitacion");
+            registro[1] = rs.getString("N_de_habitacion");
+            registro[2] = rs.getString("Nombre");
+            registro[3] = rs.getString("Descripcion");
+            registro[4] = rs.getString("Num_Cama");
+            registro[5] = rs.getString("Estado");
+            registro[6] = rs.getString("Precio");
 
-                // Obtener la fecha de entrada como una cadena de texto
-                String fechaEntrada = rs.getString("F_entrada");
+            // Obtener la fecha de entrada como una cadena de texto
+            String fechaEntrada = rs.getString("F_entrada");
 
-                // Obtener la fecha de salida como una cadena de texto
-                String fechaSalida = rs.getString("F_salida");
+            // Obtener la fecha de salida como una cadena de texto
+            String fechaSalida = rs.getString("F_salida");
 
-                // Formatear la fecha de entrada al formato dd/MM/yyyy
-                String fechaEntradaFormateada = "";
-                if (fechaEntrada != null && !fechaEntrada.isEmpty()) {
-                    SimpleDateFormat formatoFechaEntrada = new SimpleDateFormat("MM/dd/yyyy");
-                    Date fechaEntradaDate = formatoFechaEntrada.parse(fechaEntrada);
-                    SimpleDateFormat formatoFechaSalida = new SimpleDateFormat("dd/MM/yyyy");
-                    fechaEntradaFormateada = formatoFechaSalida.format(fechaEntradaDate);
-                }
-
-                // Formatear la fecha de salida al formato dd/MM/yyyy
-                String fechaSalidaFormateada = "";
-                if (fechaSalida != null && !fechaSalida.isEmpty()) {
-                    SimpleDateFormat formatoFechaSalida = new SimpleDateFormat("MM/dd/yyyy");
-                    Date fechaSalidaDate = formatoFechaSalida.parse(fechaSalida);
-                    SimpleDateFormat formatoFechaSalidas = new SimpleDateFormat("dd/MM/yyyy");
-                    fechaSalidaFormateada = formatoFechaSalida.format(fechaSalidaDate);
-                }
-
-                registro[7] = fechaEntradaFormateada;
-                registro[8] = fechaSalidaFormateada;
-
-                modelo.addRow(registro);
+            // Formatear la fecha de entrada al formato dd/MM/yyyy si no es una cadena vacía
+            if (!fechaEntrada.isEmpty()) {
+                Date fechaEntradaDate = formatoFecha.parse(fechaEntrada);
+                fechaEntrada = formatoFecha.format(fechaEntradaDate);
             }
-            return modelo;
-        } catch (SQLException | ParseException e) {
-            JOptionPane.showMessageDialog(null, e);
-            return null;
-        }
 
-//    ResultSet rs;
-//    DefaultTableModel modelo;
-//    String[] titulos = {"ID_ReservaEstancia","Numero de habitacion", "Nombre", "Descripcion", "Num_cama", "Estado", "Precio", "F_Entrada", "F_Salida"};
-//    String[] registro = new String[9];
-//    modelo = new DefaultTableModel(null, titulos);
-//
-//    try {
-//        CallableStatement cbstc = cn.prepareCall("{call MostrarHabitacion}");
-//        rs = cbstc.executeQuery();
-//
-//        // Obtener el formato deseado para la fecha
-//        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/yyyy");
-//
-//        while (rs.next()) {
-//            registro[0] = rs.getString("ID_ReservaEstancia");
-//            registro[1] = rs.getString("N_de_habitacion");
-//            registro[2] = rs.getString("Nombre");
-//            registro[3] = rs.getString("Descripcion");
-//            registro[4] = rs.getString("Num_Cama");
-//            registro[5] = rs.getString("Estado");
-//            registro[6] = rs.getString("Precio");
-//
-//            // Obtener la fecha de entrada como una cadena de texto
-//            String fechaEntrada = rs.getString("F_entrada");
-//
-//            // Obtener la fecha de salida como una cadena de texto
-//            String fechaSalida = rs.getString("F_salida");
-//
-//            // Formatear la fecha de entrada al formato deseado
-//            String fechaEntradaFormateada = "";
-//            if (fechaEntrada != null && !fechaEntrada.isEmpty()) {
-//                fechaEntradaFormateada = formatoFecha.format(formatoFecha.parse(fechaEntrada));
-//            }
-//
-//            // Formatear la fecha de salida al formato deseado
-//            String fechaSalidaFormateada = "";
-//            if (fechaSalida != null && !fechaSalida.isEmpty()) {
-//                fechaSalidaFormateada = formatoFecha.format(formatoFecha.parse(fechaSalida));
-//            }
-//
-//            registro[7] = fechaEntradaFormateada;
-//            registro[8] = fechaSalidaFormateada;
-//
-//            modelo.addRow(registro);
-//        }
-//        return modelo;
-//    } catch (SQLException | ParseException e) {
-//        JOptionPane.showMessageDialog(null, e);
-//        return null;
-//    }
+            // Formatear la fecha de salida al formato dd/MM/yyyy si no es una cadena vacía
+            if (!fechaSalida.isEmpty()) {
+                Date fechaSalidaDate = formatoFecha.parse(fechaSalida);
+                fechaSalida = formatoFecha.format(fechaSalidaDate);
+            }
+
+            registro[7] = fechaEntrada;
+            registro[8] = fechaSalida;
+
+            modelo.addRow(registro);
+        }
+        return modelo;
+    } catch (SQLException | ParseException e) {
+        JOptionPane.showMessageDialog(null, e);
+        return null;
+    }
+        
+        
+        
+        
+       
     }
 
     public ArrayList<Habitacion> mostrarDatosCombo2() {
