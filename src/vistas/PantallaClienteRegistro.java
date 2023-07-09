@@ -99,7 +99,6 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jLabelCedula = new javax.swing.JLabel();
         jLabelPrimerApellido2 = new javax.swing.JLabel();
         jLabelPrimerApellido3 = new javax.swing.JLabel();
-        jFormattedTextFieldCedula = new javax.swing.JFormattedTextField();
         jFormattedTextFieldTelefono = new javax.swing.JFormattedTextField();
         jTextFieldIDPersona = new javax.swing.JTextField();
         jTextFieldIDCliente = new javax.swing.JTextField();
@@ -108,6 +107,7 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jTextFieldApellido2 = new javax.swing.JFormattedTextField();
         jTextFieldApellido1 = new javax.swing.JFormattedTextField();
         jTextFieldProcedencia = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldCedula = new javax.swing.JFormattedTextField();
         jLabelFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -121,7 +121,7 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jLabelNombregrandeHotel.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabelNombregrandeHotel.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNombregrandeHotel.setText("Registro de clientes");
-        jPanel1.add(jLabelNombregrandeHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 441, 60));
+        jPanel1.add(jLabelNombregrandeHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 40, 441, 60));
 
         jLabel3.setText("jLabel3");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -30, 300, 180));
@@ -184,18 +184,6 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         jLabelPrimerApellido3.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelPrimerApellido3.setText("Telefono");
         jPanel2.add(jLabelPrimerApellido3, new org.netbeans.lib.awtextra.AbsoluteConstraints(585, 294, 91, -1));
-
-        try {
-            jFormattedTextFieldCedula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
-        } catch (java.text.ParseException ex) {
-            ex.printStackTrace();
-        }
-        jFormattedTextFieldCedula.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextFieldCedulaActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jFormattedTextFieldCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 200, 50));
 
         try {
             jFormattedTextFieldTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("####-####")));
@@ -277,6 +265,13 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
             }
         });
         jPanel2.add(jTextFieldProcedencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, 200, 50));
+
+        try {
+            jFormattedTextFieldCedula.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-######-####U")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jPanel2.add(jFormattedTextFieldCedula, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 200, 40));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 860, 510));
 
@@ -372,10 +367,6 @@ public class PantallaClienteRegistro extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_jTextFieldProcedenciaActionPerformed
-
-    private void jFormattedTextFieldCedulaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCedulaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextFieldCedulaActionPerformed
 
     private void jTextFieldNombre1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldNombre1KeyTyped
         // TODO add your handling code here:

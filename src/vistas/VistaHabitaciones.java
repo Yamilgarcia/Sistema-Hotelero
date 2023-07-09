@@ -101,7 +101,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTablevistahabitacion);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 860, 360));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 130, 860, 190));
 
         jTextFieldBuscar.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldBuscar.setForeground(new java.awt.Color(102, 102, 102));
@@ -127,7 +127,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
                 jbottonChangeSucioActionPerformed(evt);
             }
         });
-        jPanel1.add(jbottonChangeSucio, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 520, 130, 50));
+        jPanel1.add(jbottonChangeSucio, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 130, 50));
 
         jbottonChangeDisponible.setBackground(new java.awt.Color(0, 102, 102));
         jbottonChangeDisponible.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -138,7 +138,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
                 jbottonChangeDisponibleActionPerformed(evt);
             }
         });
-        jPanel1.add(jbottonChangeDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 520, 130, 50));
+        jPanel1.add(jbottonChangeDisponible, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 130, 50));
 
         jbuttonBuscar.setBackground(new java.awt.Color(216, 199, 162));
         jbuttonBuscar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -170,9 +170,9 @@ public class VistaHabitaciones extends javax.swing.JFrame {
                 jButtonReportehabitActionPerformed(evt);
             }
         });
-        jPanel1.add(jButtonReportehabit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 520, 190, 50));
+        jPanel1.add(jButtonReportehabit, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 350, 210, 50));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 160, 1070, 590));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 1070, 450));
 
         jPanel2.setBackground(new java.awt.Color(0, 94, 144));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -180,7 +180,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         jLabelBusquedaReservacion.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabelBusquedaReservacion.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBusquedaReservacion.setText("Habitaciones");
-        jPanel2.add(jLabelBusquedaReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 270, 60));
+        jPanel2.add(jLabelBusquedaReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, 270, 60));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 120));
 
@@ -307,7 +307,7 @@ public class VistaHabitaciones extends javax.swing.JFrame {
         Conexion con = new Conexion();
         java.sql.Connection cn = (java.sql.Connection) con.conectar();
  
-        String path = "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\Conexion_bd\\report2.jrxml";
+        String path = "C:\\Users\\danie\\OneDrive\\Escritorio\\Sistema-Hotelero\\src\\Conexion_bd\\report2.jrxml";
         JasperReport jr;
         try {
             jr = JasperCompileManager.compileReport(path);

@@ -97,7 +97,7 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
         jLabelBusquedaReservacion.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabelBusquedaReservacion.setForeground(new java.awt.Color(255, 255, 255));
         jLabelBusquedaReservacion.setText("Reservaciones-Estancias");
-        jPanel2.add(jLabelBusquedaReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 40, 520, 60));
+        jPanel2.add(jLabelBusquedaReservacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 520, 60));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 120));
 
@@ -118,7 +118,7 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
                 jtextButtonRefreshActionPerformed(evt);
             }
         });
-        jPanel1.add(jtextButtonRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 530, 110, 40));
+        jPanel1.add(jtextButtonRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 480, 110, 40));
 
         jbuttonBuscar.setBackground(new java.awt.Color(216, 199, 162));
         jbuttonBuscar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -134,7 +134,7 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
                 jbuttonBuscarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbuttonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 60, 80, 50));
+        jPanel1.add(jbuttonBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1020, 60, 80, 50));
 
         jTableReservaEstancia.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jTableReservaEstancia.setModel(new javax.swing.table.DefaultTableModel(
@@ -155,7 +155,7 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableReservaEstancia);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 1100, 340));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 140, 1100, 320));
 
         jTextField1.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextField1.setForeground(new java.awt.Color(102, 102, 102));
@@ -170,7 +170,7 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
                 jTextField1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 60, 720, 50));
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, 720, 50));
 
         jbottonEditar.setBackground(new java.awt.Color(216, 199, 162));
         jbottonEditar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -181,7 +181,7 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
                 jbottonEditarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbottonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 530, 110, 40));
+        jPanel1.add(jbottonEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 110, 40));
 
         jbottonEliminar.setBackground(new java.awt.Color(255, 51, 51));
         jbottonEliminar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -193,7 +193,7 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
                 jbottonEliminarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbottonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 530, 110, 40));
+        jPanel1.add(jbottonEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 480, 110, 40));
 
         jbottonCancelar.setBackground(new java.awt.Color(216, 199, 162));
         jbottonCancelar.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
@@ -204,9 +204,9 @@ public class PantallBusquedaReservacionEstancia extends javax.swing.JFrame {
                 jbottonCancelarActionPerformed(evt);
             }
         });
-        jPanel1.add(jbottonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 530, 140, 40));
+        jPanel1.add(jbottonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 480, 140, 40));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 160, 1300, 610));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, 1290, 530));
 
         jLabelFondoBusCliente.setText("jLabel1");
         jLabelFondoBusCliente.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));

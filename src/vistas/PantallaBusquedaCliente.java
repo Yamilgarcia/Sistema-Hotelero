@@ -251,7 +251,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         });
         panel2.add(jButtonReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 430, 160, 50));
 
-        panel1.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, 1000, 510));
+        panel1.add(panel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 1000, 510));
 
         panel5.setBackground(new java.awt.Color(0, 94, 144));
         panel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -259,7 +259,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Busqueda de Cliente");
-        panel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, 450, -1));
+        panel5.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, 450, -1));
 
         panel1.add(panel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1600, 120));
 
@@ -380,7 +380,7 @@ public class PantallaBusquedaCliente extends javax.swing.JFrame {
         Conexion con = new Conexion();
         Connection cn = (Connection) con.conectar();
  
-        String path = "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\Conexion_bd\\report1.jrxml";
+        String path = "C:\\Users\\danie\\OneDrive\\Escritorio\\Sistema-Hotelero\\src\\Conexion_bd\\report1.jrxml";
         JasperReport jr;
         try {
             jr = JasperCompileManager.compileReport(path);

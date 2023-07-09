@@ -285,7 +285,7 @@ ValidarCampos validar = new ValidarCampos();
 
         jTextFieldusuarioSesion.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         jTextFieldusuarioSesion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jPanel3.add(jTextFieldusuarioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 310, 200, 50));
+        jPanel3.add(jTextFieldusuarioSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 200, 50));
 
         jLabelusuarioSesion.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelusuarioSesion.setText("Usuario de Sesión");
@@ -477,7 +477,12 @@ ValidarCampos validar = new ValidarCampos();
                 jButtonReporteMouseClicked(evt);
             }
         });
-        jPanel2.add(jButtonReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, 150, 50));
+        jButtonReporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonReporteActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jButtonReporte, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, 170, 50));
 
         getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 800, 530));
 
@@ -678,7 +683,7 @@ ValidarCampos validar = new ValidarCampos();
     private void jButtonReporteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonReporteMouseClicked
         Conexion con = new Conexion();
         Connection cn = (Connection) con.conectar();
-        String path = "C:\\Users\\Usuario\\Documents\\Sistema-Hotelero\\src\\Conexion_bd\\report3.jrxml";
+        String path = "C:\\Users\\danie\\OneDrive\\Escritorio\\Sistema-Hotelero\\src\\Conexion_bd\\report3.jrxml";
         JasperReport jr;
         try{
             jr = JasperCompileManager.compileReport(path);
@@ -689,6 +694,10 @@ ValidarCampos validar = new ValidarCampos();
         }
         
     }//GEN-LAST:event_jButtonReporteMouseClicked
+
+    private void jButtonReporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonReporteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonReporteActionPerformed
 
     /**
      * @param args the command line arguments

@@ -283,7 +283,7 @@ public class PantallaIngresos extends javax.swing.JFrame {
         jLabelingre2.setText("jLabel1");
         jPanel2.add(jLabelingre2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 80, 60));
 
-        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 270, 570, 460));
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 170, 570, 460));
 
         jLabel1fondo.setText("jLabel1");
         jLabel1fondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -297,9 +297,9 @@ public class PantallaIngresos extends javax.swing.JFrame {
         jLabelNombregrandeHotel.setFont(new java.awt.Font("Times New Roman", 1, 48)); // NOI18N
         jLabelNombregrandeHotel.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNombregrandeHotel.setText("Ingresos");
-        jPanel1.add(jLabelNombregrandeHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, 200, 60));
+        jPanel1.add(jLabelNombregrandeHotel, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 30, 200, 60));
         jPanel1.add(jLabelfondoingreso1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 190, 130));
-        jPanel1.add(jLabelfondoingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(1340, 10, 170, 110));
+        jPanel1.add(jLabelfondoingreso, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 10, 170, 110));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1765, 130));
 
