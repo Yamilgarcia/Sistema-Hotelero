@@ -16,6 +16,10 @@ import java.security.CryptoPrimitive;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -46,7 +50,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     ValidarCampos validar = new ValidarCampos();
     int columnaPrecio = 6;
     double sumaTotal = 0.0;
-
+    
     DefaultTableModel modelo;
     int datoSeleccionado = -1;
     String[] titulos = {"ID_Habitacion", "N_habitacion", "Nombre", "Descripcion", "Num_Cama", "Estado", "Precio"};
@@ -87,6 +91,47 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
         //Cambiar icono
         setIconImage(new ImageIcon(getClass().getResource("../vistaimagen/icon3.png")).getImage());
+
+        jTextFieldFechEntrada1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calcularEstanciaYPrecio();
+            }
+        });
+
+        jTextFieldFechSalida.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                calcularEstanciaYPrecio();
+            }
+        });
+
+    }
+
+    private void calcularEstanciaYPrecio() {
+        // Obtener la fecha de entrada y salida del cliente
+        String fechaEntradaStr = jTextFieldFechEntrada1.getText();
+        String fechaSalidaStr = jTextFieldFechSalida.getText();
+
+        // Convertir las fechas de texto a objetos LocalDate
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate fechaEntrada = LocalDate.parse(fechaEntradaStr, formatter);
+        LocalDate fechaSalida = LocalDate.parse(fechaSalidaStr, formatter);
+
+        // Calcular la cantidad de días de estancia
+        long diasEstancia = ChronoUnit.DAYS.between(fechaEntrada, fechaSalida) + 1;
+
+        // Actualizar el JTextField con la cantidad de días de estancia
+        jTextFieldDias.setText(String.valueOf(diasEstancia));
+
+        // Obtener el precio total sumando los precios de todas las habitaciones multiplicados por los días de estancia
+        double precioTotal = 0.0;
+        for (int i = 0; i < jTablehabitaciones.getRowCount(); i++) {
+            double precioHabitacion = Double.parseDouble(jTablehabitaciones.getValueAt(i, columnaPrecio).toString());
+            precioTotal += precioHabitacion * diasEstancia;
+        }
+
+        jTextFieldPrecio.setText(String.valueOf(precioTotal));
     }
 
     public void mostrar() {
@@ -337,6 +382,9 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jLabelPrecio2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jTextFieldSeleccion = new javax.swing.JTextField();
+        jbottonVerReservaciones = new javax.swing.JButton();
+        jbottonVerHabitacion = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jbuttonRegistrahabitacionNow = new javax.swing.JButton();
         labelHabitacion = new javax.swing.JLabel();
@@ -360,11 +408,11 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jbuttonRestarhabitacionNow1 = new javax.swing.JButton();
         jTextFieldIDclienteER = new javax.swing.JTextField();
         jTextFieldIDReservaEstancia = new javax.swing.JTextField();
-        jbottonVerHabitacion = new javax.swing.JButton();
-        jbottonVerReservaciones = new javax.swing.JButton();
         jbottonCancelar = new javax.swing.JButton();
         jTextFieldFechEntrada1 = new javax.swing.JFormattedTextField();
         jTextFieldFechSalida = new javax.swing.JFormattedTextField();
+        jLabelPrecio1 = new javax.swing.JLabel();
+        jTextFieldDias = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -423,6 +471,38 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jTextFieldSeleccion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.add(jTextFieldSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, 200, 32));
 
+        jbottonVerReservaciones.setBackground(new java.awt.Color(216, 199, 162));
+        jbottonVerReservaciones.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jbottonVerReservaciones.setText("Ver Reservaciones");
+        jbottonVerReservaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbottonVerReservaciones.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbottonVerReservacionesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbottonVerReservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, 150, 40));
+
+        jbottonVerHabitacion.setBackground(new java.awt.Color(216, 199, 162));
+        jbottonVerHabitacion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jbottonVerHabitacion.setText("Ver Habitaciones");
+        jbottonVerHabitacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbottonVerHabitacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbottonVerHabitacionActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jbottonVerHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(145, 400, 140, 40));
+
+        jButton1.setBackground(new java.awt.Color(216, 199, 162));
+        jButton1.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jButton1.setText("Calcular Total");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 130, 40));
+
         panel4.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 140, 450, 520));
 
         jPanel2.setBackground(new java.awt.Color(162, 179, 216));
@@ -449,7 +529,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         labelHabitacion.setText("Habitacion");
         jPanel2.add(labelHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
-        jTextFieldClienteReser.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldClienteReser.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jTextFieldClienteReser.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextFieldClienteReser.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -524,18 +604,18 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jLabelFechaSalida.setText("Fecha Salida");
         jPanel2.add(jLabelFechaSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
 
-        jTextFieldPrecio.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldPrecio.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jTextFieldPrecio.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextFieldPrecio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextFieldPrecioActionPerformed(evt);
             }
         });
-        jPanel2.add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 200, 32));
+        jPanel2.add(jTextFieldPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 200, 32));
 
         jLabelPrecio.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
         jLabelPrecio.setText("Total a pagar");
-        jPanel2.add(jLabelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 330, -1, -1));
+        jPanel2.add(jLabelPrecio, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, -1, -1));
 
         jComboBoxHabitacion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jComboBoxHabitacion.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -589,7 +669,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         });
         jPanel2.add(jButtonACTUALIZAR, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 120, 40));
 
-        jTextFieldClienteApellido.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        jTextFieldClienteApellido.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         jTextFieldClienteApellido.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jTextFieldClienteApellido.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -620,28 +700,6 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         jPanel2.add(jTextFieldIDclienteER, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 80, 30));
         jPanel2.add(jTextFieldIDReservaEstancia, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 60, 40, 20));
 
-        jbottonVerHabitacion.setBackground(new java.awt.Color(216, 199, 162));
-        jbottonVerHabitacion.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jbottonVerHabitacion.setText("Ver Habitaciones");
-        jbottonVerHabitacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbottonVerHabitacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbottonVerHabitacionActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jbottonVerHabitacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 150, 140, 30));
-
-        jbottonVerReservaciones.setBackground(new java.awt.Color(216, 199, 162));
-        jbottonVerReservaciones.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
-        jbottonVerReservaciones.setText("Ver Reservaciones");
-        jbottonVerReservaciones.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbottonVerReservaciones.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbottonVerReservacionesActionPerformed(evt);
-            }
-        });
-        jPanel2.add(jbottonVerReservaciones, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 280, 150, 30));
-
         jbottonCancelar.setBackground(new java.awt.Color(216, 199, 162));
         jbottonCancelar.setFont(new java.awt.Font("Roboto", 2, 16)); // NOI18N
         jbottonCancelar.setText("Cancelar");
@@ -652,6 +710,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         });
         jPanel2.add(jbottonCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 120, 40));
 
+        jTextFieldFechEntrada1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
             jTextFieldFechEntrada1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -659,12 +718,26 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         }
         jPanel2.add(jTextFieldFechEntrada1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, 200, 30));
 
+        jTextFieldFechSalida.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         try {
             jTextFieldFechSalida.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
         jPanel2.add(jTextFieldFechSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 280, 200, 30));
+
+        jLabelPrecio1.setFont(new java.awt.Font("Roboto", 2, 20)); // NOI18N
+        jLabelPrecio1.setText("Dias de estancia");
+        jPanel2.add(jLabelPrecio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        jTextFieldDias.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        jTextFieldDias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jTextFieldDias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDiasActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jTextFieldDias, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 320, 200, 32));
 
         panel4.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 560, 520));
 
@@ -711,18 +784,18 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
                 if (habitacionOcupada) {
                     JOptionPane.showMessageDialog(null, "Hay habitaciones ocupadas. Seleccione otra habitación");
-                
-                    } else {
-                        guardarRE();
-                        editarEstadoReseEstancia();
-                        limpiar();
-                        DefaultTableModel modelo = (DefaultTableModel) jTablehabitaciones.getModel();
-                        limpiarTabla(modelo);
 
-                        JOptionPane.showMessageDialog(null, "Datos guardados");
-                    }
+                } else {
+                    guardarRE();
+                    editarEstadoReseEstancia();
+                    limpiar();
+                    DefaultTableModel modelo = (DefaultTableModel) jTablehabitaciones.getModel();
+                    limpiarTabla(modelo);
+
+                    JOptionPane.showMessageDialog(null, "Datos guardados");
                 }
-            
+            }
+
         } catch (HeadlessException e) {
             JOptionPane.showMessageDialog(null, "Error: " + e);
         }
@@ -775,18 +848,19 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
 
                 modelo.addRow(datos);
                 jTablehabitaciones.setModel(modelo);
+                
 
-                // Actualizar el JTextField con el precio de la habitación seleccionada
-                jTextFieldPrecio.setText(String.valueOf(precio));
-
-                // Obtener la suma total actualizada
-                double sumaTotal = 0.0;
-                for (int i = 0; i < jTablehabitaciones.getRowCount(); i++) {
-                    double precioHabitacion = Double.parseDouble(jTablehabitaciones.getValueAt(i, columnaPrecio).toString());
-                    sumaTotal += precioHabitacion;
-                }
-                jTextFieldPrecio.setText(String.valueOf(sumaTotal));
-
+//                // Actualizar el JTextField con el precio de la habitación seleccionada
+//                jTextFieldPrecio.setText(String.valueOf(precio));
+//
+//                // Obtener la suma total actualizada
+//                double sumaTotal = 0.0;
+//                for (int i = 0; i < jTablehabitaciones.getRowCount(); i++) {
+//                    double precioHabitacion = Double.parseDouble(jTablehabitaciones.getValueAt(i, columnaPrecio).toString());
+//                    sumaTotal += precioHabitacion;
+//                }
+//
+//                jTextFieldPrecio.setText(String.valueOf(sumaTotal));
             } else {
                 JOptionPane.showMessageDialog(null, "Dato ya ha sido agregado");
             }
@@ -932,6 +1006,15 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_jbottonCancelarActionPerformed
 
+    private void jTextFieldDiasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDiasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDiasActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+
+        calcularEstanciaYPrecio();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -969,6 +1052,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     public static javax.swing.JButton jButtonACTUALIZAR;
     public static javax.swing.JButton jButtonRegistrarReservaEstancia;
     public static javax.swing.JComboBox<Empleado> jComboBoxEmpleado;
@@ -978,6 +1062,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelFechaEntrada1;
     private javax.swing.JLabel jLabelFechaSalida;
     private javax.swing.JLabel jLabelPrecio;
+    private javax.swing.JLabel jLabelPrecio1;
     private javax.swing.JLabel jLabelPrecio2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -989,6 +1074,7 @@ public class PantallaRegistroReservacionEstancia extends javax.swing.JFrame {
     private javax.swing.JTable jTablehabitaciones;
     public static javax.swing.JTextField jTextFieldClienteApellido;
     public static javax.swing.JTextField jTextFieldClienteReser;
+    private javax.swing.JTextField jTextFieldDias;
     public static javax.swing.JFormattedTextField jTextFieldFechEntrada1;
     public static javax.swing.JFormattedTextField jTextFieldFechSalida;
     public static javax.swing.JTextField jTextFieldIDReservaEstancia;

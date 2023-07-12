@@ -27,7 +27,9 @@ public class Menu extends javax.swing.JFrame {
         
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         this.setExtendedState(Menu.MAXIMIZED_BOTH);
-
+//Preguntar si se usa
+//        int ancho = java.awt.Toolkit.getDefaultToolkit().getScreenSize().width;
+//        int alto = java.awt.Toolkit.getDefaultToolkit().getScreenSize().height;
         
 
         // Crear los JLabel para la fecha y la hora
